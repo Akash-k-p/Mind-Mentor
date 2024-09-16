@@ -43,9 +43,12 @@ Diary.init(
             allowNull: true,
           },
           time_stamp: {
-            type: DataTypes.DATE,
+            // type: DataTypes.DATE,
+            // allowNull: true,
+            // defaultValue: DataTypes.NOW,
+            type: DataTypes.TIME,  // Use TIME instead of DATE
             allowNull: true,
-            defaultValue: DataTypes.NOW,
+            defaultValue: sequelize.literal('CURRENT_TIME'),  // Set default to the current time
         },
     },
     {

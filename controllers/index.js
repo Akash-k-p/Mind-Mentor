@@ -6,11 +6,6 @@ const htmlRoutes = require('./html_routes');
 router.use('/', htmlRoutes);
 router.use('/api', apiRoutes);
 
-//-----------------------------------------
-const entriesRoutes = require('./api/entries');
-router.use('/entries', entriesRoutes); 
-//----------------------------------------
-
 module.exports = router;
 
 

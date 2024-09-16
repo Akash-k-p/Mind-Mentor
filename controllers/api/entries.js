@@ -6,7 +6,7 @@ const router = require('express').Router();
 const Diary = require('../../models/Diary.js');
 
 // API endpoint to fetch diary entries with timestamp, polarity, and label
-router.get("/entries", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const diaryEntries = await Diary.findAll({
       attributes: ["time_stamp", "polarity", "label"]

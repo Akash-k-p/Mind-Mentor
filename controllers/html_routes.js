@@ -46,4 +46,23 @@ router.get("/logout", (req, res) => {
   }
 });
 
+
+//------------------------------------------------
+router.get("/entries", async (req, res) => {
+  // try {
+  //   const diaryEntries = await Diary.findAll({
+  //     attributes: ["time_stamp", "polarity", "label"]
+  //   });
+  //   res.status(200).json(diaryEntries);
+  // } catch (err) {
+  //   res.status(500).json(err);
+  res.sendFile(path.join(__dirname, "../public/dashboard.html"));
+  // }
+});
+//-------------------------------------------------
+
 module.exports = router;
+
+
+
+

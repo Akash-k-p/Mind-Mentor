@@ -39,56 +39,67 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.2/d3.min.js" charset="utf-8"></script>
     <script src="\assets\js\calender-heatmap.min.js"></script>
 
-    <!-- <script>
-      (function () {
-        // Initialize random data for the demo
-        var now = moment().endOf('day').toDate();
-        var time_ago = moment().startOf('day').subtract(10, 'year').toDate();
-        var example_data = d3.timeDays(time_ago, now).map(function (dateElement, index) {
-          return {
-            date: dateElement,
-            details: Array.apply(null, new Array(Math.floor(Math.random() * 15))).map(function (e, i, arr) {
-              return {
-                'name': 'Project ' + Math.ceil(Math.random() * 10),
-                'date': function () {
-                  var projectDate = new Date(dateElement.getTime());
-                  projectDate.setHours(Math.floor(Math.random() * 24));
-                  projectDate.setMinutes(Math.floor(Math.random() * 60));
-                  return projectDate;
-                }(),
-                'value': 3600 * ((arr.length - i) / 5) + Math.floor(Math.random() * 3600) * Math.round(Math.random() * (index / 365))
-              }
-            }),
-            init: function () {
-              this.total = this.details.reduce(function (prev, e) {
-                return prev + e.value;
-              }, 0);
-              return this;
-            }
-          }.init();
-        });
-
-        // Set the div target id
-        var div_id = 'calendar';
-
-        // Set custom color for the calendar heatmap
-        var color = '#1d39db';
-
-        // Set overview type (choices are year, month and day)
-        var overview = 'year';
-
-        // Handler function
-        var print = function (val) {
-          console.log(val);
-        };
-
-        // Initialize calendar heatmap
-        calendarHeatmap.init(example_data, div_id, color, overview, print);
-      })();
-    </script> -->
-
 
     <script>
+      async function fetchDataAndRenderHeatmap() {
+          // Replace API fetch with hardcoded test data
+          const diaryEntries = [
+              {
+                  time_stamp: '2024-09-01T10:00:00Z',
+                  label: 'Happy',
+                  polarity: 0.2
+              },
+              {
+                  time_stamp: '2024-09-02T11:30:00Z',
+                  label: 'Neutral',
+                  polarity: 1
+              },
+              {
+                  time_stamp: '2024-09-03T12:00:00Z',
+                  label: 'Sad',
+                  polarity: 1.5
+              },
+              {
+                  time_stamp: '2024-09-04T13:15:00Z',
+                  label: 'Excited',
+                  polarity: 1.75
+              }
+          ];
+  
+          // Format the data for the heatmap
+          const formattedData = diaryEntries.map(entry => {
+              const entryDate = new Date(entry.time_stamp);
+              return {
+                  date: entryDate,
+                  details: [{
+                      'label': entry.label,
+                      'date': entryDate,
+                      'value': entry.polarity  // You can scale the polarity value or keep it as is
+                  }],
+                  total: entry.polarity  // Use total for the heatmap color scale
+              };
+          });
+  
+          // Initialize the heatmap with the formatted data
+          const div_id = 'calendar';
+          const color = '#1d39db'; // Custom color for heatmap
+          const overview = 'year'; // Year overview, you can change it to 'month' or 'day'
+          
+          const print = function(val) {
+              console.log(val);
+          };
+  
+          // Initialize the heatmap
+          calendarHeatmap.init(formattedData, div_id, color, overview, print);
+      }
+  
+      // Call the function to render the heatmap with custom values
+      fetchDataAndRenderHeatmap();
+  </script>
+  
+
+
+    <!-- <script>
     async function fetchDataAndRenderHeatmap() {
         // Fetch the data from the API
         const response = await fetch("./api/entries");
@@ -102,9 +113,9 @@
                 details: [{
                     'label': entry.label,
                     'date': entryDate,
-                    'value': entry.polarity  // You can scale the polarity value or keep it as is
+                    'value': entry.polarity * 0.00001  // You can scale the polarity value or keep it as is
                 }],
-                total: entry.polarity * 100 // Use total for the heatmap color scale
+                total: entry.polarity * 0.00001 // Use total for the heatmap color scale
             };
         });
 
@@ -123,7 +134,7 @@
 
     // Call the function to fetch data and render the heatmap
     fetchDataAndRenderHeatmap();
-</script>
+</script> -->
 
 
 

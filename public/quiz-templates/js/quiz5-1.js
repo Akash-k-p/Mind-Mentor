@@ -76,37 +76,37 @@ const questionnaire=[
         b:"1",
         c:"2"
     },
+    // {
+
+    //     question:"11. Pain or problems during sexual intercourse",
+    //     a:"0",
+    //     b:"1",
+    //     c:"2"
+    // },
     {
 
-        question:"11. Pain or problems during sexual intercourse",
+        question:"11. Constipation; loose bowels, or diarrhea",
         a:"0",
         b:"1",
         c:"2"
     },
     {
 
-        question:"12. Constipation; loose bowels, or diarrhea",
+        question:"12. Nausea, gas or indigestion",
         a:"0",
         b:"1",
         c:"2"
     },
     {
 
-        question:"13. Nausea, gas or indigestion",
+        question:"13. Feeling tired or having low energy",
         a:"0",
         b:"1",
         c:"2"
     },
     {
 
-        question:"14. Feeling tired or having low energy",
-        a:"0",
-        b:"1",
-        c:"2"
-    },
-    {
-
-        question:"15. Trouble Sleeping",
+        question:"14. Trouble Sleeping",
         a:"0",
         b:"1",
         c:"2"

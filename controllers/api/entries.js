@@ -9,7 +9,7 @@ const Diary = require('../../models/Diary.js');
 router.get("/", async (req, res) => {
   try {
     const diaryEntries = await Diary.findAll({
-      attributes: ["time_stamp", "polarity", "label"]
+      attributes: ["mood_id","time_stamp", "polarity", "label"]
     });
     res.status(200).json(diaryEntries);
   } catch (err) {

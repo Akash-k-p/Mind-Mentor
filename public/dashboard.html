@@ -40,7 +40,7 @@
     <script src="\assets\js\calender-heatmap.min.js"></script>
 
 
-    <script>
+    <!-- <script>
       async function fetchDataAndRenderHeatmap() {
           // Replace API fetch with hardcoded test data
           const diaryEntries = [
@@ -52,17 +52,17 @@
               {
                   time_stamp: '2024-09-02T11:30:00Z',
                   label: 'Neutral',
-                  polarity: 1
+                  polarity: 1.2
               },
               {
                   time_stamp: '2024-09-03T12:00:00Z',
                   label: 'Sad',
-                  polarity: 1.5
+                  polarity: 0.5
               },
               {
                   time_stamp: '2024-09-04T13:15:00Z',
                   label: 'Excited',
-                  polarity: 1.75
+                  polarity: 0.9
               }
           ];
   
@@ -95,48 +95,54 @@
   
       // Call the function to render the heatmap with custom values
       fetchDataAndRenderHeatmap();
+  </script> -->
+
+<script>
+  async function fetchDataAndRenderHeatmap() {
+      // Fetch the data from the API
+      const response = await fetch("./api/entries");
+      const diaryEntries = await response.json();
+
+      // Format the data for the heatmap
+      const formattedData = diaryEntries.map(entry => {
+          const entryDate = new Date(entry.time_stamp);
+
+          // Calculate polarity based on mood_id (1 maps to 0.1, 10 maps to 1.0)
+          let polarityValue = entry.mood_id * 0.1;
+
+          // Adjust polarity if the label is positive
+          if (entry.label && entry.label.toLowerCase() === 'positive') {
+                polarityValue += 1;
+            }
+
+          return {
+              date: entryDate,
+              details: [{
+                  'mood_id': entry.mood_id,
+                  'label': entry.label,
+                  'date': entryDate,
+                  'value': polarityValue // Polarity based on mood_id and label
+              }],
+              total: polarityValue // Use total for the heatmap color scale
+          };
+      });
+
+      // Initialize the heatmap with the formatted data
+      const div_id = 'calendar';
+      const color = '#1d39db'; // Custom color for heatmap
+      const overview = 'year'; // Year overview, you can change it to 'month' or 'day'
+      
+      const print = function(val) {
+          console.log(val);
+      };
+
+      // Initialize the heatmap
+      calendarHeatmap.init(formattedData, div_id, color, overview, print);
+  }
+
+  // Call the function to fetch data and render the heatmap
+  fetchDataAndRenderHeatmap();
   </script>
-  
-
-
-    <!-- <script>
-    async function fetchDataAndRenderHeatmap() {
-        // Fetch the data from the API
-        const response = await fetch("./api/entries");
-        const diaryEntries = await response.json();
-
-        // Format the data for the heatmap
-        const formattedData = diaryEntries.map(entry => {
-            const entryDate = new Date(entry.time_stamp);
-            return {
-                date: entryDate,
-                details: [{
-                    'label': entry.label,
-                    'date': entryDate,
-                    'value': entry.polarity * 0.00001  // You can scale the polarity value or keep it as is
-                }],
-                total: entry.polarity * 0.00001 // Use total for the heatmap color scale
-            };
-        });
-
-        // Initialize the heatmap with the formatted data
-        const div_id = 'calendar';
-        const color = '#1d39db'; // Custom color for heatmap
-        const overview = 'year'; // Year overview, you can change it to 'month' or 'day'
-        
-        const print = function(val) {
-            console.log(val);
-        };
-
-        // Initialize the heatmap
-        calendarHeatmap.init(formattedData, div_id, color, overview, print);
-    }
-
-    // Call the function to fetch data and render the heatmap
-    fetchDataAndRenderHeatmap();
-</script> -->
-
-
 
     <br>
   </div>

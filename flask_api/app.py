@@ -4,6 +4,7 @@ from transformers import pipeline
 from flask_cors import CORS  # Import the CORS module
 import whisper
 import os
+from ChatBotApp import get_bot_response
 
 # Initialize Flask app and API
 app = Flask(__name__)
@@ -12,6 +13,11 @@ api = Api(app)
 
 # Load the sentiment-analysis model
 classifier = pipeline('sentiment-analysis', model="distilbert-base-uncased-finetuned-sst-2-english")
+
+
+class Test(Resource) :
+    def get(self):
+        return jsonify({"message":"Hello World"})
 
 # Define the Sentiment Resource
 class SentimentAnalysis(Resource):
@@ -64,11 +70,25 @@ class SpeechToText(Resource):
         
         # Return the transcribed text
         return jsonify({"transcription": result["text"]})
+    
+class ChatBot(Resource):
+
+    def get(self) :
+    
+        return get_bot_response(request.args.get('msg'))
+        # print("keys are")
+        # for key in request.args.keys():
+        #     print(key)
+        # return jsonify({"message":request.args.get("msg")})
+
 
 
 # Add the resource to the API
 api.add_resource(SentimentAnalysis, '/analyze')
 api.add_resource(SpeechToText, '/transcribe')
+api.add_resource(ChatBot,'/chat')
+api.add_resource(Test,'/test')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

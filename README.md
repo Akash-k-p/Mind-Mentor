@@ -16,6 +16,11 @@ Click on Login/Register to create an account or login. You will be directed to a
 N/A
 ## Test Instructions
 N/A
+
+## Note:
+1. create .env file and include all your database auth info in it 
+2. The models for the chatbots have to be downloaded into the flask-api folder, models can be found [here](https://drive.google.com/drive/folders/1ybwgK1XNG1wd8As0m9vjMdQfHmD6E9uk)
+3. run npm run seeds, then npm start, then go the flask/api folder and run app.py too.
 ## License
 [![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
 ## Questions

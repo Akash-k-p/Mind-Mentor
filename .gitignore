@@ -3,3 +3,6 @@ node_modules
 .DS_Store
 package-lock.json
 .vscode
+flask_api/eng_swa_model-20240920T045614Z-001.zip
+flask_api/model/swa_eng_model/model.safetensors
+flask_api/swa_eng_model-20240920T045617Z-001.zip

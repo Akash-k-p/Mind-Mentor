@@ -38,7 +38,11 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
+<<<<<<< HEAD
 VIRTUAL_ENV=$(cygpath "D:\Projects\Mind-Mentor\flask_api\venv")
+=======
+VIRTUAL_ENV=$(cygpath "C:\projects\final_year_project\ChatBot\Mental-health-Chatbot\venv")
+>>>>>>> 03fe9c1d5be6d60b11aac58be796934f26d4c270
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

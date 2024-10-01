@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guided Meditation</title>
+    <link rel="stylesheet" href="./public/GuidedMeditation/GuidedMeditation.css">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' https://fonts.gstatic.com;">
+
+</head>
+<body>
+    <div id="app"></div>
+    <script type="module">
+        import GuidedMeditation from './meditate.js'; // Ensure correct import path
+
+        const appContainer = document.getElementById('app');
+        new GuidedMeditation(appContainer);
+    </script>
+</body>
+</html>

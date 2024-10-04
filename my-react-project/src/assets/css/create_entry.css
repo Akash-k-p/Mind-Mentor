@@ -1,0 +1,80 @@
+body{
+    background-color: #ecf0f1;
+}
+.jumbotron{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.display-4{
+    gap: 20px;
+    display: inline-flex;
+    align-items: flex-end;
+}
+.display-4 .logout-btn{
+    background-color: grey;
+    font-size: 30px;
+    align-items: flex-end;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 3px 6px;
+}
+hr{
+    margin-bottom: 0;
+}
+.navbar-container{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.navbar-elements{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    font-size: 1.5rem;
+}
+#entry-form-container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+#entry-form{
+    width: 50%;
+    margin-bottom:3rem;
+}
+#success{
+    margin-top: 5px;
+    font-size: x-large;
+    color: darkgreen;
+    display: block;
+}
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+.author-links{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 20px;
+    
+}
+
+.btn-secondary {
+    color:brown;
+}
+
+#audio-recording {
+    display: flex;
+}
+
+#loading{
+    display:none;
+}
+
+#transcribed-text {
+    color: #240084;
+    font-size: large;
+}

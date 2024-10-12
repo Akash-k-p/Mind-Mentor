@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/meditate-app/static/css/main.e95da25a.css",
+    "main.js": "/meditate-app/static/js/main.f2a7dc7b.js",
+    "index.html": "/meditate-app/index.html",
+    "main.e95da25a.css.map": "/meditate-app/static/css/main.e95da25a.css.map",
+    "main.f2a7dc7b.js.map": "/meditate-app/static/js/main.f2a7dc7b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e95da25a.css",
+    "static/js/main.f2a7dc7b.js"
+  ]
+}

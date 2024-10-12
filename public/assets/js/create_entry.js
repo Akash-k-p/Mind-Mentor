@@ -294,11 +294,32 @@ formData.append("polarity", polarity);
   loadingElement.style.display = "none";  // Hide loader
   if (response.ok) {
     document.querySelector("#success").textContent = "Your entry has been successfully added!";
+    
   } else {
     const resData = await response.json();
     console.error(resData);
     console.log("error in create_entry.js");
   }
+
+  const analyzeResponse = await fetch("http://localhost:5000/analyze", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ text: description })
+  });
+  
+  const analyzeResult = await analyzeResponse.json();
+  console.log("Analyze Result: ", analyzeResult); // Log the whole response to check the structure
+  
+  if (analyzeResult["label"] && analyzeResult["polarity"]) {
+    document.getElementById("analyze").textContent = 
+      "ANALYSIS: Label: " + analyzeResult["label"] + " Polarity: " + analyzeResult["polarity"];
+  } else {
+    document.getElementById("analyze").textContent = "ANALYSIS: Data not found.";
+  }
+
+
 
 }
 

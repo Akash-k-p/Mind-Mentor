@@ -1,99 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/css/create_entry.css" />
-    <title>Create Entry</title>
-  </head>
-  <body>
-    <div class="jumbotron text-center">
-      <div class="container">
-        <h1 class="display-4">
-          Mental Health Tracker <span role="img" aria-label="Memo">💚</span>
-          <div class="logout-btn"><a href="/logout">Logout</a></div>
-        </h1>
-        <p class="lead">Your journey to a better mental state</p>
-        <hr />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href=".\assets\css\create_entry.css" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
+</head>
+<body>
+    <div class="video-container">
+        <video autoplay muted loop id="background-video">
+            <source src="assets/videp.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+            <div class="heading">
+            <center><h1>
+              Mind Mentor <span role="img" aria-label="Memo">💚</span> 
+            </h1>
+            <p >Your journey to a better mental state</p>
+            </center>
+          </div>
+  
+      <nav class="ui">
+        <center>
+          <button onclick="window.location.href='/diary';">Home</button>
+          <button onclick="window.location.href='/create';">New Diary</button>
+          <button onclick="window.location.href='/view';">View Diary</button>
+        </center>
+      </nav>
+
+      <div class="form-container">
+      <div class="parent">
+
+      <form id="form-title"> <!--begin form title area-->
+          <label for="mood">How are you feeling?</label>
+          <select name="mood" id="mood">
+            <option value=1>Worst Day Ever</option>
+            <option value=2>Really Bad</option>
+            <option value=3>Sad</option>
+            <option value=4>Not Good</option>
+            <option value=5>Adequate</option>
+            <option value=6>Pretty Good</option>
+            <option value=7>Good</option>
+            <option value=8>Happy</option>
+            <option value=9>Elated</option>
+            <option value=10>Best Day Ever</option>
+          </select>
+      </form> <!--End form title area-->
+      <br>
+      <form id="form-title"> <!--begin form title area-->
+            <label for="title"></label>
+            <input type="text" class="form-control" id="title" placeholder="Enter Mood Title">
+        </form> <!--End form title area-->
+
+       <br>
+       <form id="form-description"> <!--Begin text area Form-->
+        <div class="form-group">
+          <label for="text-area"></label>
+          <textarea class="form-control" id="text-area" rows="12" 
+          placeholder="Enter mood description here"></textarea>
       </div>
-    </div>
-    <!--End Jumbotron div-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <div class="navbar-nav mx-auto navbar-container">
-          <a
-            class="nav-link navbar-elements"
-            href="/diary"
-            >Home</a
-          >
-          <a class="nav-link active navbar-elements"aria-current="page" href="/create">New Diary</a>
-          <a class="nav-link navbar-elements" href="/view">View Diaries</a>
+  </div>
+  <br>
+
+
+  <div class="secondparent">
+      <div class="col">
+
+          <div class="audiocontainer">
+              <div class="folder">
+                <div class="front-side">
+                  <div class="tip"></div>
+                  <div class="cover"></div>
+                </div>
+                <div class="back-side cover"></div>
+              </div>
+              <label class="custom-file-upload">
+                <input class="title" type="file" id="audio" accept="audio/*" hidden>
+                <span id="file-name">Choose a file</span>
+              </label>
+          </div>
+
+      </div>
+      <div class="col">
+
+        <!-- <div class="recordcontainer">
+          <h1>Record your thoughts</h1>
+        
+
+          <audio id="audio-playback" class="hidden" muted></audio>
+
+          <div class="selectsource">
+            <label for="audio-source">Select Audio Source:</label>
+            <select id="audio-source"></select>
+          </div>
+
+          <div>
+           
+            <button class="recbutton" id="start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="svg-icon">
+                <g stroke-width="2" stroke-linecap="round" stroke="#ff342b">
+                  <rect y="3" x="9" width="6" rx="3" height="11"></rect>
+                  <path d="m12 18v3"></path>
+                  <path d="m8 21h8"></path>
+                  <path d="m19 11c0 3.866-3.134 7-7 7-3.86599 0-7-3.134-7-7"></path>
+                </g>
+              </svg>
+              <span class="label">Record</span>
+            </button>
+
+            <button class="recbutton hidden" id="stop">&#x23F9; Stop</button>
+          </div>
+  
+          <span class="title hidden">Saved Recording</span>
+
+          <audio id="player" class="hidden" controls></audio>
+        </div> -->
+        
+        <div class="recorder">
+            <h1>Record your thougts</h1>
+            <div class="selectsource">
+              <label for="audio-source">Select Audio Source:</label>
+              <select id="audio-source"></select>
+            </div>
+
+            <button type="button" class="recbutton" id="record-button">
+              <span style='color: red; font-size: 12px; margin: 0px'>&#x1F534;</span>Record
+            </button>
+            <button class="recbutton hidden" id="stop">&#x23F9; Stop</button>
+            <audio id="audio-playback" class="hidden" controls></audio>
         </div>
-      </div>
-    </nav> <!--End Navbar-->
-    <!-- Begin dropdown -->
-    <div id="entry-form-container">
-    <div id="entry-form"> <!--entry-form-->
-    <label for="mood">How are you feeling?</label>
+      <!-- 
+          <div id="audio-recording">
+              <button type="button" id="record-button" class="btn btn-secondary">Record</button>
+            <audio id="audio-playback" controls></audio>
+            <label for="audio-source">Select Audio Source:</label>
+          <select id="audio-source"></select>
+          </div> -->
 
-    <select name="mood" id="mood">
-      <option value=1>Worst Day Ever</option>
-      <option value=2>Really Bad</option>
-      <option value=3>Sad</option>
-      <option value=4>Not Good</option>
-      <option value=5>Adequate</option>
-      <option value=6>Pretty Good</option>
-      <option value=7>Good</option>
-      <option value=8>Happy</option>
-      <option value=9>Elated</option>
-      <option value=10>Best Day Ever</option>
-    </select>
-    <!-- End dropdown -->
-    <form id="form-title"> <!--begin form title area-->
-      <div class="form-group">
-        <label for="title"></label>
-        <input type="text" class="form-control" id="title" placeholder="Enter Mood Title">
-    </form> <!--End form title area-->
-    <form id="form-description"> <!--Begin text area Form-->
-    <div class="form-group">
-      <label for="text-area"></label>
-      <textarea class="form-control" id="text-area" rows="12" 
-      placeholder="Enter mood description here"></textarea>
+      </div>
+
+  </div>
+
+  <div class="parent">
+
+      <!-- <button type="submit" class="btn-56">Create Entry</button> -->
+    
+      <form id="entry-form"><center>
+          <button type="submit" id="btn-56">Create Entry</button>
+          </center>
+      </form>
+      
+  </div>
+       </form>
+            
+      
+      <center>
+       
+          <div id="loading">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div> 
+          </div>
+        
+
+          <p id="transcribed-text"></p>
+          <div id = "analyze"></div> 
+          <div id="success"></div>
+        </div>
+      </center>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+        <footer>
+            <div class="text-center p-3 author-links">
+              Created by:
+              <a href="www.linkedin.com/in/akash-k-p">Akash K P</a>
+              <a href="www.linkedin.com/in/sppratham108">S P Pratham</a>
+              <a href="www.linkedin.com/in/ggurusainath">G Gurusainath</a>
+              <button class="Btn" onclick="window.location.href='/logout';">
+                <div class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
+                <div class="text" >Logout</div>
+              </button>
+            </div>
+          </footer>
+
+          <script src="./assets/js/create_entry.js"></script>
     </div>
-    <input type="file" id="audio" accept="audio/*">
-    <div id="audio-recording">
-      <button type="button" id="record-button" class="btn btn-secondary">Record</button>
-    <audio id="audio-playback" controls></audio>
-    <label for="audio-source">Select Audio Source:</label>
-<select id="audio-source"></select>
-      </div>
-      <div id="loading">
-      <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div> 
-      </div>
-    <button type="submit" class="btn btn-primary">Create Entry</button>
-    <p id="transcribed-text"></p>
-    <p id = "analyze"></p> 
-  </form><!--End text area Form-->
-
-  
-  <p id="success"></p>
-  
-</div> <!--Entry-form -->
-</div>
-    <!-- Begin Footer -->
-    <footer class="bg-light text-center text-lg-start">
-      <div class="text-center p-3 author-links">
-        Created by:
-        <a href="https://github.com/Dominiscus1">Akash K P</a>
-        <a href="https://github.com/kencford">S P Pratham</a>
-        <a href="https://github.com/natpitt2393">G Gurusainath</a>
-      </div>
-    </footer>
-
-    <script src="./assets/js/create_entry.js"></script>
-  </body>
+</body>
 </html>

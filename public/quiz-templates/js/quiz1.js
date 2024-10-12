@@ -211,11 +211,11 @@ submit.addEventListener('click',()=>{
         <h3>End of Test</h3>
         `
         console.log("You scored ${score}/27")
-        next.innerHTML=`<h3>
-        Wohoo!, you did it! Congrats on completing the quiz and taking a big step towards improving your mental health. By clicking the "Solution" button, you'll be taken to a treasure trove of solutions tailored to your specific needs. Get ready to embark on a journey towards better mental wellness - good luck! 🚀.
+        // next.innerHTML=`<h3>
+        // Wohoo!, you did it! Congrats on completing the quiz and taking a big step towards improving your mental health. By clicking the "Solution" button, you'll be taken to a treasure trove of solutions tailored to your specific needs. Get ready to embark on a journey towards better mental wellness - good luck! 🚀.
         
-        </h3>
-        `
+        // </h3>
+        // `
         
         const val=score
         console.log(val)

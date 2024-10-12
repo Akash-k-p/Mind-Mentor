@@ -1,18 +1,4 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>solution for depression</h1>
-</body>
-</html> -->
-<!-- this was -->
 
-<!-- commented out -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,28 +15,26 @@
 </head>
 
 <body>
-    <!-- <h1>solution for depression</h1> -->
-
-    <div class="jumbotron text-center"></div>
-    <div class="container">
-        <h1 class="display-4">
-            Mental Health Tracker <span role="img" aria-label="Memo">💚</span>
-            <div class="logout-btn"><a href="/logout">Logout</a></div>
-        </h1>
-        <p class="lead">Your journey to a better mental state</p>
-        <hr />
-    </div>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <div class="navbar-nav mx-auto navbar-container">
-                <a class="nav-link navbar-elements" aria-current="page" href="/diary">Home</a>
-                <a class="nav-link navbar-elements" href="/create">New Diary</a>
-                <a class="nav-link navbar-elements" href="/view">View Diaries</a>
-            </div>
-        </div>
-    </nav> <!--End Navbar -->
-
+    <div class="video-container">
+        <video autoplay muted loop id="background-video">
+            <source src=".\..\assets\videp.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+            <div class="heading">
+            <center><h1>
+              Mind Mentor <span role="img" aria-label="Memo">💚</span> 
+            </h1>
+            <p >Your journey to a better mental state</p>
+            </center>
+          </div>
+      <!--End Jumbotron div-->
+      <nav class="ui">
+        <center>
+          <button onclick="window.location.href='/diary';">Home</button>
+          <button onclick="window.location.href='/create';">New Diary</button>
+          <button onclick="window.location.href='/view';">View Diary</button>
+        </center>
+      </nav>
 
     <div class="solution_page">
         <div class="solution_box">
@@ -161,7 +145,7 @@
     </div>
 
 
-
+</body>
 </body>
 
 </html>

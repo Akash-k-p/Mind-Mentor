@@ -21,8 +21,9 @@ N/A
 1. create .env file and include all your database auth info in it 
 2. The models for the chatbots have to be downloaded into the flask-api folder, models can be found [here](https://drive.google.com/drive/folders/1ybwgK1XNG1wd8As0m9vjMdQfHmD6E9uk)
 3. run npm run seeds, then npm start, then go the flask/api folder and run app.py too.
+4.Alternatively just run the start_project.bat in the terminal, and the project should run, (usually gets hosted at localhost:3001)
 ## License
 [![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
 ## Questions
-### Github account: www.github.com/natpitt2393
-### Email: Nat@email.com
+### Github account:
+### Email:

@@ -1,0 +1,80 @@
+body{
+    background-color: #ecf0f1;
+}
+.jumbotron{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.display-4{
+    gap: 20px;
+    display: inline-flex;
+    align-items: flex-end;
+}
+.display-4 .logout-btn{
+    background-color: grey;
+    font-size: 30px;
+    align-items: flex-end;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 3px 6px;
+}
+hr{
+    margin-bottom: 0;
+}
+.navbar-container{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.navbar-elements{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    font-size: 1.5rem;
+}
+#diary-container{
+    margin-bottom: 100px;
+}
+.entryContainer{
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+
+background-color: #a9f5a6;
+border: 3px solid black;
+
+margin-left: 10%;
+margin-right: 10%;
+margin-bottom: 2%;
+}
+.entryTitle{
+margin-top: 5px;
+text-align: center;
+}
+.entryDate{
+margin-bottom: 0;
+font-size: large;
+text-align: center;
+}
+.entryDescription{
+font-size: large;
+padding-left: 10%;
+padding-right: 10%;
+}
+.entryMood{
+text-align: center;
+font-size: x-large;
+}
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+.author-links{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 20px;
+}

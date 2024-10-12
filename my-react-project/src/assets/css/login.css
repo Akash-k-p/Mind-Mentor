@@ -1,0 +1,28 @@
+body{
+    background-color: #ecf0f1;
+}
+.main-content{
+    display: flex;
+    justify-content: space-evenly;
+}
+.login form{
+    width: 25%;
+}
+
+img{
+    height: 280px;
+    width: 280px;
+}
+.signup form{
+    width: 25%;
+}
+.login-container{
+    width: 280.75px;
+    border: 1px solid #7777d1;
+    padding: 10px;
+}
+.signup-container{
+    width: 280.75px;
+    border: 1px solid red;
+    padding: 10px;
+}

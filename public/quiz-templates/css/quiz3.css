@@ -163,6 +163,15 @@ body, html {
     overflow: auto;
   }
   
+  
+  body::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+  }
+  
+  body {
+    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+    scrollbar-width: none;  /* For Firefox */
+  }
   .video-container {
     position: relative;
     height: 100%;

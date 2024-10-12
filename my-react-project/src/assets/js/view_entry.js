@@ -35,9 +35,9 @@ async function renderDiaryEntry() {
         if (entry.user_id==userId){
            
         const entryContainer = document.createElement('div');
-        const entryTitle = document.createElement('h3');
         const entryDate = document.createElement('p');
-        const entryMood = document.createElement('p');
+        const entryMood = document.createElement('h3');
+        const entryTitle = document.createElement('p');
         const entryDescription = document.createElement('p');
         const entryAudio = document.createElement('audio');
         const deleteButton = document.createElement('button');
@@ -69,10 +69,10 @@ async function renderDiaryEntry() {
         }
         
         entryContainer.classList.add("entryContainer");
-        entryTitle.classList.add("entryTitle");
         entryDate.classList.add("entryDate");
-        entryDescription.classList.add("entryDescription");
         entryMood.classList.add("entryMood");
+        entryTitle.classList.add("entryTitle");
+        entryDescription.classList.add("entryDescription");
         entryAudio.classList.add("entryAudio");
         deleteButton.classList.add("btn");
         deleteButton.classList.add("btn-danger");
@@ -121,9 +121,9 @@ async function renderDiaryEntry() {
             default:
                 entryContainer.style.border = "5px solid white"
         }
-        entryContainer.append(entryTitle);
         entryContainer.append(entryDate);
         entryContainer.append(entryMood);
+        entryContainer.append(entryTitle);
         entryContainer.append(entryDescription);
         entryContainer.append(entryAudio);
         entryContainer.append(deleteButton);

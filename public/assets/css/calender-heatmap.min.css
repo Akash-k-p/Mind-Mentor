@@ -11,7 +11,7 @@
 
 .calendar-heatmap .label {
     cursor: pointer;
-    fill: white;
+    fill: black;
     font-family: Helvetica, arial, Open Sans, sans-serif
 }
 
@@ -19,7 +19,7 @@
     cursor: pointer;
     fill: transparent;
     stroke-width: 2;
-    stroke:white;
+    stroke: black
 }
 
 .calendar-heatmap .button text {

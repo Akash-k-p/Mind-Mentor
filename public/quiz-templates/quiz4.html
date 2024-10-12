@@ -65,27 +65,27 @@
     <link rel="stylesheet" href="./css/quiz4.css">
 </head>
 <body>
-    <div class="video-container">
-        <video autoplay muted loop id="background-video">
-            <source src=".\..\assets\videp.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-            <div class="heading">
-            <center><h1>
-              Mind Mentor <span role="img" aria-label="Memo">💚</span> 
-            </h1>
-            <p >Your journey to a better mental state</p>
-            </center>
-          </div>
-      
-      <!--End Jumbotron div-->
-      <nav class="ui">
-        <center>
-          <button onclick="window.location.href='/diary';">Home</button>
-          <button onclick="window.location.href='/create';">New Diary</button>
-          <button onclick="window.location.href='/view';">View Diary</button>
-        </center>
-      </nav>
+
+    <div class="jumbotron text-center"></div>
+		<div class="container">
+		  <h1 class="display-4">
+			Mental Health Tracker <span role="img" aria-label="Memo">💚</span>
+			<div class="logout-btn"><a href="/logout">Logout</a></div>
+		  </h1>
+		  <p class="lead">Your journey to a better mental state</p>
+		  <hr />
+		</div>
+	  </div>
+	  <!--End Jumbotron div-->
+	  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container-fluid">
+		  <div class="navbar-nav mx-auto navbar-container">
+			<a class="nav-link navbar-elements" aria-current="page" href="/diary">Home</a>
+			<a class="nav-link navbar-elements" href="/create">New Diary</a>
+			<a class="nav-link navbar-elements" href="/view">View Diaries</a>
+		  </div>
+		</div>
+	  </nav> <!--End Navbar -->
     <!-- <div id="greet"><h1><b>Welcome to the quiz dear user</b></h1>  </div>
         <div id="note"><h2>Submit your quiz at the end of questions</h2></div> -->
     <div class="main-div">
@@ -129,6 +129,5 @@
         </div>
     </div>
     <script src="./js/quiz4.js"></script>
-    </div>
 </body>
 </html>

@@ -10,246 +10,222 @@
   <link rel="stylesheet" href="./assets/css/dashboard.css" />
   <link rel="stylesheet" type="text/css" href="\assets\css\calender-heatmap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> -->
-
 </head>
 
-
-
-
-
-
 <body>
-  <div class="video-container">
-        <video autoplay muted loop id="background-video">
-            <source src="assets/videp.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-            <div class="heading">
-            <center><h1>
-              Mind Mentor <span role="img" aria-label="Memo">💚</span> 
-            </h1>
-            <p >Your journey to a better mental state</p>
-            </center>
-          </div>
-     
-        <nav class="ui">
-          <center>
-            <button onclick="window.location.href='/diary';">Home</button>
-            <button onclick="window.location.href='/create';">New Diary</button>
-            <button onclick="window.location.href='/view';">View Diary</button>
-          </center>
-        </nav>
-      
-        <div id="calendar">
-          <br>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js" charset="utf-8"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.2/d3.min.js" charset="utf-8"></script>
-          <script src="\assets\js\calender-heatmap.min.js"></script>
-      
-      
-          <!-- <script>
-            async function fetchDataAndRenderHeatmap() {
-                // Replace API fetch with hardcoded test data
-                const diaryEntries = [
-                    {
-                        time_stamp: '2024-09-01T10:00:00Z',
-                        label: 'Happy',
-                        polarity: 0.2
-                    },
-                    {
-                        time_stamp: '2024-09-02T11:30:00Z',
-                        label: 'Neutral',
-                        polarity: 1.2
-                    },
-                    {
-                        time_stamp: '2024-09-03T12:00:00Z',
-                        label: 'Sad',
-                        polarity: 0.5
-                    },
-                    {
-                        time_stamp: '2024-09-04T13:15:00Z',
-                        label: 'Excited',
-                        polarity: 0.9
-                    }
-                ];
-        
-                // Format the data for the heatmap
-                const formattedData = diaryEntries.map(entry => {
-                    const entryDate = new Date(entry.time_stamp);
-                    return {
-                        date: entryDate,
-                        details: [{
-                            'label': entry.label,
-                            'date': entryDate,
-                            'value': entry.polarity  // You can scale the polarity value or keep it as is
-                        }],
-                        total: entry.polarity  // Use total for the heatmap color scale
-                    };
-                });
-        
-                // Initialize the heatmap with the formatted data
-                const div_id = 'calendar';
-                const color = '#1d39db'; // Custom color for heatmap
-                const overview = 'year'; // Year overview, you can change it to 'month' or 'day'
-                
-                const print = function(val) {
-                    console.log(val);
-                };
-        
-                // Initialize the heatmap
-                calendarHeatmap.init(formattedData, div_id, color, overview, print);
-            }
-        
-            // Call the function to render the heatmap with custom values
-            fetchDataAndRenderHeatmap();
-        </script> -->
-      
-          <script>
-            async function fetchDataAndRenderHeatmap() {
-              // Fetch the data from the API
-              const response = await fetch("./api/entries");
-              const diaryEntries = await response.json();
-      
-              // Format the data for the heatmap
-              const formattedData = diaryEntries.map(entry => {
-                const entryDate = new Date(entry.time_stamp);
-      
-                // Calculate polarity based on mood_id (1 maps to 0.1, 10 maps to 1.0)
-                let polarityValue = entry.mood_id * 0.1;
-      
-                // Adjust polarity if the label is positive
-                if (entry.label && entry.label.toLowerCase() === 'positive') {
-                  polarityValue += 1;
-                }
-      
-                return {
+  <div class="jumbotron text-center">
+    <div class="container">
+      <h1 class="display-4">
+        Mental Health Tracker <span role="img" aria-label="Memo">💚</span>
+        <div class="logout-btn"><a href="/logout">Logout</a></div>
+      </h1>
+      <p class="lead">Your journey to a better mental state</p>
+      <hr />
+    </div>
+  </div>
+  <!--End Jumbotron div-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="navbar-nav mx-auto navbar-container">
+        <a class="nav-link active navbar-elements" aria-current="page" href="/diary">Home</a>
+        <a class="nav-link navbar-elements" href="/create">New Diary</a>
+        <a class="nav-link navbar-elements" href="/view">View Diaries</a>
+      </div>
+    </div>
+  </nav> <!--End Navbar -->
+
+  <div id="calendar">
+    <br>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.2/d3.min.js" charset="utf-8"></script>
+    <script src="\assets\js\calender-heatmap.min.js"></script>
+
+
+    <!-- <script>
+      async function fetchDataAndRenderHeatmap() {
+          // Replace API fetch with hardcoded test data
+          const diaryEntries = [
+              {
+                  time_stamp: '2024-09-01T10:00:00Z',
+                  label: 'Happy',
+                  polarity: 0.2
+              },
+              {
+                  time_stamp: '2024-09-02T11:30:00Z',
+                  label: 'Neutral',
+                  polarity: 1.2
+              },
+              {
+                  time_stamp: '2024-09-03T12:00:00Z',
+                  label: 'Sad',
+                  polarity: 0.5
+              },
+              {
+                  time_stamp: '2024-09-04T13:15:00Z',
+                  label: 'Excited',
+                  polarity: 0.9
+              }
+          ];
+  
+          // Format the data for the heatmap
+          const formattedData = diaryEntries.map(entry => {
+              const entryDate = new Date(entry.time_stamp);
+              return {
                   date: entryDate,
                   details: [{
-                    'mood_id': entry.mood_id,
-                    'label': entry.label,
-                    'date': entryDate,
-                    'value': polarityValue // Polarity based on mood_id and label
+                      'label': entry.label,
+                      'date': entryDate,
+                      'value': entry.polarity  // You can scale the polarity value or keep it as is
                   }],
-                  total: polarityValue // Use total for the heatmap color scale
-                };
-              });
-      
-              // Initialize the heatmap with the formatted data
-              const div_id = 'calendar';
-              const color = '#48e850'; // Custom color for heatmap
-              const overview = 'year'; // Year overview, you can change it to 'month' or 'day'
-      
-              const print = function (val) {
-                console.log(val);
+                  total: entry.polarity  // Use total for the heatmap color scale
               };
-      
-              // Initialize the heatmap
-              calendarHeatmap.init(formattedData, div_id, color, overview, print);
-            }
-      
-            // Call the function to fetch data and render the heatmap
-            fetchDataAndRenderHeatmap();
-          </script>
-      
-          <br>
-        </div>
-      
-        
-      
-        <div id="chatbot" class="main-card collapsed">
-          <button id="chatbot_toggle">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M0 0h24v24H0V0z" fill="none" />
-              <path
-                d="M15 4v7H5.17l-.59.59-.58.58V4h11m1-2H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm5 4h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1z" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="display:none">
-              <path d="M0 0h24v24H0V0z" fill="none" />
-              <path
-                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
-            </svg>
-            </svg>
-          </button>
-          <div class="main-title">
-            <div>
-              <svg viewBox="0 0 640 512" title="robot">
-                <path fill="currentColor"
-                  d="M32,224H64V416H32A31.96166,31.96166,0,0,1,0,384V256A31.96166,31.96166,0,0,1,32,224Zm512-48V448a64.06328,64.06328,0,0,1-64,64H160a64.06328,64.06328,0,0,1-64-64V176a79.974,79.974,0,0,1,80-80H288V32a32,32,0,0,1,64,0V96H464A79.974,79.974,0,0,1,544,176ZM264,256a40,40,0,1,0-40,40A39.997,39.997,0,0,0,264,256Zm-8,128H192v32h64Zm96,0H288v32h64ZM456,256a40,40,0,1,0-40,40A39.997,39.997,0,0,0,456,256Zm-8,128H384v32h64ZM640,256V384a31.96166,31.96166,0,0,1-32,32H576V224h32A31.96166,31.96166,0,0,1,640,256Z" />
-              </svg>
-            </div>
-            <span>
-              <i class="fas fa-bug"></i> Psychiatrist Bot <i class="fas fa-bug"></i>
-      
-            </span>
-      
-          </div>
-          <!-- partial:index.partial.html -->
-      
-          <main class="msger-chat">
-            <div class="msg left-msg">
-              <div class="msg-img" style="background-image: url(assets/images/mhcicon.png)">
-              </div>
-      
-              <div class="msg-bubble">
-                <div class="msg-info">
-                  <div class="msg-info-name"> Psychiatrist Bot</div>
-      
-                  <div class="msg-info-time"><time id="clock"></time></div>
-      
-      
-      
-      
-                </div>
-                <div class="msg-text">
-                  Welcome to Psychiatrist, a safe and supportive space where you can share your thoughts and feelings
-                  without fear of judgement.
-                </div>
-              </div>
-      
-            </div>
-          </main>
-          <form class="msger-inputarea">
-            <input type="text" class="msger-input" id="textInput" placeholder="Enter your message...">
-            <button type="submit" class="msger-send-btn">Send</button>
-          </form>
-          <script src='https://use.fontawesome.com/releases/v5.0.13/js/all.js'></script>
-          <script src="./assets/js/bot.js"></script>
-        </div>
-      
-        <div id="questionnaire"></div>
-          <!-- <a id="questionnaire_btn" href="quiz-templates/quizDashboard.html"
-            class="btn2">Take a Questionnaire</a> -->
-            <button class="btn" onclick="location.href='quiz-templates/quizDashboard.html';">Take a Questionnaire</button>
-            
-        </div>
-
-        
-      
-      
-      
-      
-      
-        <div style="height: 10rem;"></div>
-      
-        <div class="logout-btn"><a href="/logout">Logout</a></div>
-      
-        <footer>
+          });
+  
+          // Initialize the heatmap with the formatted data
+          const div_id = 'calendar';
+          const color = '#1d39db'; // Custom color for heatmap
+          const overview = 'year'; // Year overview, you can change it to 'month' or 'day'
           
-          <div class="text-center p-3 author-links">
-            Created by:
-            <a href="www.linkedin.com/in/akash-k-p">Akash K P</a>
-            <a href="www.linkedin.com/in/sppratham108">S P Pratham</a>
-            <a href="www.linkedin.com/in/ggurusainath">G Gurusainath</a>
-            <button class="Btn" onclick="window.location.href='/logout';">
-              <div class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
-              <div class="text" >Logout</div>
-            </button>
-            
-          </div>
-      
-        </footer>
+          const print = function(val) {
+              console.log(val);
+          };
+  
+          // Initialize the heatmap
+          calendarHeatmap.init(formattedData, div_id, color, overview, print);
+      }
+  
+      // Call the function to render the heatmap with custom values
+      fetchDataAndRenderHeatmap();
+  </script> -->
 
+    <script>
+      async function fetchDataAndRenderHeatmap() {
+        // Fetch the data from the API
+        const response = await fetch("./api/entries");
+        const diaryEntries = await response.json();
+
+        // Format the data for the heatmap
+        const formattedData = diaryEntries.map(entry => {
+          const entryDate = new Date(entry.time_stamp);
+
+          // Calculate polarity based on mood_id (1 maps to 0.1, 10 maps to 1.0)
+          let polarityValue = entry.mood_id * 0.1;
+
+          // Adjust polarity if the label is positive
+          if (entry.label && entry.label.toLowerCase() === 'positive') {
+            polarityValue += 1;
+          }
+
+          return {
+            date: entryDate,
+            details: [{
+              'mood_id': entry.mood_id,
+              'label': entry.label,
+              'date': entryDate,
+              'value': polarityValue // Polarity based on mood_id and label
+            }],
+            total: polarityValue // Use total for the heatmap color scale
+          };
+        });
+
+        // Initialize the heatmap with the formatted data
+        const div_id = 'calendar';
+        const color = '#1d39db'; // Custom color for heatmap
+        const overview = 'year'; // Year overview, you can change it to 'month' or 'day'
+
+        const print = function (val) {
+          console.log(val);
+        };
+
+        // Initialize the heatmap
+        calendarHeatmap.init(formattedData, div_id, color, overview, print);
+      }
+
+      // Call the function to fetch data and render the heatmap
+      fetchDataAndRenderHeatmap();
+    </script>
+
+    <br>
+  </div>
+
+  
+
+  <div id="chatbot" class="main-card collapsed">
+    <button id="chatbot_toggle">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M0 0h24v24H0V0z" fill="none" />
+        <path
+          d="M15 4v7H5.17l-.59.59-.58.58V4h11m1-2H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm5 4h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1z" />
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="display:none">
+        <path d="M0 0h24v24H0V0z" fill="none" />
+        <path
+          d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
+      </svg>
+      </svg>
+    </button>
+    <div class="main-title">
+      <div>
+        <svg viewBox="0 0 640 512" title="robot">
+          <path fill="currentColor"
+            d="M32,224H64V416H32A31.96166,31.96166,0,0,1,0,384V256A31.96166,31.96166,0,0,1,32,224Zm512-48V448a64.06328,64.06328,0,0,1-64,64H160a64.06328,64.06328,0,0,1-64-64V176a79.974,79.974,0,0,1,80-80H288V32a32,32,0,0,1,64,0V96H464A79.974,79.974,0,0,1,544,176ZM264,256a40,40,0,1,0-40,40A39.997,39.997,0,0,0,264,256Zm-8,128H192v32h64Zm96,0H288v32h64ZM456,256a40,40,0,1,0-40,40A39.997,39.997,0,0,0,456,256Zm-8,128H384v32h64ZM640,256V384a31.96166,31.96166,0,0,1-32,32H576V224h32A31.96166,31.96166,0,0,1,640,256Z" />
+        </svg>
+      </div>
+      <span>
+        <i class="fas fa-bug"></i> Psychiatrist Bot <i class="fas fa-bug"></i>
+
+      </span>
+
+    </div>
+    <!-- partial:index.partial.html -->
+
+    <main class="msger-chat">
+      <div class="msg left-msg">
+        <div class="msg-img" style="background-image: url(assets/images/mhcicon.png)">
+        </div>
+
+        <div class="msg-bubble">
+          <div class="msg-info">
+            <div class="msg-info-name"> Psychiatrist Bot</div>
+
+            <div class="msg-info-time"><time id="clock"></time></div>
+
+
+
+
+          </div>
+          <div class="msg-text">
+            Welcome to Psychiatrist, a safe and supportive space where you can share your thoughts and feelings
+            without fear of judgement.
+          </div>
+        </div>
+
+      </div>
+    </main>
+    <form class="msger-inputarea">
+      <input type="text" class="msger-input" id="textInput" placeholder="Enter your message...">
+      <button type="submit" class="msger-send-btn">Send</button>
+    </form>
+    <script src='https://use.fontawesome.com/releases/v5.0.13/js/all.js'></script>
+    <script src="./assets/js/bot.js"></script>
+  </div>
+
+  <div id="questionnaire"></div>
+    <a id="questionnaire_btn" href="quiz-templates/quizDashboard.html"
+      class="btn btn-outline-primary btn-lg btn-block">Take a Questionnaire</a>
+  </div>
+  <div style="height: 10rem;"></div>
+
+
+
+  <footer class="bg-light text-center text-lg-start">
+    <div class="text-center p-3 author-links">
+      Created by:
+      <a href="https://github.com/Dominiscus1">Akash K P</a>
+      <a href="https://github.com/kencford">S P Pratham</a>
+      <a href="https://github.com/natpitt2393">G Gurusainath</a>
+    </div>
+  </footer>
 </body>
 
 </html>

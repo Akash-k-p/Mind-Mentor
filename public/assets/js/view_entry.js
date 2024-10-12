@@ -75,51 +75,51 @@ async function renderDiaryEntry() {
         entryMood.classList.add("entryMood");
         entryAudio.classList.add("entryAudio");
         deleteButton.classList.add("btn");
-        deleteButton.classList.add("btndanger");
+        deleteButton.classList.add("btn-danger");
         
         switch(entry.mood_id) {
             case 1:
-                entryContainer.style.border = "2px solid black"
+                entryContainer.style.border = "5px solid black"
                 entryMood.textContent = 'Worst Day Ever';
                 break;
             case 2:
-                entryContainer.style.border = "2px solid darkred"
+                entryContainer.style.border = "5px solid darkred"
                 entryMood.textContent = 'Really bad';
                 break;
             case 3:
-                entryContainer.style.border = "2px solid red"
+                entryContainer.style.border = "5px solid red"
                 entryMood.textContent = 'Sad';
                 break;
             case 4:
-                entryContainer.style.border = "2px solid orange"
+                entryContainer.style.border = "5px solid orange"
                 entryMood.textContent = 'Not Good';
                 break;
             case 5:
-                entryContainer.style.border = "2px solid yellow"
+                entryContainer.style.border = "5px solid yellow"
                 entryMood.textContent = 'Adequate';
                 break;
             case 6:
-                entryContainer.style.border = "2px solid darkgreen"
+                entryContainer.style.border = "5px solid darkgreen"
                 entryMood.textContent = 'Pretty Good';
                 break;
             case 7:
-                entryContainer.style.border = "2px solid green"
+                entryContainer.style.border = "5px solid green"
                 entryMood.textContent = 'Good';
                 break;
             case 8:
-                entryContainer.style.border = "2px solid lightgreen"
+                entryContainer.style.border = "5px solid lightgreen"
                 entryMood.textContent = 'Happy';
                 break;
             case 9:
-                entryContainer.style.border = "2px solid #a9ff29"
+                entryContainer.style.border = "5px solid #a9ff29"
                 entryMood.textContent = 'Elated';
                 break;
             case 10:
-                entryContainer.style.border = "2px solid pink"
+                entryContainer.style.border = "5px solid pink"
                 entryMood.textContent = 'Best Day Ever';
                 break;
             default:
-                entryContainer.style.border = "2px solid white"
+                entryContainer.style.border = "5px solid white"
         }
         entryContainer.append(entryTitle);
         entryContainer.append(entryDate);

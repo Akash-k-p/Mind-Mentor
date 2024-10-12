@@ -96,66 +96,58 @@
 	<title>Quiz Dashboard</title>
 </head>
 
-<body>
+<body style="background-image: url(./../assets/images/quiz/quizDash.jpeg); margin-bottom: 6rem">
 
-	<div class="video-container">
-        <video autoplay muted loop id="background-video">
-            <source src=".\..\assets\videp.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-            <div class="heading">
-            <center><h1>
-              Mind Mentor <span role="img" aria-label="Memo">💚</span> 
-            </h1>
-            <p >Your journey to a better mental state</p>
-            </center>
-          </div>
-	  
+	<div class="jumbotron text-center">
+		<div class="container">
+		  <h1 class="display-4">
+			Mental Health Tracker <span role="img" aria-label="Memo">💚</span>
+			<div class="logout-btn"><a href="/logout">Logout</a></div>
+		  </h1>
+		  <p class="lead">Your journey to a better mental state</p>
+		  <hr />
+		</div>
+	  </div>
 	  <!--End Jumbotron div-->
-	  <nav class="ui">
-		<center>
-		  <button onclick="window.location.href='/diary';">Home</button>
-		  <button onclick="window.location.href='/create';">New Diary</button>
-		  <button onclick="window.location.href='/view';">View Diary</button>
-		</center>
-	  </nav>
+	  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container-fluid">
+		  <div class="navbar-nav mx-auto navbar-container">
+			<a class="nav-link navbar-elements" aria-current="page" href="/diary">Home</a>
+			<a class="nav-link navbar-elements" href="/create">New Diary</a>
+			<a class="nav-link navbar-elements" href="/view">View Diaries</a>
+		  </div>
+		</div>
+	  </nav> <!--End Navbar -->
+	
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 text-center">
-				<!-- <div class="lc-block">
+				<div class="lc-block">
 					<span editable="inline" class="small mt-4 d-block"></span>
 					<h2 editable="inline" class="display-2 mb-0"><b>Questionnaire</b></h2>
 					<p editable="inline">Clinically approved Questionnaires for 5 different mental health issues
 						<br>Find out the severity level of your illness with this test</p>
-				</div> -->
-				<!-- /lc-block -->
+				</div><!-- /lc-block -->
 			</div>
 		</div>
-		<div class="row">
-			<div class="col">
-				<div class="video-container">
-					<video autoplay muted loop class="video-bg">
-						<source src=".\..\assets\col_vid.mp4" type="video/mp4">
-						Your browser does not support the video tag.
-					</video>
-				</div>
-					<div class="babydiv"><img alt="" class="img-fluid"src="https://cdn-icons-png.flaticon.com/512/2913/2913034.png" style="height:10vh">
+		<div class="row mt-4">
+			<div class="col-md-4">
+				<div class="p-lg-5 p-4 shadow" style=" box-shadow:1rem 1rem -0.7rem rgb(0, 0, 0); border-radius: 1rem;">
+					<div class="lc-block mb-4"><img alt="" class="img-fluid"
+							src="https://cdn-icons-png.flaticon.com/512/2913/2913034.png" style="height:10vh">
+
+
 						<h4 class="my-3" editable="inline"></h4>
 						<p editable="inline">Depression&nbsp;</p>
+
+
 						<a class="btn btn-outline-primary" href="quiz1.html" role="button">Take Test</a>
-					</div>
-					<!-- /lc-block -->
+					</div><!-- /lc-block -->
 				</div>
-		
-			<!-- /col -->
-				<div class="col">
-					<div class="video-container">
-						<video autoplay muted loop class="video-bg">
-							<source src=".\..\assets\col_vid.mp4" type="video/mp4">
-							Your browser does not support the video tag.
-						</video>
-					</div>
-					<div class="babydiv">
+			</div><!-- /col -->
+			<div class="col-md-4">
+				<div class="p-lg-5 p-4 shadow" style=" box-shadow:1rem 1rem -0.7rem rgb(0, 0, 0); border-radius: 1rem;">
+					<div class="lc-block mb-4">
 						<img alt="" class="img-fluid" src="https://cdn-icons-png.flaticon.com/512/3997/3997770.png"
 							style="height:10vh">
 
@@ -167,15 +159,10 @@
 						<a class="btn btn-outline-primary" href="./quiz2.html" role="button">Take Test</a>
 					</div><!-- /lc-block -->
 				</div>
-			<!-- /col -->
-			<div class="col">
-				<div class="video-container">
-					<video autoplay muted loop class="video-bg">
-						<source src=".\..\assets\col_vid.mp4" type="video/mp4">
-						Your browser does not support the video tag.
-					</video>
-				</div>
-					<div class="babydiv">
+			</div><!-- /col -->
+			<div class="col-md-4">
+				<div class="p-lg-5 p-4 shadow" style=" box-shadow:1rem 1rem -0.7rem rgb(0, 0, 0); border-radius: 1rem;">
+					<div class="lc-block mb-4">
 						<img alt="" class="img-fluid" src="https://static.thenounproject.com/png/1350173-200.png"
 							style="height:10vh">
 
@@ -185,17 +172,12 @@
 						<a class="btn btn-outline-primary" href="quiz3.html" role="button">Take Test</a>
 					</div><!-- /lc-block -->
 				</div>
-			<!-- /col -->
+			</div><!-- /col -->
 		</div>
-		<div class="row">
-			<div class="col">
-				<div class="video-container">
-					<video autoplay muted loop class="video-bg">
-						<source src=".\..\assets\col_vid.mp4" type="video/mp4">
-						Your browser does not support the video tag.
-					</video>
-				</div>
-					<div class="babydiv">
+		<div class="row mt-4">
+			<div class="col-md-4">
+				<div class="p-lg-5 p-4 shadow" style=" box-shadow:1rem 1rem -0.7rem rgb(0, 0, 0); border-radius: 1rem;">
+					<div class="lc-block mb-4">
 						<img alt="" class="img-fluid" src="https://static.thenounproject.com/png/2852814-200.png"
 							style="height:10vh">
 
@@ -205,15 +187,10 @@
 						<a class="btn btn-outline-primary" href="quiz4.html" role="button">Take Test</a>
 					</div><!-- /lc-block -->
 				</div>
-			<!-- /col -->
-			<div class="col">
-				<div class="video-container">
-					<video autoplay muted loop class="video-bg">
-						<source src=".\..\assets\col_vid.mp4" type="video/mp4">
-						Your browser does not support the video tag.
-					</video>
-				</div>
-					<div class="babydiv">
+			</div><!-- /col -->
+			<div class="col-md-4">
+				<div class="p-lg-5 p-4 shadow" style=" box-shadow:1rem 1rem -0.7rem rgb(0, 0, 0); border-radius: 1rem;">
+					<div class="lc-block mb-4">
 						<img alt="" class="img-fluid" src="https://cdn-icons-png.flaticon.com/512/1491/1491313.png"
 							style="height:10vh">
 
@@ -223,9 +200,8 @@
 						<a class="btn btn-outline-primary" href="quiz5.html" role="button">Take Test</a>
 					</div><!-- /lc-block -->
 				</div>
-			<!-- /col -->
+			</div><!-- /col -->
 
 		</div>
-	</div>
 	</div>
 </body>

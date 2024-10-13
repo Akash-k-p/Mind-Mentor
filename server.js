@@ -19,6 +19,7 @@ app.use(cors(corsOptions));
 const sess = {
   secret: 'Super secret secret',
   cookie: {},
+  maxAge: 24 * 60 * 60 * 1000, // 1 day in milliseconds
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({

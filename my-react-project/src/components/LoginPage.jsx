@@ -4,6 +4,7 @@ import '../assets/css/login.css';
 import loginPicture from '../assets/images/login_picture.png';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import SERVER_URL from '../express_url';
+import {ReactSession} from 'react-client-session'
 
 /**
    @todo: notify when login password or username is wrong , or if the registration is successful
@@ -15,6 +16,8 @@ const LoginPage = () => {
   const [signupName, setSignupName] = useState('');
   const [signupEmail, setSignupEmail] = useState('');
   const [signupPassword, setSignupPassword] = useState('');
+  ReactSession.setStoreType("sessionStorage");
+
 
   const navigate = useNavigate(); // Initialize useNavigate
 
@@ -32,6 +35,7 @@ const LoginPage = () => {
       // Handle successful login (save token, redirect, etc.)
       console.log('Login successful:', response.data);
       localStorage.setItem('token', response.data.token); // Example with JWT token
+      ReactSession.set("user_id",response.data.user.id);
        // Navigate to the dashboard upon successful login
        navigate('/dashboard'); // Programmatic navigation to Dashboard component
     } catch (error) {

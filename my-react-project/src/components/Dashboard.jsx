@@ -161,8 +161,8 @@ function DashBoard() {  // Define the component
       </div>
 
       <div id="questionnaire">
-        <a id="questionnaire_btn" href="quiz-templates/quizDashboard.html"
-          className="btn btn-outline-primary btn-lg btn-block">Take a Questionnaire</a>
+        <Link id="questionnaire_btn" to="/questionnaire"
+          className="btn btn-outline-primary btn-lg btn-block">Take a Questionnaire</Link>
       </div>
 
       <div style={{ height: '10rem' }}></div>

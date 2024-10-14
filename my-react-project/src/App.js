@@ -5,6 +5,7 @@ import LoginPage from './components/LoginPage';
 import Dashboard from './components/Dashboard';
 import NewDiary from './components/NewDiary';
 import ViewDiary from './components/ViewDiary';
+import Questionnaire from './components/Questionnaire';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />"
         <Route path="/newdiary" element={<NewDiary />} />
         <Route path="/viewdiary" element={<ViewDiary />} />
+        <Route path="/questionnaire" element={<Questionnaire />} />
       </Routes>
     </Router>
   );

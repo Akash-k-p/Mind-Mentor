@@ -154,9 +154,8 @@ input{
     display: flex;
 } */
 
-
 @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@300;400&display=swap');
-*{
+.quiz1 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
@@ -164,25 +163,24 @@ input{
     font-weight: 300;
 }
 
-html{
+/* .quiz1 html{
     font-size: 62.5%;
-
-}
-#mainq{
+} */
+.quiz1 #mainq{
     font-size:2rem;
     font-weight:450;
 }
-#greet{
+.quiz1 #greet{
     background-color:rgb(231, 231, 142);
     font-size:2rem;
     font-weight:100;
     text-shadow: 2px 1px black;
 }
-#note{
+.quiz1 #note{
     font-size:2rem;
     font-weight:100;
 }
-.main-div{
+.quiz1 .main-div{
     width:100vw;
     min-height: 100vh;
     display: grid;
@@ -191,7 +189,7 @@ html{
     background-image: url(../../images/quiz/dep_quiz_bg.jpg);
 }
 
-.inner-div{
+.quiz1 .inner-div{
     width: 40vw;
     background-color: #5c93aac0;
     padding:3rem 8rem;
@@ -199,23 +197,23 @@ html{
     box-shadow: 0rem 1.5rem 1.5rem -0.7rem rgb(0, 0, 0);
 }
 
-.inner-div h2{
+.quiz1 .inner-div h2{
     font-size:2.5rem;
     font-weight:400;
     margin:1rem 0 2rem 0;
 }
 
-.inner-div li{
+.quiz1 .inner-div li{
     font-size:2rem;
     margin-top:1.5rem;
     list-style:none;
 }
 
-input{
+.quiz1 input{
     cursor: pointer;
     color:lightblue;
 }
-#next, .btn{
+.quiz1 #next, .quiz1 .btn{
     padding: 1rem 2rem;
     border-radius: 1rem;
     outline:none;
@@ -229,31 +227,30 @@ input{
     background-color: #0c3756;
     margin-top:30px;
     box-shadow: 0.7rem 1rem 1rem -0.7rem rgb(0, 0, 0);
-
 }
-#next, .btn:hover{
+.quiz1 #next, .quiz1 .btn:hover{
     /* color:black; */
     cursor: pointer;
 }
 
-/* #next:hover{
+/* .quiz1 #next:hover{
     background-color: #3015f6;
 } */
-#solutions{
+.quiz1 #solutions{
     padding: 1rem 2rem;
-        outline:none;
-        font-size:2rem;
-        font-size:400;
-        display: block;
-        margin:auto;
-        border: none;
-        text-transform: uppercase;
-        color:#fff;
-        background-color: #238af0;
-        margin-top:30px;
-    }
+    outline:none;
+    font-size:2rem;
+    font-size:400;
+    display: block;
+    margin:auto;
+    border: none;
+    text-transform: uppercase;
+    color:#fff;
+    background-color: #238af0;
+    margin-top:30px;
+}
 
-#submit, .btn{
+.quiz1 #submit, .quiz1 .btn{
     padding: 1rem 2rem;
     outline:none;
     border-radius: 1rem;
@@ -267,81 +264,75 @@ input{
     background-color: #0c3756;
     margin-top:30px;
     box-shadow: 0.7rem 1rem 1rem -0.7rem rgb(0, 0, 0);
-
 }
-#submit, .btn:hover{
+.quiz1 #submit, .quiz1 .btn:hover{
     /* color:black; */
     cursor: pointer;
 }
 
-#showScore{
+.quiz1 #showScore{
     background-color: #dfe6e9;
     margin-top: 1.5rem;
     padding:1rem 1rem;
     box-shadow: 0 1rem 1rem -0.7rem rgba(0, 0, 0, 0.4);
-
 }
 
-#showScore h3{
+.quiz1 #showScore h3{
     font-size: 2rem;
     text-align: center;
 }
 
-#showProblem{
+.quiz1 #showProblem{
     background-color: #dfe6e9;
     margin-top: 2rem;
     padding:2rem 2rem;
     box-shadow: 0 1rem 1rem -0.7rem rgba(0, 0, 0, 0.4);
-
 }
 
-#showProblem h4{
+.quiz1 #showProblem h4{
     font-size: 2rem;
     text-align: center;
 }
 
-
-#showScore .btn{
+.quiz1 #showScore .btn{
     margin-top: 2rem;
     background-color: #55efc4;
-    color:#056abc
-
+    color:#056abc;
 }
 
-#showScore .btn:hover{
+.quiz1 #showScore .btn:hover{
     margin-top: 2rem;
     background-color: #32ac89;
     color: #fff;
-    
 }
 
-.scoreArea{
+.quiz1 .scoreArea{
     display:none;
 }
-.problemArea{
+.quiz1 .problemArea{
     display: none;
 }
-.mainqArea{
+.quiz1 .mainqArea{
     display: flex;
 }
 
-.jumbotron{
+.quiz1 .jumbotron{
     margin-bottom: 0;
     padding-bottom: 0;
 }
 
-.container {
+.quiz1 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.display-4{
+.quiz1 .display-4{
     gap: 20px;
     display: inline-flex;
     align-items: flex-end;
 }
-.display-4 .logout-btn{
+.quiz1 .display-4 .logout-btn{
     background-color: grey;
     font-size: 30px;
     align-items: flex-end;
@@ -349,18 +340,17 @@ input{
     border-radius: 5px;
     padding: 3px 6px;
 }
-hr{
+.quiz1 hr{
     margin-bottom: 0;
 }
-.navbar-container{
+.quiz1 .navbar-container{
     display: flex;
     justify-content: center;
     gap: 20px;
 }
-.navbar-elements{
+.quiz1 .navbar-elements{
     display: flex;
     justify-content: center;
     gap: 50px;
     font-size: 1.5rem;
 }
-

@@ -155,7 +155,7 @@ input{
 } */
 
 @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@300;400&display=swap');
-*{
+.quiz3 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
@@ -163,33 +163,33 @@ input{
     font-weight: 300;
 }
 
-html{
+.quiz3 html{
     font-size: 62.5%;
-
 }
-#mainq{
+
+.quiz3 #mainq{
     font-size:2rem;
     font-weight:450;
 }
-#greet{
+.quiz3 #greet{
     background-color:rgb(231, 231, 142);
     font-size:2rem;
     font-weight:100;
     text-shadow: 2px 1px black;
 }
-#note{
+.quiz3 #note{
     font-size:2rem;
     font-weight:100;
 }
-.main-div{
+.quiz3 .main-div{
     width:100vw;
     min-height: 100vh;
     display: grid;
     place-items: center;
-    background-image: url(./../extra/ang_quiz_bg.jpeg);
+    background-image: url(../../images/quiz/ang_quiz_bg.jpeg);
     /* background-color: rgb(149, 195, 231); */
 }
-.inner-div{
+.quiz3 .inner-div{
     width: 40vw;
     background-color: #5c93aac0;
     padding:3rem 8rem;
@@ -197,23 +197,23 @@ html{
     box-shadow: 0rem 1.5rem 1.5rem -0.7rem rgb(0, 0, 0);
 }
 
-.inner-div h2{
+.quiz3 .inner-div h2{
     font-size:2.5rem;
     font-weight:400;
     margin:1rem 0 4rem 0;
 }
 
-.inner-div li{
+.quiz3 .inner-div li{
     font-size:2rem;
     margin-top:1.5rem;
     list-style:none
 }
 
-input{
+.quiz3 input{
     cursor: pointer;
     color:lightblue;
 }
-#next, .btn{
+.quiz3 #next, .quiz3 .btn{
     padding: 1rem 2rem;
     outline:none;
     border-radius: 1rem;
@@ -227,14 +227,13 @@ input{
     background-color: #0c3756;
     margin-top:30px;
     box-shadow: 0.7rem 1rem 1rem -0.7rem rgb(0, 0, 0);
-
 }
 
-/* #next:hover{
+/* .quiz3 #next:hover{
     background-color: #3015f6;
 } */
 
-#submit, .btn{
+.quiz3 #submit, .quiz3 .btn{
     padding: 1rem 2rem;
     outline:none;
     border-radius: 1rem;
@@ -248,84 +247,77 @@ input{
     background-color: #0c3756;
     margin-top:30px;
     box-shadow: 0.7rem 1rem 1rem -0.7rem rgb(0, 0, 0);
-
 }
-#solutions{
-        padding: 1rem 2rem;
-        outline:none;
-        font-size:2rem;
-        font-size:400;
-        display: block;
-        margin:auto;
-        border: none;
-        text-transform: uppercase;
-        color:#fff;
-        background-color: #238af0;
-        margin-top:30px;
-    }
+.quiz3 #solutions{
+    padding: 1rem 2rem;
+    outline:none;
+    font-size:2rem;
+    font-size:400;
+    display: block;
+    margin:auto;
+    border: none;
+    text-transform: uppercase;
+    color:#fff;
+    background-color: #238af0;
+    margin-top:30px;
+}
 
-#showScore{
+.quiz3 #showScore{
     background-color: #dfe6e9;
     margin-top: 1.5rem;
     padding:1rem 1rem;
     box-shadow: 0 1rem 1rem -0.7rem rgba(0, 0, 0, 0.4);
-
 }
 
-#showScore h3{
+.quiz3 #showScore h3{
     font-size: 2rem;
     text-align: center;
 }
 
-#showProblem{
+.quiz3 #showProblem{
     background-color: #dfe6e9;
     margin-top: 2rem;
     padding:2rem 2rem;
     box-shadow: 0 1rem 1rem -0.7rem rgba(0, 0, 0, 0.4);
-
 }
 
-#showProblem h4{
+.quiz3 #showProblem h4{
     font-size: 2rem;
     text-align: center;
 }
 
-
-#showScore .btn{
+.quiz3 #showScore .btn{
     margin-top: 2rem;
     background-color: #55efc4;
     color:#056abc
-
 }
 
-#showScore .btn:hover{
+.quiz3 #showScore .btn:hover{
     margin-top: 2rem;
     background-color: #32ac89;
     color: #fff;
-    
 }
 
-.scoreArea{
+.quiz3 .scoreArea{
     display:none;
 }
-.problemArea{
+.quiz3 .problemArea{
     display: none;
 }
-.mainqArea{
+.quiz3 .mainqArea{
     display: flex;
 }
 
-
-.jumbotron{
+.quiz3 .jumbotron{
     margin-bottom: 0;
     padding-bottom: 0;
 }
-.display-4{
+.quiz3 .display-4{
     gap: 20px;
     display: inline-flex;
     align-items: flex-end;
 }
-.display-4 .logout-btn{
+.quiz3 .display-4 .logout-btn{
     background-color: grey;
     font-size: 30px;
     align-items: flex-end;
@@ -333,22 +325,22 @@ input{
     border-radius: 5px;
     padding: 3px 6px;
 }
-hr{
+.quiz3 hr{
     margin-bottom: 0;
 }
-.navbar-container{
+.quiz3 .navbar-container{
     display: flex;
     justify-content: center;
     gap: 20px;
 }
-.navbar-elements{
+.quiz3 .navbar-elements{
     display: flex;
     justify-content: center;
     gap: 50px;
     font-size: 1.5rem;
 }
 
-.container {
+.quiz3 .container {
     display: flex;
     flex-direction: column;
     align-items: center;

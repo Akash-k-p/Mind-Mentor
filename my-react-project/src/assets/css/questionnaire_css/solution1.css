@@ -1,18 +1,18 @@
-body{
-    margin:0;
-    padding:0%;
+.solution1 body {
+    margin: 0;
+    padding: 0%;
     justify-content: center;
     align-items: center;
 }
 
-.solution_page{
+.solution1 .solution_page {
     /* background-image: url("./../extra/dep_sol.jpg"); */
     background-repeat: no-repeat;
-    margin:0px;
+    margin: 0px;
     overflow: hidden;
 }
 
-.solution_box{
+.solution1 .solution_box {
     display: inline-block;
     padding: 6rem;
     border-radius: 3rem;
@@ -22,7 +22,7 @@ body{
     box-shadow: 0.7rem 1rem 1rem -0.7rem rgb(0, 0, 0);
 }
 
-.solution_box h1 {
+.solution1 .solution_box h1 {
     position: relative;
     margin: 20px;
     padding: 0;
@@ -33,12 +33,12 @@ body{
     align-items: center;
     justify-content: center;
 }
-.solution_box li {
+
+.solution1 .solution_box li {
     font-size: 20px;
 }
 
-.solution_box p {
-
+.solution1 .solution_box p {
     position: relative;
     margin: 0;
     padding: 0;
@@ -48,22 +48,23 @@ body{
     justify-content: center;
 }
 
-.solution_box a{
+.solution1 .solution_box a {
     text-decoration-line: none;
     color: rgb(91, 29, 153);
 }
 
-
-.jumbotron{
+.solution1 .jumbotron {
     margin-bottom: 0;
     padding-bottom: 0;
 }
-.display-4{
+
+.solution1 .display-4 {
     gap: 20px;
     display: inline-flex;
     align-items: flex-end;
 }
-.display-4 .logout-btn{
+
+.solution1 .display-4 .logout-btn {
     background-color: grey;
     font-size: 30px;
     align-items: flex-end;
@@ -71,22 +72,25 @@ body{
     border-radius: 5px;
     padding: 3px 6px;
 }
-hr{
+
+.solution1 hr {
     margin-bottom: 0;
 }
-.navbar-container{
+
+.solution1 .navbar-container {
     display: flex;
     justify-content: center;
     gap: 20px;
 }
-.navbar-elements{
+
+.solution1 .navbar-elements {
     display: flex;
     justify-content: center;
     gap: 50px;
     font-size: 1.5rem;
 }
 
-.container {
+.solution1 .container {
     display: flex;
     flex-direction: column;
     align-items: center;

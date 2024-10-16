@@ -8,11 +8,13 @@ import calendarHeatmap from '../assets/js/calender-heatmap.min.js';  // Import t
 import '../assets/css/calender-heatmap.min.css';  // Import the calendar heatmap CSS file
 import SERVER_URL from '../express_url';
 import initializeChatbot from '../assets/js/bot.js';  // Import the chatbot script
+import { ReactSession } from 'react-client-session';  // Import ReactSession for session management
 
 function DashBoard() {  // Define the component
 
   // useEffect to handle fetching data and initializing the calendar heatmap
   useEffect(() => {
+    console.log("user_id at dashboard: ", ReactSession.get("user_id"));
     async function fetchDataAndRenderHeatmap() {
       console.log('Fetching data and rendering heatmap...');
       const response = await fetch(SERVER_URL + "/api/entries");

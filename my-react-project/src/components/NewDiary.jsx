@@ -2,6 +2,9 @@ import '../assets/css/create_entry.css';
 import { Link } from 'react-router-dom';  // Import Link for routing
 import create_entries from '../assets/js/create_entry';
 import React, { useState, useEffect, useRef } from 'react';
+import SERVER_URL from '../express_url';
+import { ReactSession } from 'react-client-session';  // Import ReactSession for session management
+
 
 const NewDiary = () => {
     const [mood, setMood] = useState(1);
@@ -23,55 +26,99 @@ const NewDiary = () => {
     useEffect(() => {
         // Request permission to access audio input devices
         const getAudioDevices = async () => {
-          try {
-            // Request access to the microphone to prompt the user for permission
-            await navigator.mediaDevices.getUserMedia({ audio: true });
-            
-            // Enumerate the devices after permission is granted
-            const devices = await navigator.mediaDevices.enumerateDevices();
-            const audioInputDevices = devices.filter(device => device.kind === 'audioinput');
-            setAudioDevices(audioInputDevices);
-            setAudioSource(audioInputDevices[0]?.deviceId || '');
-          } catch (err) {
-            console.error('Error accessing audio devices:', err);
-          }
+            try {
+                // Request access to the microphone to prompt the user for permission
+                await navigator.mediaDevices.getUserMedia({ audio: true });
+
+                // Enumerate the devices after permission is granted
+                const devices = await navigator.mediaDevices.enumerateDevices();
+                const audioInputDevices = devices.filter(device => device.kind === 'audioinput');
+                setAudioDevices(audioInputDevices);
+                setAudioSource(audioInputDevices[0]?.deviceId || '');
+            } catch (err) {
+                console.error('Error accessing audio devices:', err);
+            }
         };
-        
+
         getAudioDevices();
-      }, []);
+    }, []);
 
     const handleRecord = async () => {
         if (recording) {
+            // Stop the media recorder
             mediaRecorderRef.current.stop();
             setRecording(false);
+            console.log("Blob: ", audioBlob);
         } else {
             try {
+                // Request audio stream from the user's microphone
                 const stream = await navigator.mediaDevices.getUserMedia({
                     audio: { deviceId: audioSource ? { exact: audioSource } : undefined }
                 });
+
+                // Create a new MediaRecorder instance
                 const mediaRecorder = new MediaRecorder(stream);
                 mediaRecorderRef.current = mediaRecorder;
 
-                mediaRecorder.ondataavailable = (event) => {
-                    if (event.data.size > 0) {
-                        setChunks((prevChunks) => [...prevChunks, event.data]);
+                try {
+                    // Ensure mediaRecorder is initialized
+                    if (!mediaRecorder) {
+                        console.error('mediaRecorder is not initialized');
+                        return;
                     }
-                };
 
-                mediaRecorder.onstop = () => {
-                    const blob = new Blob(chunks, { type: 'audio/wav' });
-                    setChunks([]);
-                    const audioURL = window.URL.createObjectURL(blob);
-                    audioPlaybackRef.current.src = audioURL;
-                    setAudioBlob(blob);
-                };
+                    // Ensure chunks are being populated
+                    mediaRecorder.ondataavailable = (event) => {
+                        if (event.data.size > 0) {
+                            chunks.push(event.data);
+                        } else {
+                            console.error('No data available in event');
+                        }
+                    };
 
-                mediaRecorder.start();
-                setRecording(true);
+                    // Handle what happens when recording stops
+                    mediaRecorder.onstop = () => {
+                        if (chunks.length === 0) {
+                            console.error('No chunks available to create audioBlob');
+                        } else {
+                            // Create a Blob from the collected audio chunks
+                            const audioBlob = new Blob(chunks, { type: 'audio/wav' });
+                            console.log('Audio Blob:', audioBlob);
+
+                            // Reset the chunks for future recordings
+                            setChunks([]);
+
+                            // Create a URL for the Blob and assign it to the audio element
+                            const audioURL = window.URL.createObjectURL(audioBlob);
+                            audioPlaybackRef.current.src = audioURL;
+
+                            // Optional: Store the Blob for other uses (e.g., uploading)
+                            setAudioBlob(audioBlob);
+                        }
+                    };
+
+                    // Start recording the audio
+                    mediaRecorder.start();
+                    setRecording(true);
+
+                } catch (err) {
+                    console.error('Error accessing audio device:', err);
+                    alert('Error accessing audio device.');
+                }
+                
             } catch (err) {
                 alert('Error accessing audio device.');
                 console.error(err);
             }
+        }
+    };
+
+
+    const handleAudioChange = (event) => {
+        const file = event.target.files[0]; // Get the selected file
+        if (file) {
+            setAudioBlob(file); // Save the file to state
+            console.log('Selected audio file:', file);
         }
     };
 
@@ -113,7 +160,26 @@ const NewDiary = () => {
             formData.append('polarity', analyzeData.polarity);
         }
 
-        const response = await fetch('/api/create', {
+        const dt = new Date();
+        const mm = (dt.getMonth() + 1).toString().padStart(2, '0');
+        const dd = dt.getDate().toString().padStart(2, '0');
+        const yyyy = dt.getFullYear();
+        const dateStr = `${mm}-${dd}-${yyyy}`;
+
+        const now = new Date();
+        const datePart = now.toISOString().split('T')[0]; // YYYY-MM-DD
+        const timePart = now.toTimeString().split(' ')[0]; // HH:MM:SS
+        const timeStamp = `${datePart} ${timePart}`; // Valid timestamp format
+
+        console.log(timeStamp); // Example output: "2024-10-16 13:45:30"
+
+
+        formData.append('date_created', dateStr);
+        formData.append('time_stamp', timeStamp);
+        formData.append('user_id', ReactSession.get('user_id'));
+        console.log('user id in create entries :', ReactSession.get('user_id'));
+
+        const response = await fetch(SERVER_URL + '/api/create', {
             method: 'POST',
             body: formData,
         });
@@ -167,9 +233,16 @@ const NewDiary = () => {
                                 onChange={(e) => setMood(e.target.value)}
                             >
                                 {/* Options for mood */}
-                                {[...Array(10).keys()].map(i => (
-                                    <option key={i + 1} value={i + 1}>{`Mood ${i + 1}`}</option>
-                                ))}
+                                <option value={1}>Worst Day Ever</option>
+                                <option value={2}>Really Bad</option>
+                                <option value={3}>Sad</option>
+                                <option value={4}>Not Good</option>
+                                <option value={5}>Adequate</option>
+                                <option value={6}>Pretty Good</option>
+                                <option value={7}>Good</option>
+                                <option value={8}>Happy</option>
+                                <option value={9}>Elated</option>
+                                <option value={10}>Best Day Ever</option>
                             </select>
                         </div>
 
@@ -197,7 +270,13 @@ const NewDiary = () => {
                             ></textarea>
                         </div>
 
-                        <input type="file" id="audio" accept="audio/*" hidden />
+                        <input
+                            type="file"
+                            id="audio"
+                            accept="audio/*"
+                            onChange={handleAudioChange} // Event listener for file input
+                        />
+                        {audioBlob && <p>Audio file selected: {audioBlob.name}</p>}
 
                         <div id="audio-recording">
                             <button type="button" onClick={handleRecord} className="btn btn-secondary">
@@ -217,6 +296,7 @@ const NewDiary = () => {
                                 ))}
                             </select>
                         </div>
+
 
                         {loading && (
                             <div id="loading">

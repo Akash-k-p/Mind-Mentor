@@ -36,7 +36,7 @@ const LoginPage = () => {
       console.log('Login successful:', response.data);
       localStorage.setItem('token', response.data.token); // Example with JWT token
       ReactSession.set("user_id",response.data.user.id);
-       // Navigate to the dashboard upon successful login
+      console.log("user_id at login: ", ReactSession.get("user_id"));
        navigate('/dashboard'); // Programmatic navigation to Dashboard component
     } catch (error) {
       // Handle error

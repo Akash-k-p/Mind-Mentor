@@ -1,5 +1,7 @@
 import { expr } from "jquery";
 import  SERVER_URL from '../../express_url.js'; 
+import {ReactSession} from 'react-client-session'
+
 
 export async function renderDiaryEntry() {
     const response = await fetch(SERVER_URL+"/api/diary", {
@@ -11,24 +13,27 @@ export async function renderDiaryEntry() {
     const entries = await response.json();
     let userId;
   
-    async function fetchUserData() {
-      const response = await fetch(SERVER_URL+'/api/login/user', {
-        method: 'GET',
-        credentials: 'include',  // This ensures cookies are included with the request
-      });
+    // async function fetchUserData() {
+    //   const response = await fetch(SERVER_URL+'/api/login/user', {
+    //     method: 'GET',
+    //     credentials: 'include',  // This ensures cookies are included with the request
+    //   });
       
-      if (response.ok) {
-        const data = await response.json();
-        console.log("user id: ", data.user_id);
-        userId = data.user_id;
-      } else {
-        const data = await response.json();
-        console.log(data);
-        userId = -1;
-      }
-    }
+    //   if (response.ok) {
+    //     const data = await response.json();
+    //     console.log("user id: ", data.user_id);
+    //     userId = data.user_id;
+    //   } else {
+    //     const data = await response.json();
+    //     console.log(data);
+    //     userId = -1;
+    //   }
+    // }
   
-    await fetchUserData();
+    // await fetchUserData();
+
+    userId = ReactSession.get("user_id");
+    console.log("userId :",userId);
   
     const diaryListContainer = document.querySelector("#diary-container");
     entries.forEach((entry) => {
@@ -60,9 +65,14 @@ export async function renderDiaryEntry() {
         entryTitle.textContent = entry.title;
         entryDate.textContent = entry.date_created;
         entryDescription.textContent = entry.description;
+        
         if (entry.audio_path) {
-          entryAudio.src = `/${entry.audio_path}`;
+            entryAudio.src = `./${entry.audio_path}`;
           entryAudio.controls = true;
+          console.log("entry.audio_path : ",entryAudio.src);
+        }
+        else{
+          console.log("No audio path");
         }
   
         entryContainer.classList.add("entryContainer");

@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';  // Import Link for routing
 import {ReactSession} from 'react-client-session'
 
 const ViewDiary = () => {
-  let sess = ReactSession.get("user_id")
+  // let sess = ReactSession.get("user_id")
+  
+
   useEffect(() => {
     renderDiaryEntry(); // Call the function to render entries when the component mounts
   }, []);

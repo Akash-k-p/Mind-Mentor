@@ -11,6 +11,7 @@ import Solution2 from './components/quiz-components/Solution2';
 import Solution3 from './components/quiz-components/Solution3';
 import Solution4 from './components/quiz-components/Solution4';
 import Solution5 from './components/quiz-components/Solution5';
+import Logout from './components/Logout';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/solution3" element={<Solution3 />} />
         <Route path="/solution4" element={<Solution4 />} />
         <Route path="/solution5" element={<Solution5 />} />
+        <Route path="/logout" element={<Logout />} />
       </Routes>
     </Router>
   );

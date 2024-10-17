@@ -1,23 +1,27 @@
+import $ from 'jquery';
 
-function updateTime() {
-  var now = new Date();
-  var hours = now.getHours();
-  var minutes = now.getMinutes();
-  var seconds = now.getSeconds();
-  var timeString = hours + ':' + minutes;
-  document.getElementById('clock').textContent = timeString;
-}
-setInterval(updateTime, 1000);
+function initializeChatbot() {
+
+
+// function updateTime() {
+//   var now = new Date();
+//   var hours = now.getHours();
+//   var minutes = now.getMinutes();
+//   var seconds = now.getSeconds();
+//   var timeString = hours + ':' + minutes;
+//   document.getElementById('clock').textContent = timeString;
+// }
+// setInterval(updateTime, 1000);
 
 var running = false;
 
-// function addResponseMsg(message) {
-//   const chatbot = document.getElementById("chatbot");
-//   const response = document.createElement("div");
-//   response.classList.add("bot-response");
-//   response.innerText = message;
-//   chatbot.appendChild(response);
-// }
+function addResponseMsg(message) {
+  const chatbot = document.getElementById("chatbot");
+  const response = document.createElement("div");
+  response.classList.add("bot-response");
+  response.innerText = message;
+  chatbot.appendChild(response);
+}
 document.getElementById("chatbot_toggle").onclick = function () {
   if (document.getElementById("chatbot").classList.contains("collapsed")) {
     document.getElementById("chatbot").classList.remove("collapsed")
@@ -36,8 +40,8 @@ const msgerForm = get(".msger-inputarea");
 const msgerInput = get(".msger-input");
 const msgerChat = get(".msger-chat");
 // Icons made by Freepik from www.flaticon.com
-const BOT_IMG = "assets/images/mhcicon.png";
-const PERSON_IMG = "assets/images/person.png";
+const BOT_IMG = "..assets/images/mhcicon.png";
+const PERSON_IMG = "..assets/images/person.png";
 const BOT_NAME = "    Psychiatrist Bot";
 const PERSON_NAME = "You";
 msgerForm.addEventListener("submit", event => {
@@ -83,3 +87,6 @@ function formatDate(date) {
   const m = "0" + date.getMinutes();
   return `${h.slice(-2)}:${m.slice(-2)}`;
 }
+}
+
+export default initializeChatbot;

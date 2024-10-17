@@ -50,6 +50,10 @@ Diary.init(
             // allowNull: true,
             // defaultValue: sequelize.literal('CURRENT_TIME'),  // Set default to the current time
         },
+        audio_path: {
+            type: DataTypes.STRING,
+            allowNull: true
+        }
     },
     {
         sequelize,

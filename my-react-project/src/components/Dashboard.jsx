@@ -167,6 +167,11 @@ function DashBoard() {  // Define the component
           className="btn btn-outline-primary btn-lg btn-block">Take a Questionnaire</Link>
       </div>
 
+      <div id="questionnaire" class="recommendations">
+        <Link id="questionnaire_btn" to="/recommendations"
+          className="btn btn-outline-primary btn-lg btn-block">Recommended Activities</Link>
+      </div>
+
       <div style={{ height: '10rem' }}></div>
 
 

@@ -12,6 +12,7 @@ import Solution3 from './components/quiz-components/Solution3';
 import Solution4 from './components/quiz-components/Solution4';
 import Solution5 from './components/quiz-components/Solution5';
 import Logout from './components/Logout';
+import Recommendations from './components/recommendations/Recommendations';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/solution4" element={<Solution4 />} />
         <Route path="/solution5" element={<Solution5 />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/recommendations" element={<Recommendations />} />
       </Routes>
     </Router>
   );

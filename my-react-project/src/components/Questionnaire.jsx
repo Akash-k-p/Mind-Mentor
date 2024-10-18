@@ -98,7 +98,7 @@ const Questionnaire = () => {
   );
 
 return (
-    <>
+    <div className='questionnaire'>
         <div className="container" style={{ backgroundImage: `url(${require('../assets/images/quiz/quizDash.jpeg')})`, marginBottom: '6rem' }}>
             <div className="jumbotron text-center">
                 <div className="container">
@@ -122,7 +122,7 @@ return (
             </nav>
             {renderQuiz()}
         </div>
-    </>
+    </div>
 );
 };
 

@@ -1,13 +1,15 @@
-.jumbotron{
+.questionnaire .jumbotron {
     margin-bottom: 0;
     padding-bottom: 0;
 }
-.display-4{
+
+.questionnaire .display-4 {
     gap: 20px;
     display: inline-flex;
     align-items: flex-end;
 }
-.display-4 .logout-btn{
+
+.questionnaire .display-4 .logout-btn {
     background-color: grey;
     font-size: 30px;
     align-items: flex-end;
@@ -15,21 +17,24 @@
     border-radius: 5px;
     padding: 3px 6px;
 }
-hr{
+
+.questionnaire hr {
     margin-bottom: 0;
 }
-.navbar-container{
+
+.questionnaire .navbar-container {
     display: flex;
     justify-content: center;
     gap: 20px;
 }
-.navbar-elements{
+
+.questionnaire .navbar-elements {
     display: flex;
     justify-content: center;
     gap: 50px;
     font-size: 1.5rem;
 }
 
-.container{
+.questionnaire .container {
     max-width: 100%;
 }

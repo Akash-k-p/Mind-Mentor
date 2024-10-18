@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';  // Import React and useEffect for data fetching
-import '../assets/css/dashboard.css';  // Adjust the path to your custom CSS file
+
 import { Link } from 'react-router-dom';  // Import Link for routing
 import chatBotImg from '../assets/images/mhcicon.png';  // Import the chatbot image
 // import moment from 'moment';
@@ -9,8 +9,11 @@ import '../assets/css/calender-heatmap.min.css';  // Import the calendar heatmap
 import SERVER_URL from '../express_url';
 import initializeChatbot from '../assets/js/bot.js';  // Import the chatbot script
 import { ReactSession } from 'react-client-session';  // Import ReactSession for session management
+import '../assets/css/dashboard.css';  // Adjust the path to your custom CSS file
+import { useNavigate } from 'react-router-dom';
 
 function DashBoard() {  // Define the component
+  const navigate = useNavigate();
 
   // useEffect to handle fetching data and initializing the calendar heatmap
   useEffect(() => {
@@ -85,19 +88,30 @@ function DashBoard() {  // Define the component
   }, []);  // Empty dependency array to run once on mount
 
   return (
-    <>
-      <div className="jumbotron text-center">
-        <div className="container">
+
+    <div className='video-container dashboard'>
+      <video autoPlay muted loop id="background-video">
+        <source src="./videp.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div className="heading">
+        {/* <div className="container">
           <h1 className="display-4">
             Mental Health Tracker <span role="img" aria-label="Memo">💚</span>
             <div className="logout-btn"><a href="/logout">Logout</a></div>
           </h1>
           <p className="lead">Your journey to a better mental state</p>
           <hr />
-        </div>
+        </div> */}
+           <center>
+        <h1>
+          Mind Mentor <span role="img" aria-label="Memo">💚</span>
+        </h1>
+        <p>Your journey to a better mental state</p>
+      </center>
       </div>
 
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <div className="navbar-nav mx-auto navbar-container">
             <Link className="nav-link active navbar-elements" aria-current="page" to="/dashboard">Home</Link>
@@ -105,7 +119,15 @@ function DashBoard() {  // Define the component
             <Link className="nav-link navbar-elements" to="/viewdiary">View Diaries</Link>
           </div>
         </div>
-      </nav>
+      </nav> */}
+       <nav className="ui">
+      <center>
+      <button onClick={() => navigate('/dashboard')}>Home</button>
+      <button onClick={() => navigate('/newdiary')}>New Diary</button>
+      <button onClick={() => navigate('/viewdiary')}>View Diary</button>
+      </center>
+    </nav>
+
 
       <div id="calendar">
         <br />
@@ -175,16 +197,24 @@ function DashBoard() {  // Define the component
       <div style={{ height: '10rem' }}></div>
 
 
-<footer className="bg-light text-center text-lg-start">
-  <div className="text-center p-3 author-links">
-    Created by:
-    <a href="https://github.com/Dominiscus1">Akash K P</a>
-    <a href="https://github.com/kencford">S P Pratham</a>
-    <a href="https://github.com/natpitt2393">G Gurusainath</a>
-  </div>
-</footer>
+      <div className="foot">
+      Created by:&nbsp;&nbsp;
+      <a href="https://www.linkedin.com/in/akash-k-p" className="custom-link">Akash K P</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="https://www.linkedin.com/in/sppratham108" className="custom-link">S P Pratham</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="https://www.linkedin.com/in/ggurusainath" className="custom-link">G Gurusainath</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <button className="lgBtn" onClick={() => navigate('/logout')}>
+        <div className="sign">
+          <svg viewBox="0 0 512 512">
+            <path
+              d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"
+            />
+          </svg>
+        </div>
+        <div className="text">Logout</div>
+      </button>
+    </div>
 
-    </>
+    </div>
   );
 }
 

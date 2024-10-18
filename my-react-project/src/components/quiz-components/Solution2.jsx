@@ -4,7 +4,7 @@ import '../../assets/css/questionnaire_css/solution2.css';
 
 const Solution2 = () => {
     return (
-        <div>
+        <div className='solution2'>
             <div className="jumbotron text-center"></div>
             <div className="container">
                 <h1 className="display-4">

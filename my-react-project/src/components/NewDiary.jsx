@@ -4,9 +4,11 @@ import create_entries from '../assets/js/create_entry';
 import React, { useState, useEffect, useRef } from 'react';
 import SERVER_URL from '../express_url';
 import { ReactSession } from 'react-client-session';  // Import ReactSession for session management
+import { useNavigate } from 'react-router-dom';
 
 
 const NewDiary = () => {
+    const navigate = useNavigate();
     const [mood, setMood] = useState(1);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -88,10 +90,13 @@ const NewDiary = () => {
                             // Reset the chunks for future recordings
                             setChunks([]);
 
+
                             // Create a URL for the Blob and assign it to the audio element
                             const audioURL = window.URL.createObjectURL(audioBlob);
                             audioPlaybackRef.current.src = audioURL;
-
+                            if (audioPlaybackRef.current) {
+                                audioPlaybackRef.current.classList.remove('hidden');
+                            }
                             // Optional: Store the Blob for other uses (e.g., uploading)
                             setAudioBlob(audioBlob);
                         }
@@ -105,7 +110,7 @@ const NewDiary = () => {
                     console.error('Error accessing audio device:', err);
                     alert('Error accessing audio device.');
                 }
-                
+
             } catch (err) {
                 alert('Error accessing audio device.');
                 console.error(err);
@@ -193,38 +198,32 @@ const NewDiary = () => {
     };
 
     return (
-        <div>
-            <div className="jumbotron text-center">
-                <div className="container">
-                    <h1 className="display-4">
-                        Mental Health Tracker 💚
-                        <div className="logout-btn"><a href="/logout">Logout</a></div>
-                    </h1>
-                    <p className="lead">Your journey to a better mental state</p>
-                    <hr />
-                </div>
+        <div className='newdiary video-container'>
+            <video autoPlay muted loop id="background-video">
+                <source src="./videp.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+            <div className="heading">
+                <center><h1>
+                    Mind Mentor <span role="img" aria-label="Memo">💚</span>
+                </h1>
+                    <p >Your journey to a better mental state</p>
+                </center>
             </div>
 
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <div className="container-fluid">
-                    <div className="navbar-nav mx-auto navbar-container">
-                        <Link className="nav-link navbar-elements" to="/dashboard">
-                            Home
-                        </Link>
-                        <Link className="nav-link active navbar-elements" aria-current="page" to="/create">
-                            New Diary
-                        </Link>
-                        <Link className="nav-link navbar-elements" to="/viewdiary">
-                            View Diaries
-                        </Link>
-                    </div>
-                </div>
+            <nav className="ui">
+                <center>
+                    <button onClick={() => navigate('/dashboard')}>Home</button>
+                    <button onClick={() => navigate('/newdiary')}>New Diary</button>
+                    <button onClick={() => navigate('/viewdiary')}>View Diary</button>
+                </center>
             </nav>
 
-            <div id="entry-form-container">
-                <div id="entry-form">
-                    <form onSubmit={handleSubmit}>
-                        <div className="form-group">
+            <div className="form-container">
+
+                <form onSubmit={handleSubmit} id="form-title">
+                    <div className="parent">
+                        <div >
                             <label htmlFor="mood">How are you feeling?</label>
                             <select
                                 name="mood"
@@ -246,7 +245,7 @@ const NewDiary = () => {
                             </select>
                         </div>
 
-                        <div className="form-group">
+                        <div className="form-title">
                             <label htmlFor="title">Mood Title</label>
                             <input
                                 type="text"
@@ -258,7 +257,7 @@ const NewDiary = () => {
                             />
                         </div>
 
-                        <div className="form-group">
+                        <div className="form-group form-description">
                             <label htmlFor="text-area">Mood Description</label>
                             <textarea
                                 className="form-control"
@@ -269,60 +268,99 @@ const NewDiary = () => {
                                 placeholder="Enter mood description here"
                             ></textarea>
                         </div>
-
-                        <input
-                            type="file"
-                            id="audio"
-                            accept="audio/*"
-                            onChange={handleAudioChange} // Event listener for file input
-                        />
-                        {audioBlob && <p>Audio file selected: {audioBlob.name}</p>}
-
-                        <div id="audio-recording">
-                            <button type="button" onClick={handleRecord} className="btn btn-secondary">
-                                {recording ? 'Stop' : 'Record'}
-                            </button>
-                            <audio ref={audioPlaybackRef} controls></audio>
-                            <label htmlFor="audio-source">Select Audio Source:</label>
-                            <select
-                                id="audio-source"
-                                value={audioSource}
-                                onChange={(e) => setAudioSource(e.target.value)}
-                            >
-                                {audioDevices.map((device, index) => (
-                                    <option key={device.deviceId} value={device.deviceId}>
-                                        {device.label || `Microphone ${index + 1}`}
-                                    </option>
-                                ))}
-                            </select>
+                    </div>
+                    <div className="secondparent">
+                        <div className="col">
+                            <div className="audiocontainer">
+                                <div className="folder">
+                                    <div className="front-side">
+                                        <div className="tip"></div>
+                                        <div className="cover"></div>
+                                    </div>
+                                    <div className="back-side cover"></div>
+                                </div>
+                                <label className="custom-file-upload">
+                                    <input
+                                        type="file"
+                                        id="audio"
+                                        className="title"
+                                        accept="audio/*"
+                                        onChange={handleAudioChange} // Event listener for file input
+                                    />
+                                    <span id="file-name">Choose a file</span>
+                                </label>
+                                {audioBlob && <p>Audio file selected: {audioBlob.name}</p>}
+                            </div>
                         </div>
 
-
-                        {loading && (
-                            <div id="loading">
-                                <div className="spinner-border text-primary" role="status">
-                                    <span className="visually-hidden">Loading...</span>
-                                </div>
+                        <div className="col">
+                            <div className="recorder">
+                                <div className="selectsource"></div>
+                                <h1>Record your thougts</h1>
+                                <label htmlFor="audio-source">Select Audio Source:</label>
+                                <select
+                                    id="audio-source"
+                                    value={audioSource}
+                                    onChange={(e) => setAudioSource(e.target.value)}
+                                >
+                                    {audioDevices.map((device, index) => (
+                                        <option key={device.deviceId} value={device.deviceId}>
+                                            {device.label || `Microphone ${index + 1}`}
+                                        </option>
+                                    ))}
+                                </select>
                             </div>
-                        )}
 
-                        <button type="submit" className="btn btn-primary">Create Entry</button>
-                    </form>
+                            <button type="button" onClick={handleRecord} className="recbutton" id="record-button">
+                                {recording ? 'Stop' : 'Record'}
+                                <span style={{ color: 'red', fontSize: '12px', margin: '0px' }}>&#x1F534;</span>                            </button>
+                            <button className="recbutton hidden" id="stop">&#x23F9; Stop</button>
+                            <audio id="audio-playback" className="hidden" ref={audioPlaybackRef} controls></audio>
+                            {/* <label htmlFor="audio-source">Select Audio Source:</label> */}
 
-                    <p id="transcribed-text">{transcribedText}</p>
-                    <p id="analyze">{analyzeResult}</p>
-                    <p id="success">{successMessage}</p>
-                </div>
+                        </div>
+                    </div>
+
+                    <div className="parent">
+
+                        <center>
+                            <button type="submit" id="btn-56">Create Entry</button>
+                        </center>
+
+                    </div>
+                </form>
+
+                {loading && (
+                    <div id="loading">
+                        <div className="spinner-border text-primary" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                )}
+
+                <p id="transcribed-text">{transcribedText}</p>
+                <p id="analyze">{analyzeResult}</p>
+                <p id="success">{successMessage}</p>
+
             </div>
 
-            <footer className="bg-light text-center text-lg-start">
-                <div className="text-center p-3 author-links">
-                    Created by:
-                    <a href="https://github.com/Dominiscus1">Akash K P</a>
-                    <a href="https://github.com/kencford">S P Pratham</a>
-                    <a href="https://github.com/natpitt2393">G Gurusainath</a>
-                </div>
-            </footer>
+            <div className="foot">
+                Created by:&nbsp;&nbsp;
+                <a href="https://www.linkedin.com/in/akash-k-p" className="custom-link">Akash K P</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="https://www.linkedin.com/in/sppratham108" className="custom-link">S P Pratham</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="https://www.linkedin.com/in/ggurusainath" className="custom-link">G Gurusainath</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <button className="lgBtn" onClick={() => navigate('/logout')}>
+                    <div className="sign">
+                        <svg viewBox="0 0 512 512">
+                            <path
+                                d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"
+                            />
+                        </svg>
+                    </div>
+                    <div className="text">Logout</div>
+                </button>
+            </div>
+
         </div>
     );
 };

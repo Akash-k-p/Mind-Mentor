@@ -9,19 +9,20 @@ function HomePage() {  // Define the component
             <source src="./videp.mp4" type="video/mp4" />
             Your browser does not support the video tag.
       </video>
-      <div className="jumbotron jumbotron-fluid text-center main-heading">
+      {/* <div className="jumbotron jumbotron-fluid text-center main-heading"> */}
         <div className="container">
           <h1 className="display-4">
             Mental Health Tracker <span role="img" aria-label="Memo">💚</span>
           </h1>
           <p className="lead">Your journey to a better mental state</p>
-          <hr className="my-4" />
-          <Link className="btn btn-primary btn-lg mt-4" to="/login" role="button">
-            Login/Register
-          </Link>
+
+        <div className="ui">
+              <button class="btn" onclick="window.location.href='/login';">Login/Sign up</button>
+        </div>
+          
         </div>
       </div>
-    </div>
+    // </div>
   );
 }
 

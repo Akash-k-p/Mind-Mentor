@@ -1,0 +1,97 @@
+.solution4 body {
+    margin: 0;
+    padding: 0%;
+    justify-content: center;
+    align-items: center;
+}
+
+.solution4 .solution_page {
+    /* background-image: url("./../extra/dep_sol.jpg"); */
+    background-repeat: no-repeat;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.solution4 .solution_box {
+    display: inline-block;
+    padding: 6rem;
+    border-radius: 3rem;
+    margin: 10rem;
+    background-color: #87CEEB;
+    height: fit-content;
+    box-shadow: 0.7rem 1rem 1rem -0.7rem rgb(0, 0, 0);
+}
+
+.solution4 .solution_box h1 {
+    position: relative;
+    margin: 20px;
+    padding: 0;
+    font-size: 48px;
+    z-index: 2;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.solution4 .solution_box li {
+    font-size: 20px;
+}
+
+.solution4 .solution_box p {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    z-index: 2;
+    align-items: center;
+    justify-content: center;
+}
+
+.solution4 .solution_box a {
+    text-decoration-line: none;
+    color: rgb(91, 29, 153);
+}
+
+.solution4 .jumbotron {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.solution4 .display-4 {
+    gap: 20px;
+    display: inline-flex;
+    align-items: flex-end;
+}
+
+.solution4 .display-4 .logout-btn {
+    background-color: grey;
+    font-size: 30px;
+    align-items: flex-end;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 3px 6px;
+}
+
+.solution4 hr {
+    margin-bottom: 0;
+}
+
+.solution4 .navbar-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.solution4 .navbar-elements {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    font-size: 1.5rem;
+}
+
+.solution4 .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

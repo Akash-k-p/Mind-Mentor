@@ -1,80 +1,1193 @@
-body{
-    background-color: #ecf0f1;
-}
-.jumbotron{
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-.display-4{
-    gap: 20px;
-    display: inline-flex;
-    align-items: flex-end;
-}
-.display-4 .logout-btn{
-    background-color: grey;
-    font-size: 30px;
-    align-items: flex-end;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 3px 6px;
-}
-hr{
-    margin-bottom: 0;
-}
-.navbar-container{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+.newdiary body, .newdiary html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: auto;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+.newdiary .video-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+  
+.newdiary #background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+.newdiary .heading{
     display: flex;
     justify-content: center;
-    gap: 20px;
-}
-.navbar-elements{
+    align-items: center;
+    height: 20%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
+    background-image: transparent;
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid black;
+  }
+
+  /* Hide scrollbar for all browsers */
+.newdiary body {
+    overflow: auto;
+  }
+  
+.newdiary body::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+  }
+  
+.newdiary body {
+    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+    scrollbar-width: none;  /* For Firefox */
+  }
+  
+.newdiary .foot{
+    color: white;
     display: flex;
-    justify-content: center;
-    gap: 50px;
-    font-size: 1.5rem;
-}
-#entry-form-container{
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-image: transparent;
+      backdrop-filter: blur(10px);
+      font-size: medium;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+      border-top: 2px solid black;
+  }
+.newdiary .custom-link {
+    color: lightgreen; /* Set the desired link color here */
+    text-decoration: none; /* Removes the underline */
+  }
+  
+  /* Change link color on hover */
+.newdiary .custom-link:hover {
+    color: yellow; /* Color when hovering over the link */
+  }
+
+
+.newdiary .parent{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    color: white;
+}
+
+
+.newdiary .secondparent{
+    display: flex;
+    /* columns: 2 rem; */
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
     margin-bottom: 10px;
 }
-#entry-form{
-    width: 50%;
-    margin-bottom:3rem;
+
+.newdiary .recorder{
+    color: white;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    height: 80%;
+    border: 2px solid white;
+    background: linear-gradient(135deg, #0bb9dc, #1937ca);
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
-#success{
+.newdiary .selectsource{
+  display: flex;
+    padding: 10px;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.newdiary .hidden{
+  display: none;
+}
+
+.newdiary #loading {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+.newdiary #mood {
+  width: 200px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  color: #333;
+  font-size: 16px;
+}
+
+.newdiary #mood option {
+  background-color: #fff;
+  color: #000;
+  font-size: 16px;
+}
+
+.newdiary #mood:hover {
+  background-color: skyblue;
+  transition: background-color 0.3s ease-in; /* Correct transition syntax */
+  transform-origin: left;
+}
+
+/* From Uiverse.io by doniaskima */ 
+/* HTML: <div class="loader"></div> */
+.newdiary .loader {
+  display: none;
+  --c1: blue;
+  --c2: skyblue;
+  width: 40px;
+  height: 80px;
+  border-top: 4px solid var(--c1);
+  border-bottom: 4px solid var(--c1);
+  background: linear-gradient(90deg, var(--c1) 2px, var(--c2) 0 5px,var(--c1) 0) 50%/7px 8px no-repeat;
+  display: grid;
+  overflow: hidden;
+  animation: l5-0 2s infinite linear;
+}
+
+.newdiary .loader::before,
+.newdiary .loader::after {
+  content: "";
+  grid-area: 1/1;
+  width: 75%;
+  height: calc(50% - 4px);
+  margin: 0 auto;
+  border: 2px solid var(--c1);
+  border-top: 0;
+  box-sizing: content-box;
+  border-radius: 0 0 40% 40%;
+  -webkit-mask: linear-gradient(#000 0 0) bottom/4px 2px no-repeat,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  background: linear-gradient(var(--d,0deg),var(--c2) 50%,#0000 0) bottom /100% 205%,
+    linear-gradient(var(--c2) 0 0) center/0 100%;
+  background-repeat: no-repeat;
+  animation: inherit;
+  animation-name: l5-1;
+}
+
+.newdiary .loader::after {
+  transform-origin: 50% calc(100% + 2px);
+  transform: scaleY(-1);
+  --s: 3px;
+  --d: 180deg;
+}
+
+@keyframes l5-0 {
+  80% {
+    transform: rotate(0)
+  }
+
+  100% {
+    transform: rotate(0.5turn)
+  }
+}
+@keyframes l5-1 {
+    10%,70% {
+        background-size: 100% 205%,var(--s,0) 100%
+    }
+
+    70%,100% {
+        background-position: top,center
+    }
+}
+
+.newdiary #analyze,
+.newdiary #success {
+    z-index: 9999;
+    color: black;
+    font-size: larger;
+    background-color: skyblue;
+    height: 30px;
+}
+
+.newdiary #transcribed-text {
+    color: white;
+    font-size: larger;
+}
+
+.newdiary #success {
+    display: none;
+    background-color: white;
+    border: 2px solid white;
     margin-top: 5px;
     font-size: x-large;
     color: darkgreen;
     display: block;
 }
-footer{
+
+/*------------------------------------------*/
+/* audio recorder new*/
+
+.newdiary .recordcontainer {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.newdiary .recordcontainer {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    box-shadow: rgba(255, 255, 255, 0.3) 0 5px 15px;
+    background: linear-gradient(135deg, #0bb9dc, #1937ca);
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.newdiary .selectsource {
+    padding: 10px;
+}
+
+.newdiary h1 {
+    font-size: 16px;
+}
+
+.newdiary span {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.newdiary .recbutton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 22px;
+    gap: 8px;
+    height: 40px;
+    border: none;
+    background: #1b1b1cde;
+    border-radius: 20px;
+    color: #ffff;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.newdiary .label {
+    line-height: 20px;
+    font-size: 17px;
+    color: #ffffff;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    margin-bottom: 17px;
+}
+
+.newdiary .button:hover {
+    background: #1b1b1c;
+}
+
+.newdiary .button:hover .svg-icon {
+    animation: scale 1s linear infinite;
+}
+
+@keyframes scale {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05) rotate(10deg);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.newdiary audio {
+    width: 100%;
+}
+
+.newdiary .hidden {
+    display: none;
+}
+
+/*--------------------------------------------------*/
+.newdiary .audiocontainer {
+    --transition: 350ms;
+    --folder-W: 120px;
+    --folder-H: 80px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
+    background: linear-gradient(135deg, #0bb9dc, #1937ca);
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    height: calc(var(--folder-H) * 1.35);
+    position: relative;
+    border: 2px solid white;
+    margin:0 auto;
+    margin-top: 60px;
+    margin-bottom: 20px;
+  }
+  
+.newdiary .folder {
+    position: absolute;
+    top: -20px;
+    left: calc(50% - 60px);
+    animation: float 2.5s infinite ease-in-out;
+    transition: transform var(--transition) ease;
+  }
+  
+.newdiary .folder:hover {
+    transform: scale(1.05);
+  }
+  
+.newdiary .folder .front-side,
+.newdiary .folder .back-side {
+    position: absolute;
+    transition: transform var(--transition);
+    transform-origin: bottom center;
+  }
+  
+.newdiary .folder .back-side::before,
+.newdiary .folder .back-side::after {
+    content: "";
+    display: block;
+    background-color: white;
+    opacity: 0.5;
+    z-index: 0;
+    width: var(--folder-W);
+    height: var(--folder-H);
+    position: absolute;
+    transform-origin: bottom center;
+    border-radius: 15px;
+    transition: transform 350ms;
+    z-index: 0;
+  }
+  
+.newdiary .audiocontainer:hover .back-side::before {
+    transform: rotateX(-5deg) skewX(5deg);
+  }
+  
+.newdiary .audiocontainer:hover .back-side::after {
+    transform: rotateX(-15deg) skewX(12deg);
+  }
+  
+.newdiary .folder .front-side {
+    z-index: 1;
+  }
+  
+.newdiary .audiocontainer:hover .front-side {
+    transform: rotateX(-40deg) skewX(15deg);
+  }
+  
+.newdiary .folder .tip {
+    background: linear-gradient(135deg, #ff9a56, #ff6f56);
+    width: 80px;
+    height: 20px;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: -10px;
+    z-index: 2;
+  }
+  
+.newdiary .folder .cover {
+    background: linear-gradient(135deg, #ffe563, #ffc663);
+    width: var(--folder-W);
+    height: var(--folder-H);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+  }
+  
+.newdiary .custom-file-upload {
+    font-size: 1.1em;
+    color: #ffffff;
+    text-align: center;
+    background: rgb(118, 205, 239);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background var(--transition) ease;
+    display: inline-block;
+    width: 70%;
+    padding: 10px 35px;
+    position: relative;
+  }
+  
+.newdiary .custom-file-upload:hover {
+    background: rgba(255, 255, 255, 0.4);
+  }
+  
+.newdiary .custom-file-upload input[type="file"] {
+    display: none;
+  }
+  
+@keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+  
+    50% {
+      transform: translateY(-20px);
+    }
+  
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+.newdiary .input-audiocontainer {
+    position: relative;
+    margin: 50px auto;
+    width: 250px;
+  }
+  
+.newdiary .input-audiocontainer input[type="text"] {
+    font-size: 20px;
+    color: white;
+    border: none;
+    border-bottom: 2px solid #a5a2a2;
+    outline: none;
+    width: 100%;
+    background-color: transparent;
+  }
+  
+.newdiary .label {
+    transition: all 0.3s ease;
+    color: #d3d2d2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+  }
+  
+.newdiary .input-audiocontainer input[type="text"]:focus~.label,
+.newdiary .input-container input[type="text"]:valid~.label {
+    top: -20px;
+    left: 70px;
+    transition: 0.3s;
+    color: white;
+  }
+  
+.newdiary .input-audiocontainer .underline {
+    position: absolute;
+    bottom: 4px;
+    left: -7px;
+    height: 2px;
+    width: 110%;
+    background-color: white;
+    transform: scaleX(0);
+  }
+  
+.newdiary .input-audiocontainer .sideline {
+    position: relative;
+    bottom: 15px;
+    right: 24px;
+    height: 2px;
+    width: 18%;
+    background-color:white;
+    transform: scaleX(0);
+    rotate: 90deg;
+  }
+  
+.newdiary .input-audiocontainer .upperline {
+    position: absolute;
+    bottom: 30px;
+    left: -8px;
+    height: 2px;
+    width: 110%;
+    background-color: white;
+    transform: scaleX(0);
+  }
+  
+.newdiary .input-audiocontainer .line {
+    position: relative;
+    bottom: 17px;
+    left: 240px;
+    height: 2px;
+    width: 18%;
+    background-color: white;
+    transform: scaleX(0);
+    rotate: 90deg;
+  }
+  
+.newdiary .input-audiocontainer input[type="text"]:focus~.underline,
+.newdiary .input-container input[type="text"]:valid~.underline {
+    transform: scaleX(1);
+    transition: 1s;
+  }
+  
+.newdiary .input-audiocontainer input[type="text"]:focus~.sideline,
+.newdiary .input-container input[type="text"]:valid~.sideline {
+    transform: scaleX(1);
+    transition: 1s;
+  }
+  
+.newdiary .input-audiocontainer input[type="text"]:focus~.upperline,
+.newdiary .input-container input[type="text"]:valid~.upperline {
+    transform: scaleX(1);
+    transition: 1s;
+  }
+  
+.newdiary .input-audiocontainer input[type="text"]:focus~.line,
+.newdiary .input-container input[type="text"]:valid~.line {
+    transform: scaleX(1);
+    transition: 1s;
+  }
+.newdiary .audiocontainer:hover .back-side::before {
+    transform: rotateX(-5deg) skewX(5deg);
+}
+.newdiary .audiocontainer:hover .back-side::after {
+    transform: rotateX(-15deg) skewX(12deg);
+}
+
+.newdiary .folder .front-side {
+    z-index: 1;
+}
+
+.newdiary .audiocontainer:hover .front-side {
+    transform: rotateX(-40deg) skewX(15deg);
+}
+
+.newdiary .folder .tip {
+    background: linear-gradient(135deg, #ff9a56, #ff6f56);
+    width: 80px;
+    height: 20px;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: -10px;
+    z-index: 2;
+}
+
+.newdiary .folder .cover {
+    background: linear-gradient(135deg, #ffe563, #ffc663);
+    width: var(--folder-W);
+    height: var(--folder-H);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.newdiary .custom-file-upload {
+    font-size: 1.1em;
+    color: #ffffff;
+    text-align: center;
+    /* background: rgba(255, 255, 255, 0.2); */
+    background: rgb(118, 205, 239);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background var(--transition) ease;
+    display: inline-block;
+    width: 70%;
+    padding: 10px 35px;
+    position: relative;
+}
+
+.newdiary .custom-file-upload:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.newdiary .custom-file-upload input[type="file"] {
+    display: none;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* use it in dark theme */
+.newdiary .input-audiocontainer {
+    position: relative;
+    margin: 50px auto;
+    width: 250px;
+}
+
+.newdiary .input-audiocontainer input[type="text"] {
+    font-size: 20px;
+    color: white;
+    border: none;
+    border-bottom: 2px solid #a5a2a2;
+    outline: none;
+    width: 100%;
+    background-color: transparent;
+}
+
+.newdiary .label {
+    transition: all 0.3s ease;
+    color: #d3d2d2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.newdiary .input-audiocontainer input[type="text"]:focus~.label,
+.newdiary .input-container input[type="text"]:valid~.label {
+    top: -20px;
+    left: 70px;
+    transition: 0.3s;
+    color: white;
+}
+
+.newdiary .input-audiocontainer .underline {
+    position: absolute;
+    bottom: 4px;
+    left: -7px;
+    height: 2px;
+    width: 110%;
+    background-color: white;
+    transform: scaleX(0);
+}
+
+.newdiary .input-audiocontainer .sideline {
+    position: relative;
+    bottom: 15px;
+    right: 24px;
+    height: 2px;
+    width: 18%;
+    background-color: white;
+    transform: scaleX(0);
+    rotate: 90deg;
+}
+  
+.newdiary .input-audiocontainer .upperline {
+    position: absolute;
+    bottom: 30px;
+    left: -8px;
+    height: 2px;
+    width: 110%;
+    background-color: white;
+    transform: scaleX(0);
+}
+
+.newdiary .input-audiocontainer .line {
+    position: relative;
+    bottom: 17px;
+    left: 240px;
+    height: 2px;
+    width: 18%;
+    background-color: white;
+    transform: scaleX(0);
+    rotate: 90deg;
+}
+
+.newdiary .input-audiocontainer input[type="text"]:focus~.underline,
+.newdiary .input-container input[type="text"]:valid~.underline {
+    transform: scaleX(1);
+    transition: 1s;
+}
+
+.newdiary .input-audiocontainer input[type="text"]:focus~.sideline,
+.newdiary .input-container input[type="text"]:valid~.sideline {
+    transform: scaleX(1);
+    transition: 1s;
+}
+
+.newdiary .input-audiocontainer input[type="text"]:focus~.upperline,
+.newdiary .input-container input[type="text"]:valid~.upperline {
+    transform: scaleX(1);
+    transition: 1s;
+}
+
+.newdiary .input-audiocontainer input[type="text"]:focus~.line,
+.newdiary .input-container input[type="text"]:valid~.line {
+    transform: scaleX(1);
+    transition: 1s;
+}
+
+/* From Uiverse.io by vinodjangid07 */
+.newdiary .lgBtn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: rgb(255, 65, 65);
+    margin: 10px;
+}
+
+/* plus sign */
+.newdiary .sign {
+    width: 100%;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.newdiary .sign svg {
+    width: 17px;
+}
+
+.newdiary .sign svg path {
+    fill: white;
+}
+
+/* text */
+.newdiary .text {
+    position: absolute;
+    right: 0%;
+    width: 0%;
+    opacity: 0;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition-duration: .3s;
+}
+
+/* hover effect on button width */
+.newdiary .lgBtn:hover {
+    width: 125px;
+    border-radius: 40px;
+    transition-duration: .3s;
+}
+
+.newdiary .lgBtn:hover .sign {
+    width: 30%;
+    transition-duration: .3s;
+    padding-left: 20px;
+}
+
+/* hover effect button's text */
+.newdiary .lgBtn:hover .text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: .3s;
+    padding-right: 10px;
+}
+
+/* button click effect*/
+.newdiary .lgBtn:active {
+    transform: translate(2px ,2px);
+}
+
+.newdiary .ui {
+    /* From Uiverse.io by cssbuttons-io */
+    .newdiary button {
+        --color: #560bad;
+        font-family: inherit;
+        display: inline-block;
+        width: 8em;
+        height: 2.6em;
+        line-height: 2.5em;
+        margin: 20px;
+        position: relative;
+        cursor: pointer;
+        overflow: hidden;
+        border: 2px solid var(--color);
+        transition: color 0.5s;
+        z-index: 1;
+        font-size: 17px;
+        border-radius: 6px;
+        font-weight: 500;
+        color: var(--color);
+    }
+.newdiary button:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+}
+  
+.newdiary button:hover {
+    color: #fff;
+}
+  
+.newdiary button:before {
+    top: 100%;
+    left: 100%;
+    transition: all 0.7s;
+}
+  
+.newdiary button:hover:before {
+    top: -30px;
+    left: -30px;
+}
+  
+.newdiary button:active:before {
+    background: #3a0ca3;
+    transition: background 0s;
+}
+}
+.newdiary #entry-form-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+  
+.newdiary #entry-form {
+    width: 50%;
+    margin-bottom: 3rem;
+}
+  
+.newdiary #success {
+    margin-top: 5px;
+    font-size: x-large;
+    color: darkgreen;
+    display: block;
+}
+  
+.newdiary footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     text-align: center;
 }
-.author-links{
+  
+.newdiary .author-links {
     display: flex;
     justify-content: center;
     gap: 20px;
     font-size: 20px;
-    
 }
-
-.btn-secondary {
-    color:brown;
+  
+.newdiary .btn-secondary {
+    color: brown;
 }
-
-#audio-recording {
+  
+.newdiary #audio-recording {
     display: flex;
 }
 
-#loading{
-    display:none;
+
+/*------------------------------------------------*/
+/* From Uiverse.io by vinodjangid07 */ 
+.newdiary .Btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: rgb(255, 65, 65);
+}
+.newdiary .sign {
+    width: 100%;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+.newdiary .sign svg {
+    width: 17px;
+  }
+  
+.newdiary .sign svg path {
+    fill: white;
+  }
+  
+/* text */
+.newdiary .text {
+    position: absolute;
+    right: 0%;
+    width: 0%;
+    opacity: 0;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition-duration: .3s;
+  }
+  
+/* hover effect on button width */
+.newdiary .Btn:hover {
+    width: 125px;
+    border-radius: 40px;
+    transition-duration: .3s;
+  }
+  
+.newdiary .Btn:hover .sign {
+    width: 30%;
+    transition-duration: .3s;
+    padding-left: 20px;
+  }
+  
+/* hover effect button's text */
+.newdiary .Btn:hover .text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: .3s;
+    padding-right: 10px;
+  }
+  
+/* button click effect*/
+.newdiary .Btn:active {
+    transform: translate(2px ,2px);
+  }
+
+.newdiary .ui {
+    /* From Uiverse.io by cssbuttons-io */
+  }
+
+.newdiary .ui button {
+    --color: #560bad;
+    font-family: inherit;
+    display: inline-block;
+    width: 8em;
+    height: 2.6em;
+    line-height: 2.5em;
+    margin: 20px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color 0.5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: var(--color);
+  }
+  
+.newdiary .ui button:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+  }
+  
+.newdiary .ui button:hover {
+    color: #fff;
+  }
+  
+.newdiary .ui button:before {
+    top: 100%;
+    left: 100%;
+    transition: all 0.7s;
+  }
+  
+.newdiary .ui button:hover:before {
+    top: -30px;
+    left: -30px;
+  }
+  
+.newdiary .ui button:active:before {
+    background: #3a0ca3;
+    transition: background 0s;
+  }
+  
+.newdiary #entry-form-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+.newdiary #entry-form {
+    width: 50%;
+    margin-bottom: 3rem;
+  }
+  
+.newdiary #success {
+    margin-top: 5px;
+    font-size: x-large;
+    color: darkgreen;
+    display: block;
+  }
+  
+.newdiary footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+  }
+  
+.newdiary .author-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 20px;
+  }
+
+
+  .newdiary .btn-secondary {
+    color: brown;
 }
 
-#transcribed-text {
-    color: #240084;
-    font-size: large;
+.newdiary #audio-recording {
+    display: flex;
 }
+
+.newdiary #text-area {
+    width: 850px;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    resize: vertical;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #fff;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.newdiary #text-area::placeholder {
+    color: #888;
+    font-style: italic;
+}
+
+.newdiary #text-area:focus {
+    border-color: #6dd5ed;
+    box-shadow: 0 0 8px rgba(109, 213, 237, 0.4);
+}
+
+.newdiary .form-group {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+    .newdiary #form-description {
+        padding: 15px;
+    }
+    .newdiary #text-area {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+.newdiary #title {
+    width: 100%;
+    height: 35px;
+    padding: 2px;
+    font-size: 25px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    resize: vertical;
+    background-color: #fff;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.newdiary #title::placeholder {
+    color: #888;
+    font-style: italic;
+}
+
+/* From Uiverse.io by doniaskima */
+.newdiary #btn-56,
+.newdiary #btn-56 *,
+.newdiary #btn-56 :after,
+.newdiary #btn-56 :before,
+.newdiary #btn-56:after,
+.newdiary #btn-56:before {
+    border: 2px solid;
+    box-sizing: border-box;
+}
+
+.newdiary #btn-56 {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: button;
+    background-color: blue;
+    background-image: none;
+    color: white;
+    cursor: pointer;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    font-size: 100%;
+    line-height: 1.5;
+    margin: 0;
+    -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+    padding: 0;
+}
+
+.newdiary #btn-56:disabled {
+    cursor: default;
+}
+
+.newdiary #btn-56:-moz-focusring {
+    outline: auto;
+}
+
+.newdiary #btn-56 svg {
+    display: block;
+    vertical-align: middle;
+}
+
+.newdiary #btn-56 [hidden] {
+    display: none;
+}
+
+.newdiary #btn-56 {
+    border: 2px solid;
+    border-radius: 999px;
+    box-sizing: border-box;
+    display: block;
+    font-weight: 900;
+    -webkit-mask-image: none;
+    overflow: hidden;
+    padding: 1.2rem 3rem;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.newdiary #btn-56:hover {
+    -webkit-animation: pulse 0.5s;
+    animation: pulse 0.5s;
+    box-shadow: 0 0 0 2em transparent;
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 #fff;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 #fff;
+    }
+}
+

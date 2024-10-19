@@ -1,4 +1,4 @@
-body{
+/* body{
     background-color: #ecf0f1;
 }
 .main-content{
@@ -25,4 +25,261 @@ img{
     width: 280.75px;
     border: 1px solid red;
     padding: 10px;
+} */
+
+.loginpage body, .loginpage html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
 }
+
+.loginpage .video-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.loginpage #background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.loginpage .heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
+    background-image: transparent;
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid black;
+}
+
+.loginpage .container1 {
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.loginpage .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    height: 100%;
+    background-color: transparent;
+}
+
+.loginpage .column {
+    padding: 10px;
+    background-color: transparent;
+    height: 100%;
+}
+
+/* Universal Styles for Columns */
+.loginpage .row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Shared Styles for Both Forms */
+.loginpage .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+/* Box Styles (applies to both login and signup boxes) */
+.loginpage .login-box, .loginpage .signup-box {
+    position: relative;
+    width: 400px;
+    padding: 40px;
+    margin: 20px auto;
+    background-image: transparent;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border: 2px solid white;
+    backdrop-filter: blur(10px);
+}
+
+/* Title (Login/Signup) */
+.loginpage .login-box p:first-child, .loginpage .signup-box p:first-child {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Form Input Box */
+.loginpage .user-box {
+    position: relative;
+}
+
+/* Input Fields */
+.loginpage .login-box .user-box input, .loginpage .signup-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+/* Input Field Labels */
+.loginpage .login-box .user-box label, .loginpage .signup-box .user-box label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+/* Label animation on focus */
+.loginpage .login-box .user-box input:focus ~ label,
+.loginpage .login-box .user-box input:valid ~ label,
+.loginpage .signup-box .user-box input:focus ~ label,
+.loginpage .signup-box .user-box input:valid ~ label {
+    top: -20px;
+    left: 0;
+    color: #fff;
+    font-size: 12px;
+}
+
+/* Submit Button Styling */
+.loginpage .login-box a, .loginpage .signup-box a {
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    font-weight: bold;
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: 0.5s;
+    margin-top: 20px;
+    letter-spacing: 3px;
+}
+
+/* Hover Effects for Submit Button */
+.loginpage .login-box a:hover, .loginpage .signup-box a:hover {
+    background: #fff;
+    color: #272727;
+    border-radius: 5px;
+}
+
+/* Button Animation (4 spans for effects) */
+.loginpage .login-box a span, .loginpage .signup-box a span {
+    position: absolute;
+    display: block;
+}
+
+.loginpage .login-box a span:nth-child(1), .loginpage .signup-box a span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #fff);
+    animation: btn-anim1 1s linear infinite;
+}
+
+.loginpage .login-box a span:nth-child(2), .loginpage .signup-box a span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #fff);
+    animation: btn-anim2 1s linear infinite;
+    animation-delay: 0.25s;
+}
+
+.loginpage .login-box a span:nth-child(3), .loginpage .signup-box a span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #fff);
+    animation: btn-anim3 1s linear infinite;
+    animation-delay: 0.5s;
+}
+
+.loginpage .login-box a span:nth-child(4), .loginpage .signup-box a span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #fff);
+    animation: btn-anim4 1s linear infinite;
+    animation-delay: 0.75s;
+}
+
+/* Button Animations */
+@keyframes btn-anim1 {
+    0% {
+        left: -100%;
+    }
+    50%, 100% {
+        left: 100%;
+    }
+}
+
+@keyframes btn-anim2 {
+    0% {
+        top: -100%;
+    }
+    50%, 100% {
+        top: 100%;
+    }
+}
+
+@keyframes btn-anim3 {
+    0% {
+        right: -100%;
+    }
+    50%, 100% {
+        right: 100%;
+    }
+}
+
+@keyframes btn-anim4 {
+    0% {
+        bottom: -100%;
+    }
+    50%, 100% {
+        bottom: 100%;
+    }
+}
+
+.loginpage .button {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: larger;
+    color: white;
+    background: transparent;
+    border: none;
+    transition: 0.5s;
+    height: 50px;
+    width: 100px;
+    border-color: black;
+}
+
+.loginpage .button:hover {
+    color: black;
+}
+

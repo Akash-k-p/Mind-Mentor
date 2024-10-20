@@ -13,6 +13,7 @@ import Solution4 from './components/quiz-components/Solution4';
 import Solution5 from './components/quiz-components/Solution5';
 import Logout from './components/Logout';
 import Recommendations from './components/recommendations/Recommendations';
+import Meditation from './components/recommendations/Meditation';
 
 function App() {
   return (
@@ -31,6 +32,8 @@ function App() {
         <Route path="/solution5" element={<Solution5 />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/recommendations" element={<Recommendations />} />
+        <Route path="/meditation" element={<Meditation />} />
+        
       </Routes>
     </Router>
   );

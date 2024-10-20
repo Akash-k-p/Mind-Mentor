@@ -1,6 +1,58 @@
-.questionnaire .jumbotron {
-    margin-bottom: 0;
-    padding-bottom: 0;
+.questionnaire body,
+.questionnaire html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: auto;
+}
+
+.questionnaire body::-webkit-scrollbar {
+    display: none;
+    /* For Chrome, Safari, and Opera */
+}
+
+.questionnaire body {
+    -ms-overflow-style: none;
+    /* For Internet Explorer and Edge */
+    scrollbar-width: none;
+    /* For Firefox */
+}
+
+.questionnaire .video-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.questionnaire #background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.questionnaire .content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.questionnaire .heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
+    background-image: transparent;
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid black;
 }
 
 .questionnaire .display-4 {
@@ -35,6 +87,225 @@
     font-size: 1.5rem;
 }
 
-.questionnaire .container {
-    max-width: 100%;
+/* From Uiverse.io by vinodjangid07 */
+.questionnaire .Btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: rgb(255, 65, 65);
+}
+
+/* plus sign */
+.questionnaire .sign {
+    width: 100%;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.questionnaire .sign svg {
+    width: 17px;
+}
+
+.questionnaire .sign svg path {
+    fill: white;
+}
+
+/* text */
+.questionnaire .text {
+    position: absolute;
+    right: 0%;
+    width: 0%;
+    opacity: 0;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition-duration: .3s;
+}
+
+/* hover effect on button width */
+.questionnaire .Btn:hover {
+    width: 125px;
+    border-radius: 40px;
+    transition-duration: .3s;
+}
+
+.questionnaire .Btn:hover .sign {
+    width: 30%;
+    transition-duration: .3s;
+    padding-left: 20px;
+}
+
+/* hover effect button's text */
+.questionnaire .Btn:hover .text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: .3s;
+    padding-right: 10px;
+}
+
+/* button click effect */
+.questionnaire .Btn:active {
+    transform: translate(2px, 2px);
+}
+
+.questionnaire .Btn:hover .sign {
+    width: 30%;
+    transition-duration: .3s;
+    padding-left: 20px;
+}
+
+/* hover effect button's text */
+.questionnaire .Btn:hover .text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: .3s;
+    padding-right: 10px;
+}
+
+/* button click effect */
+.questionnaire .Btn:active {
+    transform: translate(2px, 2px);
+}
+
+/* From Uiverse.io by SujitAdroja */
+.questionnaire .btn {
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid white;
+    padding: 10px 20px;
+    font-size: 17px;
+    cursor: pointer;
+    font-weight: bold;
+    background: transparent;
+    position: relative;
+    transition: all 1s;
+    overflow: hidden;
+}
+
+.questionnaire .btn:hover {
+    color: black;
+    border: 2px solid black;
+}
+
+.questionnaire .btn::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 0%;
+    top: 0;
+    left: -40px;
+    transform: skewX(45deg);
+    background-color: purple;
+    z-index: -1;
+    transition: all 1s;
+}
+
+.questionnaire .btn:hover::before {
+    width: 160%;
+}
+
+/* From Uiverse.io by cssbuttons-io */
+.questionnaire .ui button {
+    --color: #560bad;
+    font-family: inherit;
+    display: inline-block;
+    width: 8em;
+    height: 2.6em;
+    line-height: 2.5em;
+    margin: 20px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color 0.5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: var(--color);
+}
+
+.questionnaire .ui button:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+.questionnaire .ui button:hover {
+    color: #fff;
+}
+
+.questionnaire .ui button:before {
+    top: 100%;
+    left: 100%;
+    transition: all 0.7s;
+}
+
+.questionnaire .ui button:hover:before {
+    top: -30px;
+    left: -30px;
+}
+
+.questionnaire .ui button:active:before {
+    background: #3a0ca3;
+    transition: background 0s;
+}
+
+.questionnaire .row {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 20px;
+}
+
+.questionnaire .col {
+    flex: 1;
+    backdrop-filter: blur(10px);
+    margin: 0 20px;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+    border-radius: 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.questionnaire .video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.questionnaire .video-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    background: rgba(255, 255, 255, 0.2);
+    filter: blur(2px);
+}
+
+.questionnaire .babydiv {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    padding: 20px;
 }

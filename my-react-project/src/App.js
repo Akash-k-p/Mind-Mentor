@@ -15,7 +15,7 @@ import Logout from './components/Logout';
 import Recommendations from './components/recommendations/Recommendations';
 import Meditation from './components/recommendations/Meditation';
 import MemoryMatch from './components/recommendations/MemoryMatch';
-
+import Test from '../src/components/Test';
 
 function App() {
   return (
@@ -36,6 +36,7 @@ function App() {
         <Route path="/recommendations" element={<Recommendations />} />
         <Route path="/meditation" element={<Meditation />} />
         <Route path="/memorymatch" element={<MemoryMatch/>} />
+        <Route path="/test" element={<Test />} />
         
         
       </Routes>

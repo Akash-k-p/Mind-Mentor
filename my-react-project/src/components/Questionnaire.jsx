@@ -5,10 +5,12 @@ import Quiz2 from './quiz-components/Quiz2';
 import Quiz3 from './quiz-components/Quiz3';
 import Quiz4 from './quiz-components/Quiz4';
 import Quiz5 from './quiz-components/Quiz5';
+import { useNavigate } from 'react-router-dom';
+
 
 const Questionnaire = () => {
     const [currentQuiz, setCurrentQuiz] = useState(null);
-
+    const navigate = useNavigate();
     const renderQuiz = () => {
         switch (currentQuiz) {
             case 'quiz1':
@@ -32,98 +34,122 @@ const Questionnaire = () => {
         <div className="container">
             <div className="row">
                 <div className="col-md-12 text-center">
-                    <div className="lc-block">
-                        <h2 className="display-2 mb-0"><b>Questionnaire</b></h2>
-                        <p>Clinically approved Questionnaires for 5 different mental health issues.
-                            <br />Find out the severity level of your illness with this test</p>
+                    {/* <div className="lc-block">
+          <span editable="inline" className="small mt-4 d-block"></span>
+          <h2 editable="inline" className="display-2 mb-0"><b>Questionnaire</b></h2>
+          <p editable="inline">Clinically approved Questionnaires for 5 different mental health issues
+            <br />Find out the severity level of your illness with this test</p>
+          </div> */}
+                    {/* /lc-block */}
+                </div>
+            </div>
+
+            <div className="row">
+                <div className="col">
+                    <div className="video-container">
+                        <video autoPlay muted loop className="video-bg">
+                            <source src=".\col_vid.mp4" type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div className="babydiv">
+                        <img alt="" className="img-fluid" src="https://cdn-icons-png.flaticon.com/512/2913/2913034.png" style={{ height: '10vh' }} />
+                        <h4 className="my-3" editable="inline"></h4>
+                        <p editable="inline">Depression&nbsp;</p>
+                        <button className="btn btn-outline-primary" onClick={() => setCurrentQuiz('quiz1')}>Take Test</button>
+                    </div>
+                </div>
+
+                <div className="col">
+                    <div className="video-container">
+                        <video autoPlay muted loop className="video-bg">
+                            <source src=".\col_vid.mp4" type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div className="babydiv">
+                        <img alt="" className="img-fluid" src="https://cdn-icons-png.flaticon.com/512/3997/3997770.png" style={{ height: '10vh' }} />
+                        <h4 className="my-3" editable="inline"></h4>
+                        <p editable="inline">Anxiety&nbsp;</p>
+                        <button className="btn btn-outline-primary" onClick={() => setCurrentQuiz('quiz2')}>Take Test</button>
+                    </div>
+                </div>
+
+                <div className="col">
+                    <div className="video-container">
+                        <video autoPlay muted loop className="video-bg">
+                            <source src=".\col_vid.mp4" type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div className="babydiv">
+                        <img alt="" className="img-fluid" src="https://static.thenounproject.com/png/1350173-200.png" style={{ height: '10vh' }} />
+                        <h4 className="my-3" editable="inline"></h4>
+                        <p editable="inline">Anger&nbsp;</p>
+                        <button className="btn btn-outline-primary" onClick={() => setCurrentQuiz('quiz3')}>Take Test</button>
                     </div>
                 </div>
             </div>
 
-            <div className="row mt-4">
-                <div className="col-md-4">
-                    <div className="p-lg-5 p-4 shadow" style={{ boxShadow: '1rem 1rem -0.7rem rgb(0, 0, 0)', borderRadius: '1rem' }}>
-                        <div className="lc-block mb-4">
-                            <img alt="Depression" className="img-fluid" src="https://cdn-icons-png.flaticon.com/512/2913/2913034.png" />
-                            <p>Depression</p>
-                            <button className="btn btn-outline-primary" onClick={() => setCurrentQuiz('quiz1')}>Take Test</button>
-                        </div>
+            <div className="row">
+                <div className="col">
+                    <div className="video-container">
+                        <video autoPlay muted loop className="video-bg">
+                            <source src=".\col_vid.mp4" type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div className="babydiv">
+                        <img alt="" className="img-fluid" src="https://static.thenounproject.com/png/2852814-200.png" style={{ height: '10vh' }} />
+                        <h4 className="my-3" editable="inline"></h4>
+                        <p editable="inline">Sleep Disorder&nbsp;</p>
+                        <button className="btn btn-outline-primary" onClick={() => setCurrentQuiz('quiz4')}>Take Test</button>
                     </div>
                 </div>
 
-                <div className="col-md-4">
-                    <div className="p-lg-5 p-4 shadow" style={{ boxShadow: '1rem 1rem -0.7rem rgb(0, 0, 0)', borderRadius: '1rem' }}>
-                        <div className="lc-block mb-4">
-                            <img alt="Anxiety" className="img-fluid" src="https://cdn-icons-png.flaticon.com/512/3997/3997770.png" />
-                            <p>Anxiety</p>
-                            <button className="btn btn-outline-primary" onClick={() => setCurrentQuiz('quiz2')}>Take Test</button>
-                        </div>
+                <div className="col">
+                    <div className="video-container">
+                        <video autoPlay muted loop className="video-bg">
+                            <source src=".\col_vid.mp4" type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
-                </div>
-
-                <div className="col-md-4">
-                    <div className="p-lg-5 p-4 shadow" style={{ boxShadow: '1rem 1rem -0.7rem rgb(0, 0, 0)', borderRadius: '1rem' }}>
-                        <div className="lc-block mb-4">
-                            <img alt="Anger" className="img-fluid" src="https://static.thenounproject.com/png/1350173-200.png" />
-                            <p>Anger</p>
-                            <button className="btn btn-outline-primary" onClick={() => setCurrentQuiz('quiz3')}>Take Test</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div className="row mt-4">
-                <div className="col-md-4">
-                    <div className="p-lg-5 p-4 shadow" style={{ boxShadow: '1rem 1rem -0.7rem rgb(0, 0, 0)', borderRadius: '1rem' }}>
-                        <div className="lc-block mb-4">
-                            <img alt="Sleep Disorder" className="img-fluid" src="https://static.thenounproject.com/png/2852814-200.png" />
-                            <p>Sleep Disorder</p>
-                            <button className="btn btn-outline-primary" onClick={() => setCurrentQuiz('quiz4')}>Take Test</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-md-4">
-                    <div className="p-lg-5 p-4 shadow" style={{ boxShadow: '1rem 1rem -0.7rem rgb(0, 0, 0)', borderRadius: '1rem' }}>
-                        <div className="lc-block mb-4">
-                            <img alt="Somatic Symptom" className="img-fluid" src="https://cdn-icons-png.flaticon.com/512/1491/1491313.png" />
-                            <p>Somatic Symptom</p>
-                            <button className="btn btn-outline-primary" onClick={() => setCurrentQuiz('quiz5')}>Take Test</button>
-                        </div>
+                    <div className="babydiv">
+                        <img alt="" className="img-fluid" src="https://cdn-icons-png.flaticon.com/512/1491/1491313.png" style={{ height: '10vh' }} />
+                        <h4 className="my-3" editable="inline"></h4>
+                        <p editable="inline">Somatic Symptom&nbsp;</p>
+                        <button className="btn btn-outline-primary" onClick={() => setCurrentQuiz('quiz5')}>Take Test</button>
                     </div>
                 </div>
             </div>
         </div>
+    );
 
-  );
-
-return (
-    <div className='questionnaire'>
-        <div className="container" style={{ backgroundImage: `url(${require('../assets/images/quiz/quizDash.jpeg')})`, marginBottom: '6rem' }}>
-            <div className="jumbotron text-center">
-                <div className="container">
-                    <h1 className="display-4">
-                        Mental Health Tracker <span role="img" aria-label="Memo">💚</span>
-                        <div className="logout-btn"><a href="/logout">Logout</a></div>
+    return (
+        <div className='questionnaire video-container'>
+                <video autoPlay muted loop id="background-video">
+                    <source src="./videp.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <div className="heading">
+                    <center><h1>
+                        Mind Mentor <span role="img" aria-label="Memo">💚</span>
                     </h1>
-                    <p className="lead">Your journey to a better mental state</p>
-                    <hr />
+                        <p >Your journey to a better mental state</p>
+                    </center>
                 </div>
-            </div>
 
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <div className="container-fluid">
-                    <div className="navbar-nav mx-auto navbar-container">
-                        <a className="nav-link navbar-elements" href="/dashboard">Home</a>
-                        <a className="nav-link navbar-elements" href="/newdiary">New Diary</a>
-                        <a className="nav-link navbar-elements" href="/viewdiary">View Diaries</a>
-                    </div>
-                </div>
-            </nav>
-            {renderQuiz()}
-        </div>
-    </div>
-);
+                <nav className="ui">
+                    <center>
+                        <button onClick={() => navigate('/dashboard')}>Home</button>
+                        <button onClick={() => navigate('/newdiary')}>New Diary</button>
+                        <button onClick={() => navigate('/viewdiary')}>View Diary</button>
+                    </center>
+                </nav>
+
+                {renderQuiz()}
+            </div>
+    );
 };
 
 export default Questionnaire;

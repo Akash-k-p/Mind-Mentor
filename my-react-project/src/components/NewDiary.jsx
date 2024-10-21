@@ -6,6 +6,19 @@ import SERVER_URL from '../express_url';
 import { ReactSession } from 'react-client-session';  // Import ReactSession for session management
 import { useNavigate } from 'react-router-dom';
 
+// const AudioUploader = () => {
+//     // State to store the selected file name
+//     const [audioFileName, setAudioFileName] = useState('Choose a file');
+  
+//     // Handler for file selection
+//     const handleAudioChange = (e) => {
+//       const file = e.target.files[0];
+//       if (file) {
+//         setAudioFileName(file.name); // Update state with the file name
+//       } else {
+//         setAudioFileName('Choose a file'); // Reset if no file is selected
+//       }
+//  } };
 
 const NewDiary = () => {
     const navigate = useNavigate();
@@ -224,7 +237,8 @@ const NewDiary = () => {
                 <form onSubmit={handleSubmit} id="form-title">
                     <div className="parent">
                         <div >
-                            <label htmlFor="mood">How are you feeling?</label>
+                            <label htmlFor="mood">How are you feeling? </label>
+
                             <select
                                 name="mood"
                                 id="mood"
@@ -246,7 +260,7 @@ const NewDiary = () => {
                         </div>
 
                         <div className="form-title">
-                            <label htmlFor="title">Mood Title</label>
+                            <label htmlFor="title"></label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -289,14 +303,14 @@ const NewDiary = () => {
                                     />
                                     <span id="file-name">Choose a file</span>
                                 </label>
-                                {audioBlob && <p>Audio file selected: {audioBlob.name}</p>}
+                                {audioBlob && <p style={{ marginBottom: '0' }}>Audio file selected: {audioBlob.name}</p>}
                             </div>
                         </div>
 
                         <div className="col">
                             <div className="recorder">
-                                <div className="selectsource"></div>
-                                <h1>Record your thougts</h1>
+                                
+                                <h4>Record your thougts</h4>
                                 <label htmlFor="audio-source">Select Audio Source:</label>
                                 <select
                                     id="audio-source"
@@ -309,15 +323,26 @@ const NewDiary = () => {
                                         </option>
                                     ))}
                                 </select>
+                            
+
+                                {/* <button type="button" onClick={handleRecord} className="recbutton" id="record-button">
+                                    {recording ? 'Stop' : 'Record'}
+                                    <span style={{ color: 'red', fontSize: '12px', margin: '0px' }}>&#x1F534;</span>                            
+                                    </button> */}
+                                    <button type="button" onClick={handleRecord} className="recbutton" id="record-button">
+                                        {recording ? 'Stop ' : 'Record '}
+                                        <span style={{ color: 'red', fontSize: '12px', margin: '0px' }}>
+                                        {recording ? '⏹' : '🔴'}
+                                        </span>
+                                    </button>
+
+                                {/* 
+                                <button className="recbutton hidden" id="stop"> Stop
+                                <span style={{ color: 'red', fontSize: '12px', margin: '0px' }}>&#x23F8;</span>
+                                    </button>  */}
+                                <audio id="audio-playback" className="hidden" ref={audioPlaybackRef} controls></audio>
+                                {/* <label htmlFor="audio-source">Select Audio Source:</label> */}
                             </div>
-
-                            <button type="button" onClick={handleRecord} className="recbutton" id="record-button">
-                                {recording ? 'Stop' : 'Record'}
-                                <span style={{ color: 'red', fontSize: '12px', margin: '0px' }}>&#x1F534;</span>                            </button>
-                            <button className="recbutton hidden" id="stop">&#x23F9; Stop</button>
-                            <audio id="audio-playback" className="hidden" ref={audioPlaybackRef} controls></audio>
-                            {/* <label htmlFor="audio-source">Select Audio Source:</label> */}
-
                         </div>
                     </div>
 

@@ -11,6 +11,9 @@ import { motion } from "framer-motion";
 import Switch from "@mui/material/Switch";
 import { StyledGridItem, ResetGameButton, MovesDisplay, TimeDisplay, MemoryMatchCard } from "./StyledComponents";
 import emoji from "./emoji.json";
+import { useNavigate } from 'react-router-dom';
+import './StyledComponents/memorymatch.css';
+// import { Card, CardContent } from '@mui/material';
 
 const MemoryMatch = () => {
   // Declare state variables
@@ -41,6 +44,8 @@ const MemoryMatch = () => {
   const closeModal = () => {
     setOpenScoreModal(false);
   };
+
+  const navigate = useNavigate();
 
   // Increment the time elapsed every second while there are unmatched cards
   useEffect(() => {
@@ -99,28 +104,50 @@ const MemoryMatch = () => {
   };
 
   return (
-    <Container maxWidth="md">
+    <div className="viewdiary video-container">
+      <video autoPlay muted loop id="background-video">
+        <source src="./videp.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div className="heading">
+        <center><h1>
+          Mind Mentor <span role="img" aria-label="Memo">💚</span>
+        </h1>
+          <p >Your journey to a better mental state</p>
+        </center>
+      </div>
+
+      <nav className="ui">
+        <center>
+          <button onClick={() => navigate('/dashboard')}>Home</button>
+          <button onClick={() => navigate('/newdiary')}>New Diary</button>
+          <button onClick={() => navigate('/viewdiary')}>View Diary</button>
+        </center>
+      </nav>
+    <Container style={{color:'white', height:'100vh'}}maxWidth="md">
       <ScoreModal open={openScoreModal} handleClose={closeModal} moves={moves} timeElapsed={timeElapsed} />
       <Box textAlign="center" my={2}>
-        <Typography variant="h4" gutterBottom fontWeight="bold">
+        <Typography id='gameheading' variant="h4" gutterBottom fontWeight="bold">
           Memory Match Game
         </Typography>
         <Typography variant="body1">
           Click on the cards to reveal them, and find matching pairs. <br /> Try to complete the game in the shortest time and with the fewest moves!
         </Typography>
       </Box>
-      <Grid container justifyContent="center" alignItems="center" spacing={2} style={{ marginTop: "1rem" }}>
-        <Grid item>
+      <Grid id="controls" container justifyContent="center" alignItems="center" spacing={2} style={{ marginTop: "0" }}>
+        <Grid item id='set1'>
           <ResetGameButton shuffleCards={shuffleCards} />
         </Grid>
 
-        <Grid item>
-          <Select
+        <Grid item id='set'>
+          <Select id='selecttiletype'
             value={selectedEmojiList}
             onChange={handleChangeEmoji}
             displayEmpty
             inputProps={{ "aria-label": "Without label" }}
-            style={{ width: "16rem" }}
+            style={{ width: "16rem",
+              color:'white'
+             }}
           >
             {emojiList.map((emoji, index) => (
               <MenuItem key={index} value={emoji.emoji}>
@@ -130,28 +157,30 @@ const MemoryMatch = () => {
           </Select>
         </Grid>
 
-        <StyledGridItem item>
+        <StyledGridItem item id='set'>
           <VolumeOff />
           <Switch checked={isMuted} onChange={() => setIsMuted(!isMuted)} />
           <VolumeUp />
         </StyledGridItem>
 
-        <Grid item>
+        <Grid item id='set'>
           <MovesDisplay moves={moves} />
         </Grid>
-        <Grid item>
+        <Grid item id='set'>
           <TimeDisplay timeElapsed={timeElapsed} />
         </Grid>
       </Grid>
 
-      <Grid container spacing={2} justifyContent="center" alignItems="center" style={{ marginTop: "1rem" }}>
+      <Grid id='tilecontainer' container spacing={2} justifyContent="center" alignItems="center" style={{ marginTop: "1rem" }}>
         {/* Map over the cards and create a MemoryMatchCard for each one */}
         {cards.map((card, index) => (
-          <Grid item xs={4} sm={3} md={2} key={index}>
+          <Grid id='tiles'item xs={4} sm={3} md={2} key={index}>
             <motion.div
               style={{
                 transformStyle: "preserve-3d",
-                padding: "0.5rem",
+                // padding: "0.5rem",
+            //     height:'125px',
+            // width:'125px'
               }}
               animate={{
                 rotateY: matched.includes(index) || selected.includes(index) ? -180 : 0,
@@ -159,12 +188,49 @@ const MemoryMatch = () => {
               transition={{ duration: 0.7 }}
               key={index}
             >
-              <MemoryMatchCard key={index} card={card} index={index} selected={selected} matched={matched} selectCard={selectCard} />
+               {/* <Card
+          onClick={() => selectCard(index)}
+          style={{
+            background: "linear-gradient(135deg, #ff7e5f, #feb47b)", // Gradient background
+            color: "#fff", // White text color for contrast
+            height:'125px',
+            width:'125px',
+            display:'grid',
+            justifyContent:'center',
+            alignItems:'center',
+            margin:'10px',
+            position:'fixed'
+          }}
+          className="memory-card"
+        >
+          <CardContent>
+            {selected.includes(index) || matched.includes(index) ? card : "❓"}
+          </CardContent>
+        </Card> */}
+
+              <MemoryMatchCard key={index} card={card} index={index} selected={selected} matched={matched} selectCard={selectCard} sx={{background: "linear-gradient(135deg, #ff7e5f, red)",color: "#fff",}}/>
             </motion.div>
           </Grid>
         ))}
       </Grid>
     </Container>
+    <footer className="foot">
+        Created by:&nbsp;&nbsp;
+        <a href="https://www.linkedin.com/in/akash-k-p" className="custom-link">Akash K P</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="https://www.linkedin.com/in/sppratham108" className="custom-link">S P Pratham</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="https://www.linkedin.com/in/ggurusainath" className="custom-link">G Gurusainath</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button className="lgBtn" onClick={() => navigate('/logout')}>
+          <div className="sign">
+            <svg viewBox="0 0 512 512">
+              <path
+                d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"
+              />
+            </svg>
+          </div>
+          <div className="text">Logout</div>
+        </button>
+      </footer>
+    </div>
   );
 };
 

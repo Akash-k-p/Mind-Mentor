@@ -38,7 +38,7 @@ const ViewDiary = () => {
       <div id="diary-container" style={{ display: 'grid', justifyItems: 'center' }}>
     
     </div>
-      <div className="foot">
+      <footer className="foot">
         Created by:&nbsp;&nbsp;
         <a href="https://www.linkedin.com/in/akash-k-p" className="custom-link">Akash K P</a>&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="https://www.linkedin.com/in/sppratham108" className="custom-link">S P Pratham</a>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -53,7 +53,7 @@ const ViewDiary = () => {
           </div>
           <div className="text">Logout</div>
         </button>
-      </div>
+      </footer>
     </div>
   );
 };

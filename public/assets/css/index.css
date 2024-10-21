@@ -15,6 +15,7 @@ body, html {
   height:80%;
   border-top: 2px solid black ;
   border-bottom: 2px solid black ;
+  width: 100%;
 }
 .heading{
   display: flex;
@@ -25,7 +26,6 @@ body, html {
   color: white;
   background-image: transparent;
   backdrop-filter: blur(10px);
-  border-bottom: 2px solid black;
 
 }
 .video-container {

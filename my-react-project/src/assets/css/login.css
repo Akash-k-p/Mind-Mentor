@@ -1,31 +1,4 @@
-/* body{
-    background-color: #ecf0f1;
-}
-.main-content{
-    display: flex;
-    justify-content: space-evenly;
-}
-.login form{
-    width: 25%;
-}
 
-img{
-    height: 280px;
-    width: 280px;
-}
-.signup form{
-    width: 25%;
-}
-.login-container{
-    width: 280.75px;
-    border: 1px solid #7777d1;
-    padding: 10px;
-}
-.signup-container{
-    width: 280.75px;
-    border: 1px solid red;
-    padding: 10px;
-} */
 
 .loginpage body, .loginpage html {
     margin: 0;
@@ -61,6 +34,10 @@ img{
     backdrop-filter: blur(10px);
     border-bottom: 2px solid black;
 }
+.heading h1 {
+        font-size: 2rem;
+        padding: 15px;
+  }
 
 .loginpage .container1 {
     color: white;
@@ -163,7 +140,8 @@ img{
 }
 
 /* Submit Button Styling */
-.loginpage .login-box a, .loginpage .signup-box a {
+/* Submit Button Styling */
+.btn-submit {
     position: relative;
     display: inline-block;
     padding: 0;
@@ -176,22 +154,26 @@ img{
     transition: 0.5s;
     margin-top: 20px;
     letter-spacing: 3px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
 }
 
 /* Hover Effects for Submit Button */
-.loginpage .login-box a:hover, .loginpage .signup-box a:hover {
+.btn-submit:hover {
     background: #fff;
     color: #272727;
     border-radius: 5px;
 }
 
 /* Button Animation (4 spans for effects) */
-.loginpage .login-box a span, .loginpage .signup-box a span {
+.btn-submit span {
     position: absolute;
     display: block;
 }
 
-.loginpage .login-box a span:nth-child(1), .loginpage .signup-box a span:nth-child(1) {
+.btn-submit span:nth-child(1) {
     top: 0;
     left: -100%;
     width: 100%;
@@ -200,7 +182,7 @@ img{
     animation: btn-anim1 1s linear infinite;
 }
 
-.loginpage .login-box a span:nth-child(2), .loginpage .signup-box a span:nth-child(2) {
+.btn-submit span:nth-child(2) {
     top: -100%;
     right: 0;
     width: 2px;
@@ -210,7 +192,7 @@ img{
     animation-delay: 0.25s;
 }
 
-.loginpage .login-box a span:nth-child(3), .loginpage .signup-box a span:nth-child(3) {
+.btn-submit span:nth-child(3) {
     bottom: 0;
     right: -100%;
     width: 100%;
@@ -220,7 +202,7 @@ img{
     animation-delay: 0.5s;
 }
 
-.loginpage .login-box a span:nth-child(4), .loginpage .signup-box a span:nth-child(4) {
+.btn-submit span:nth-child(4) {
     bottom: -100%;
     left: 0;
     width: 2px;
@@ -267,7 +249,7 @@ img{
     }
 }
 
-.loginpage .button {
+.button {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: larger;
     color: white;
@@ -279,7 +261,8 @@ img{
     border-color: black;
 }
 
-.loginpage .button:hover {
+.button:hover {
     color: black;
 }
+
 

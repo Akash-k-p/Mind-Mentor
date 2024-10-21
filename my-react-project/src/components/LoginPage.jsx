@@ -284,8 +284,9 @@ const LoginPage = () => {
                 </div>
                 <button type="submit" className="btn-submit">
                   <span></span><span></span><span></span><span></span>
-                  Submit
+                  Submit 
                 </button>
+                
               </form>
             </div>
           </div>

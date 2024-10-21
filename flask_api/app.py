@@ -60,11 +60,12 @@ class SpeechToText(Resource):
         audio_file.save(audio_path)
 
         # Load Whisper model
-        model = whisper.load_model("tiny")
         
+        model = whisper.load_model("tiny")
+        # print("working here1 \n");
         # Transcribe the audio
         result = model.transcribe(audio_path)
-        
+        # print("working here2 \n");
         # Clean up the temporary audio file
         os.remove(audio_path)
         

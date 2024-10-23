@@ -17,10 +17,7 @@
 
     display: block;
     font-size: 2em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+   margin-top: 10px;
     font-weight: bold;
     unicode-bidi: isolate;
 }
@@ -100,6 +97,7 @@
     position: relative;
     transition: all 1s;
     overflow: hidden;
+    margin-bottom: 16px;
 }
 
 .homepage .btn:hover {

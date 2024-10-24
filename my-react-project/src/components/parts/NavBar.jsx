@@ -6,7 +6,7 @@ import './css/navbar.css';
 const NavBar = () => {
   const navigate = useNavigate();
   return (
-    <nav className="ui navbar">
+    <nav className="ui navbar1">
       <center>
       <button onClick={() => navigate('/dashboard')}>Home</button>
       <button onClick={() => navigate('/newdiary')}>New Diary</button>

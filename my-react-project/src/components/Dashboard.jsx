@@ -44,7 +44,7 @@ function DashBoard() {  // Define the component
       });
 
       const div_id = 'calendar';
-      const color = '#1d39db';
+      const color = '#34eb40';
       const overview = 'year';
 
       const print = function (val) {
@@ -197,7 +197,7 @@ function DashBoard() {  // Define the component
       <div style={{ height: '10rem' }}></div>
 
 
-      <div className="foot">
+      <footer className="foot">
       Created by:&nbsp;&nbsp;
       <a href="https://www.linkedin.com/in/akash-k-p" className="custom-link">Akash K P</a>&nbsp;&nbsp;&nbsp;&nbsp;
       <a href="https://www.linkedin.com/in/sppratham108" className="custom-link">S P Pratham</a>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -212,7 +212,7 @@ function DashBoard() {  // Define the component
         </div>
         <div className="text">Logout</div>
       </button>
-    </div>
+    </footer>
 
     </div>
   );

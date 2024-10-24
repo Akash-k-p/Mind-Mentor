@@ -1,6 +1,5 @@
-
-
-.loginpage body, .loginpage html {
+.loginpage body,
+.loginpage html {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -34,10 +33,11 @@
     backdrop-filter: blur(10px);
     border-bottom: 2px solid black;
 }
+
 .loginpage .heading h1 {
-        font-size: 2rem;
-        padding: 15px;
-  }
+    font-size: 2rem;
+    padding: 15px;
+}
 
 .loginpage .container1 {
     color: white;
@@ -74,7 +74,8 @@
 }
 
 /* Box Styles (applies to both login and signup boxes) */
-.loginpage .login-box, .loginpage .signup-box {
+.loginpage .login-box,
+.loginpage .signup-box {
     position: relative;
     width: 400px;
     padding: 40px;
@@ -88,7 +89,8 @@
 }
 
 /* Title (Login/Signup) */
-.loginpage .login-box p:first-child, .loginpage .signup-box p:first-child {
+.loginpage .login-box p:first-child,
+.loginpage .signup-box p:first-child {
     margin: 0 0 30px;
     padding: 0;
     color: #fff;
@@ -104,7 +106,8 @@
 }
 
 /* Input Fields */
-.loginpage .login-box .user-box input, .loginpage .signup-box .user-box input {
+.loginpage .login-box .user-box input,
+.loginpage .signup-box .user-box input {
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
@@ -117,7 +120,8 @@
 }
 
 /* Input Field Labels */
-.loginpage .login-box .user-box label, .loginpage .signup-box .user-box label {
+.loginpage .login-box .user-box label,
+.loginpage .signup-box .user-box label {
     position: absolute;
     top: 0;
     left: 0;
@@ -129,10 +133,10 @@
 }
 
 /* Label animation on focus */
-.loginpage .login-box .user-box input:focus ~ label,
-.loginpage .login-box .user-box input:valid ~ label,
-.loginpage .signup-box .user-box input:focus ~ label,
-.loginpage .signup-box .user-box input:valid ~ label {
+.loginpage .login-box .user-box input:focus~label,
+.loginpage .login-box .user-box input:valid~label,
+.loginpage .signup-box .user-box input:focus~label,
+.loginpage .signup-box .user-box input:valid~label {
     top: -20px;
     left: 0;
     color: #fff;
@@ -217,7 +221,9 @@
     0% {
         left: -100%;
     }
-    50%, 100% {
+
+    50%,
+    100% {
         left: 100%;
     }
 }
@@ -226,7 +232,9 @@
     0% {
         top: -100%;
     }
-    50%, 100% {
+
+    50%,
+    100% {
         top: 100%;
     }
 }
@@ -235,7 +243,9 @@
     0% {
         right: -100%;
     }
-    50%, 100% {
+
+    50%,
+    100% {
         right: 100%;
     }
 }
@@ -244,7 +254,9 @@
     0% {
         bottom: -100%;
     }
-    50%, 100% {
+
+    50%,
+    100% {
         bottom: 100%;
     }
 }
@@ -265,4 +277,11 @@
     color: black;
 }
 
+.errorMsg span {
+    color:#f39c12;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
 
+}

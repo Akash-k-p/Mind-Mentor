@@ -34,7 +34,7 @@
     backdrop-filter: blur(10px);
     border-bottom: 2px solid black;
 }
-.heading h1 {
+.loginpage .heading h1 {
         font-size: 2rem;
         padding: 15px;
   }

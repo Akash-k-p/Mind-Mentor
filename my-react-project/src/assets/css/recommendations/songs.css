@@ -1,0 +1,150 @@
+.songs {
+    height: 100%;
+    font-family: "Helvetica";
+    background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
+    background-size: cover;
+}
+
+.songs h1 {
+    color: white;
+    font-size: 3em;
+}
+
+.songs .errmsg {
+    color: darkred;
+}
+
+.songs .btn.first {
+    margin-top: 100px;
+    position: relative;
+    left: 45%;
+    width: 200px;
+    height: 50px;
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+    font-size: 1.5em;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.songs h3 {
+    color: white;
+    margin-top: 100px;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.songs h4 {
+    color: white;
+    text-align: center;
+}
+
+.songs .container {
+    height: 500px;
+    width: 50%;
+    background-color: transparent;
+    text-align: center;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.songs textarea {
+    border-radius: 25px;
+    margin-top: 20px;
+    width: 50%;
+    height: 300px;
+    text-align: center;
+    background: transparent;
+    border-color: white;
+    color: white;
+    font-size: 1.5em;
+}
+
+.songs ::placeholder {
+    color: white;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.songs textarea:focus,
+.songs input:focus {
+    color: white;
+    border-radius: 25px;
+    border: 3px solid white;
+    outline-width: 0;
+    font-size: 1.5em;
+}
+
+.songs button {
+    margin-top: 5%;
+    width: 120px;
+    height: 50px;
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+    font-size: 1.5em;
+    border-radius: 25px;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.songs button:focus {
+    outline-width: 0;
+}
+
+.songs .results {
+    position: absolute;
+    margin: 10% 0% 2% 2%;
+    width: 300px;
+    height: 180px;
+    border: 3px solid white;
+    border-radius: 25px;
+    color: grey;
+    background-color: white;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+}
+
+.songs .song-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.songs .song-card:hover {
+    transform: scale(1.05);
+}
+
+.songs .song-card h4 {
+    color: #555;
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.songs .song-card p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.songs .results-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.songs .start-again-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}

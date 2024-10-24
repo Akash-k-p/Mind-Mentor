@@ -3,7 +3,7 @@ import "./css/jumbotron.css";
 
 const Jumbotron = () => {
   return (
-    <div className="heading jumbotron">
+    <div className="heading jumbotronPart"> 
       {/* <div className="container">
           <h1 className="display-4">
             Mental Health Tracker <span role="img" aria-label="Memo">💚</span>

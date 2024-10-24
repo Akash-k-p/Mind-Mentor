@@ -16,6 +16,8 @@ import Recommendations from './components/recommendations/Recommendations';
 import Meditation from './components/recommendations/Meditation';
 import MemoryMatch from './components/recommendations/MemoryMatch';
 import Test from '../src/components/Test';
+import Songs from './components/recommendations/Songs';
+import Prediction from './components/recommendations/Prediction';
 
 function App() {
   return (
@@ -37,7 +39,8 @@ function App() {
         <Route path="/meditation" element={<Meditation />} />
         <Route path="/memorymatch" element={<MemoryMatch/>} />
         <Route path="/test" element={<Test />} />
-        
+        <Route path="/songs" element={<Songs />} />
+        <Route path="/prediction" element={<Prediction/>}/>
         
       </Routes>
     </Router>

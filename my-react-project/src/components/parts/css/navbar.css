@@ -37,3 +37,14 @@
   left: 100%;
   transition: all 0.7s;
 }
+
+.navbar1 button:hover:before {
+  top: -30px;
+  left: -30px;
+}
+
+.navbar1 button:active:before {
+  background: #3a0ca3;
+  transition: background 0s;
+}
+

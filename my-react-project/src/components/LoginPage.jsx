@@ -189,6 +189,8 @@ const LoginPage = () => {
   const [signupName, setSignupName] = useState('');
   const [signupEmail, setSignupEmail] = useState('');
   const [signupPassword, setSignupPassword] = useState('');
+
+  const [errorMsg, setErrorMsg] = useState(''); // Track error message
   ReactSession.setStoreType("sessionStorage");
 
   const navigate = useNavigate(); // Initialize useNavigate
@@ -213,6 +215,7 @@ const LoginPage = () => {
     } catch (error) {
       // Handle error
       console.error('Login failed:', error.response?.data || error.message);
+      setErrorMsg(error.response?.data?.message || 'Login failed, please try again.');
     }
   };
 
@@ -221,6 +224,10 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
+      if (signupPassword.length < 8) {
+        setErrorMsg('Password must be at least 8 characters long.');
+        return;
+      }
       // Send POST request to the Express server's signup route
       const response = await axios.post(SERVER_URL + '/api/signup', {
         name: signupName,
@@ -230,11 +237,20 @@ const LoginPage = () => {
 
       // Handle successful signup
       console.log('Signup successful:', response.data);
+      console.log("user_id at signup: ", response.data.id);
+      ReactSession.set("user_id",response.data.id);
+      navigate('/dashboard'); // Programmatic navigation to Dashboard component
       // Optionally login the user or redirect
     } catch (error) {
-      // Handle error
-      console.error('Signup failed:', error.response?.data || error.message);
+     // Handle error
+     console.error('Signup failed:', error.response);
+     if (error.response.status === 400) {
+      setErrorMsg('Email already exists, please login.');
+     } else {
+
+     setErrorMsg(error.response?.data?.message || 'Signup failed, please try again.');
     }
+  }
   };
 
   return (
@@ -339,6 +355,10 @@ const LoginPage = () => {
             </div>
           </div>
         </div>
+      </div>
+      {/* Display error message if any */}
+      <div className="errorMsg">
+        <span>{errorMsg}</span>
       </div>
     </div>
   );

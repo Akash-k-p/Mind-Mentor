@@ -2,6 +2,7 @@ import Card from './Cards.jsx'
 import meditate from '../../assets/images/recommendations/meditate.gif';
 import '../../assets/css/recommendations/recommendations.css';
 import games from '../../assets/images/recommendations/maths.gif';
+import songs from '../../assets/images/recommendations/songs.gif';
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react';
 
@@ -49,6 +50,14 @@ const Recommendations = () => {
                     description="Play a mind game."
                     image={games}
                     link="memorymatch"
+                >
+                </Card> 
+                
+                <Card
+                    title="Songs Recommendor"
+                    description="Get Song Recommendations based on your mood."
+                    image={songs}
+                    link="songs"
                 >
                 </Card> 
     </div>

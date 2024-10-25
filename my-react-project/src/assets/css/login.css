@@ -145,7 +145,7 @@
 
 /* Submit Button Styling */
 /* Submit Button Styling */
-.btn-submit {
+.loginpage  .btn-submit {
     position: relative;
     display: inline-block;
     padding: 0;
@@ -165,19 +165,19 @@
 }
 
 /* Hover Effects for Submit Button */
-.btn-submit:hover {
+.loginpage  .btn-submit:hover {
     background: #fff;
     color: #272727;
     border-radius: 5px;
 }
 
 /* Button Animation (4 spans for effects) */
-.btn-submit span {
+.loginpage  .btn-submit span {
     position: absolute;
     display: block;
 }
 
-.btn-submit span:nth-child(1) {
+.loginpage  .btn-submit span:nth-child(1) {
     top: 0;
     left: -100%;
     width: 100%;
@@ -186,7 +186,7 @@
     animation: btn-anim1 1s linear infinite;
 }
 
-.btn-submit span:nth-child(2) {
+.loginpage  .btn-submit span:nth-child(2) {
     top: -100%;
     right: 0;
     width: 2px;
@@ -196,7 +196,7 @@
     animation-delay: 0.25s;
 }
 
-.btn-submit span:nth-child(3) {
+.loginpage  .btn-submit span:nth-child(3) {
     bottom: 0;
     right: -100%;
     width: 100%;
@@ -206,7 +206,7 @@
     animation-delay: 0.5s;
 }
 
-.btn-submit span:nth-child(4) {
+.loginpage  .btn-submit span:nth-child(4) {
     bottom: -100%;
     left: 0;
     width: 2px;
@@ -285,3 +285,4 @@
     justify-content: center;
 
 }
+

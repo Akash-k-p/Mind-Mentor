@@ -210,7 +210,9 @@ const LoginPage = () => {
       console.log('Login successful:', response.data);
       localStorage.setItem('token', response.data.token); // Example with JWT token
       ReactSession.set("user_id", response.data.user.id);
+      ReactSession.set("name",response.data.user.name);
       console.log("user_id at login: ", ReactSession.get("user_id"));
+      console.log("user name at login: ", ReactSession.get("name"));
       navigate('/dashboard'); // Programmatic navigation to Dashboard component
     } catch (error) {
       // Handle error
@@ -239,6 +241,7 @@ const LoginPage = () => {
       console.log('Signup successful:', response.data);
       console.log("user_id at signup: ", response.data.id);
       ReactSession.set("user_id",response.data.id);
+      ReactSession.set("name",response.data.name);
       navigate('/dashboard'); // Programmatic navigation to Dashboard component
       // Optionally login the user or redirect
     } catch (error) {
@@ -267,6 +270,7 @@ const LoginPage = () => {
           </h1>
           <p>Your journey to a better mental state</p>
         </center>
+      
       </div>
 
       <div className="container">

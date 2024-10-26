@@ -829,7 +829,7 @@ body {
   height: 48px;
 }
 
-.dashboard .main-title > div {
+.dashboard .main-title>div {
   height: 48px;
   width: 48px;
   display: flex;
@@ -841,7 +841,7 @@ body {
   margin: auto;
 }
 
-.dashboard .main-title > span {
+.dashboard .main-title>span {
   margin: auto auto auto 8px;
 }
 
@@ -941,4 +941,16 @@ body {
 
 .dashboard ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.dashboard #user-name {
+  font-style: italic;
+  font-size: xx-large;
+  position: absolute;
+  right: 3vw;
+  background: linear-gradient(45deg, #ff6ec4, #7873f5, #4fc4f8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }

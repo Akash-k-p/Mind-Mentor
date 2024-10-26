@@ -6,6 +6,8 @@ import SERVER_URL from '../express_url';
 import { ReactSession } from 'react-client-session';  // Import ReactSession for session management
 import { useNavigate } from 'react-router-dom';
 
+
+
 // const AudioUploader = () => {
 //     // State to store the selected file name
 //     const [audioFileName, setAudioFileName] = useState('Choose a file');
@@ -21,6 +23,7 @@ import { useNavigate } from 'react-router-dom';
 //  } };
 
 const NewDiary = () => {
+    ReactSession.setStoreType("sessionStorage");
     const navigate = useNavigate();
     const [mood, setMood] = useState(1);
     const [title, setTitle] = useState('');

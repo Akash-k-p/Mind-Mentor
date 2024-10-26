@@ -4,6 +4,7 @@ import {ReactSession} from 'react-client-session'
 
 
 export async function renderDiaryEntry() {
+  ReactSession.setStoreType("sessionStorage");
     const response = await fetch(SERVER_URL+"/api/diary", {
       headers: {
         "Content-Type": "application/json"

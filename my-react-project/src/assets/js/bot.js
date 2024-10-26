@@ -40,8 +40,8 @@ const msgerForm = get(".msger-inputarea");
 const msgerInput = get(".msger-input");
 const msgerChat = get(".msger-chat");
 // Icons made by Freepik from www.flaticon.com
-const BOT_IMG = "..assets/images/mhcicon.png";
-const PERSON_IMG = "..assets/images/person.png";
+const BOT_IMG = "./mhcicon.png";
+const PERSON_IMG = "./person.png";
 const BOT_NAME = "    Psychiatrist Bot";
 const PERSON_NAME = "You";
 msgerForm.addEventListener("submit", event => {

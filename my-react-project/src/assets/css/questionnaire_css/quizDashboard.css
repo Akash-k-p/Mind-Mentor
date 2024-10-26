@@ -11,6 +11,10 @@
     /* For Chrome, Safari, and Opera */
 }
 
+.btn btn-outline-primary{
+
+}
+
 .questionnaire body {
     -ms-overflow-style: none;
     /* For Internet Explorer and Edge */
@@ -195,8 +199,8 @@
 }
 
 .questionnaire .btn:hover {
-    color: black;
-    border: 2px solid black;
+    color:skyblue;
+    border: 2px solid skyblue;
 }
 
 .questionnaire .btn::before {
@@ -207,9 +211,9 @@
     top: 0;
     left: -40px;
     transform: skewX(45deg);
-    background-color: purple;
+    background-color: blue;
     z-index: -1;
-    transition: all 1s;
+    transition: all 0.4s;
 }
 
 .questionnaire .btn:hover::before {

@@ -2,7 +2,7 @@ import Card from './Cards.jsx'
 import meditate from '../../assets/images/recommendations/meditate.gif';
 import '../../assets/css/recommendations/recommendations.css';
 import games from '../../assets/images/recommendations/maths.gif';
-import songs from '../../assets/images/recommendations/songs.gif';
+import songs from '../../assets/images/recommendations/music.gif';
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react';
 
@@ -54,8 +54,8 @@ const Recommendations = () => {
                 </Card> 
                 
                 <Card
-                    title="Songs Recommendor"
-                    description="Get Song Recommendations based on your mood."
+                    title="Custom Songs"
+                    description="Listen to Music"
                     image={songs}
                     link="songs"
                 >

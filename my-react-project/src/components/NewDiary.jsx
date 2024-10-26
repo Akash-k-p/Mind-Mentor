@@ -275,7 +275,7 @@ const NewDiary = () => {
                         </div>
 
                         <div className="form-group form-description">
-                            <label htmlFor="text-area">Mood Description</label>
+                            <label htmlFor="text-area"></label>
                             <textarea
                                 className="form-control"
                                 id="text-area"

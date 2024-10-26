@@ -7,6 +7,7 @@ import os
 import re
 import numpy as np
 from tensorflow.keras.models import load_model
+from tensorflow.keras.layers import LSTM
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import json
 import random
@@ -16,15 +17,21 @@ from ChatBotApp import get_bot_response
 
 # Initialize Flask app and API
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+# Enable CORS for specific origins
+CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "http://localhost:3001"]}})
 api = Api(app)
+
+# Custom function to handle the LSTM layer if needed
+def custom_lstm(*args, **kwargs):
+    kwargs.pop('time_major', None)  # Remove the time_major argument
+    return LSTM(*args, **kwargs)
 
 # Load the sentiment-analysis model
 classifier = pipeline('sentiment-analysis', model="distilbert-base-uncased-finetuned-sst-2-english")
 
 DIRNAME = os.path.dirname(os.path.realpath(__file__))
 DB = sqlite3.connect(DIRNAME + r'/data/meta.db', check_same_thread=False)
-MODEL = load_model(DIRNAME + r'/data/Glove_embedding_CNN_LSTM_model.h5')
+MODEL = load_model(DIRNAME + r'/data/Glove_embedding_CNN_LSTM_model.h5',custom_objects={'LSTM': custom_lstm})
 NUM_OF_TRACKS = 5
 MAXLEN = 41
 MAX_FEATURES = 5000
@@ -38,7 +45,7 @@ with open(DIRNAME + r'/data/tags-trackid.json', 'r') as f:
 
 # HELPER FUNCTIONS 
 def _remove_username(inp):
-    pat = '@[^\s]+'
+    pat = r'@[^\s]+'
     return re.sub(pat, '', inp)
 
 def _remove_punctuation(inp):
@@ -190,6 +197,7 @@ class SpeechToText(Resource):
         model = whisper.load_model("tiny")
         # print("working here1 \n");
         # Transcribe the audio
+        print("audio path :",audio_path)
         result = model.transcribe(audio_path)
         # print("working here2 \n");
         # Clean up the temporary audio file

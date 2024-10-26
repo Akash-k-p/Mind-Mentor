@@ -64,7 +64,7 @@ const Songs = () => {
 
   return (
     <div className="songs">
-      <h1 style={{ textAlign: 'center' }}>Mood Based Song Recommendations</h1>
+      <h1 style={{ textAlign: 'center' }}>Recommended songs to Enhance your mood</h1>
       {error && (
         <p className="errmsg">
           <strong>Error:</strong> {error}
@@ -74,7 +74,7 @@ const Songs = () => {
         <div className="container">
           <form className="login-form" onSubmit={handleSubmit}>
             <div className="centered">
-              <h4>Pen down your thoughts.... but within 30 words</h4>
+              <h4>Pen down your thoughts within 30 words</h4>
               <div className="group">
                 <textarea
                   name="thought"

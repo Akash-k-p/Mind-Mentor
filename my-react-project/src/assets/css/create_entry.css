@@ -212,8 +212,10 @@
     }
 }
 
-.newdiary #analyze,
-.newdiary #success {
+.newdiary #analyze {
+  display: flex;
+  justify-content: center;
+  align-items: center;
     z-index: 9999;
     color: black;
     font-size: larger;
@@ -222,6 +224,8 @@
 }
 
 .newdiary #transcribed-text {
+  display: flex;
+  justify-content: center;
     color: white;
     font-size: larger;
 }
@@ -233,7 +237,9 @@
     margin-top: 5px;
     font-size: x-large;
     color: darkgreen;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /*------------------------------------------*/
@@ -866,12 +872,12 @@
     margin-bottom: 3rem;
 }
   
-.newdiary #success {
+/* .newdiary #success {
     margin-top: 5px;
     font-size: x-large;
     color: darkgreen;
     display: block;
-}
+} */
   
 .newdiary footer {
     position: fixed;
@@ -1033,12 +1039,12 @@
     margin-bottom: 3rem;
   }
   
-.newdiary #success {
+/* .newdiary #success {
     margin-top: 5px;
     font-size: x-large;
     color: darkgreen;
     display: block;
-  }
+  } */
   
 .newdiary footer {
     position: fixed;

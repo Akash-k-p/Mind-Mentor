@@ -221,9 +221,6 @@ body, html {
 .viewdiary .firstRow {
     display: grid;
     grid-template-columns: 45% 45% 2%;
-    gap: 10px;
-    height: 35px;
-    padding: 5px;
     align-items: center;
     justify-content: space-evenly;
     border-bottom: 2px solid black;
@@ -251,9 +248,16 @@ body, html {
 }
   
 .viewdiary .entryDescription {
+    padding-bottom: 10px;
     font-size: large;
     padding-left: 10%;
     padding-right: 10%;
+    margin: 0;
+}
+
+.viewdiary .entryAudio{
+    margin-left:32%;
+    margin-bottom:15px;
 }
   
 .viewdiary .entryMood {
@@ -287,9 +291,11 @@ body, html {
 }
   
 .viewdiary .btndanger:hover {
+    color: black;
     font-size: larger;
     transform: font-size smooth;
     cursor: pointer;
+    padding-bottom: 25px;
 }
   
 .viewdiary .entryContainer:hover {

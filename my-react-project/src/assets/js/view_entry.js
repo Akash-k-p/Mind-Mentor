@@ -12,6 +12,7 @@ export async function renderDiaryEntry() {
     });
   
     const entries = await response.json();
+    entries.reverse();
     let userId;
   
     // async function fetchUserData() {

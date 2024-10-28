@@ -21,6 +21,7 @@ function DashBoard() {  // Define the component
 
   // useEffect to handle fetching data and initializing the calendar heatmap
   useEffect(() => {
+    const user_id = ReactSession.get("user_id");
     console.log("user_id at dashboard: ", ReactSession.get("user_id"));
     console.log("username at dashboard:", ReactSession.get("name"));
     const userName = ReactSession.get("name");
@@ -31,11 +32,14 @@ function DashBoard() {  // Define the component
 
     async function fetchDataAndRenderHeatmap() {
       console.log('Fetching data and rendering heatmap...');
-      const response = await fetch(SERVER_URL + "/api/entries");
+      const response = await fetch(SERVER_URL + "/api/diary");
       const diaryEntries = await response.json();
       console.log(diaryEntries);
+      
+      const filteredEntries = diaryEntries.filter(entry => entry.user_id === user_id);
+      console.log("filtered entries :",filteredEntries);
 
-      const formattedData = diaryEntries.map(entry => {
+      const formattedData = filteredEntries.map(entry => {
         const entryDate = new Date(entry.time_stamp);
         let polarityValue = entry.mood_id * 0.1;
         if (entry.label && entry.label.toLowerCase() === 'positive') {
@@ -67,6 +71,7 @@ function DashBoard() {  // Define the component
         calendarHeatmap.init(formattedData, div_id, color, overview, print);
       }
       catch (e) {
+        console.log("Error rendering heatmap: in catch block now");
         console.log(e);
       }
     }

@@ -1,89 +1,83 @@
 
 import React, { useState } from 'react';
-import '../../assets/css/questionnaire_css/quiz5-1.css';
+import '../../assets/css/questionnaire_css/quiz5.css';
+import { useNavigate } from 'react-router-dom';
 
 const questionnaire = [
     {
 
         question:"1. Stomach Pain",
-        options: ["0", "1", "2"]
+        options: ["0", "1", "2","3"]
     },
     {
         question:"2. Back Pain",
-        options: ["0", "1", "2"]
+        options: ["0", "1", "2","3"]
        
     },
     {
 
         question:"3. Pain in your arms, legs, or joints(knees,hips,etc)",
-        options: ["0", "1", "2"]
+        options: ["0", "1", "2","3"]
        
     },
     {
 
         question:"4. Menstrual Cramps or any other problems with your periods (Women Only)",
-        options: ["0", "1", "2"]
+        options: ["0", "1", "2","3"]
        
     },
     {
 
         question:"5. Headaches",
-        options: ["0", "1", "2"]
+        options: ["0", "1", "2","3"]
         
     },
     {
 
         question:"6. Chest Pain",
-        options: ["0", "1", "2"]
+        options: ["0", "1", "2","3"]
     },
     {
 
         question:"7. Dizziness",
-        options: ["0", "1", "2"]
+        options: ["0", "1", "2","3"]
        
     },
     {
 
         question:"8. Fainting sleeps",
-        options: ["0", "1", "2"]
+        options: ["0", "1", "2","3"]
        
     },
     {
 
         question:"9. Feeling your heart pound or race",
-        options: ["0", "1", "2"]
+        options: ["0", "1", "2","3"]
     },
     {
 
         question:"10. Shortness of Breath",
-        options: ["0", "1", "2"]
+        options: ["0", "1", "2","3"]
     },
-    // {
-
-    //     question:"11. Pain or problems during sexual intercourse",
-    //     a:"0",
-    //     b:"1",
-    //     c:"2"
-    // },
     {
 
         question:"11. Constipation; loose bowels, or diarrhea",
-        options: ["0", "1", "2"]
+        options: ["0", "1", "2","3"]
     },
     {
 
         question:"12. Nausea, gas or indigestion",
-        options: ["0", "1", "2"]
+        options: ["0", "1", "2","3"]
     },
     {
 
         question:"13. Feeling tired or having low energy",
-        options: ["0", "1", "2"]
+        options: ["0", "1", "2","3"]
     },
     {
 
         question:"14. Trouble Sleeping",
-        options: ["0", "1", "2"]
+        options: ["0", "1", "2","3"]
     }
 ];
 
@@ -92,7 +86,7 @@ const Questionnaire = () => {
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false); // New state to track submission
-
+  const navigate = useNavigate();
   const handleAnswerSelection = (event) => {
     setSelectedAnswer(Number(event.target.value));
   };
@@ -117,30 +111,32 @@ const Questionnaire = () => {
   };
 
   const getSeverity = () => {
-    if (score <= 6) {
-      return 'None to slight';
-    } else if (score <= 4) {
-      return 'Mild';
+    if (score <= 4) {
+      return 'No Depression';
     } else if (score <= 9) {
-      return 'Moderate';
+      return 'Mild Depression';
     } else if (score <= 14) {
-      return 'Moderate to Severe';
+      return 'Moderate Depression';
+    } else if (score <= 19) {
+      return 'Moderate to Severe Depression';
     } else {
-      return 'Severe';
+      return 'Severe Depression';
     }
   };
 
   const question = questionnaire[quesCount];
 
   return (
-    <div className="container mt-5 quiz5">
+    <div className="quiz5 outerdiv">
+      <div className="maindiv">
       {!isSubmitted ? (
         <>
-          <h2>Over the last two weeks, how often have you been bothered by any of the following problems?</h2>
-          <p>0-being the lowest; 3-being the highest</p>
-          {question && (
+          <h4>Over the last two weeks, how often have you been bothered by any of the following problems?</h4>
+          <h5>0-being the lowest; 3-being the highest</h5>
+          <br></br>
+          {/* {question && (
             <>
-              <h3>{question.question}</h3>
+              <h2>{question.question}</h2>
               <ul>
                 {question.options.map((option, index) => (
                   <li key={index}>
@@ -156,24 +152,75 @@ const Questionnaire = () => {
                 ))}
               </ul>
               {quesCount < questionnaire.length - 1 ? (
-                <button className="btn btn-primary" onClick={nextQuestion}>Next</button>
+                <button className="finalbtn" onClick={nextQuestion}>Next</button>
               ) : (
-                <button className="btn btn-success" onClick={handleSubmit}>Submit</button>
+                <button className="finalbtn" onClick={handleSubmit}>Submit</button>
               )}
             </>
-          )}
+          )} */}
+          {question && (
+  <>
+    <h2>{question.question}</h2>
+    <div className="valuebtn">
+    <div className="radio-input">
+      {question.options.map((option, index) => (
+        <label key={index}>
+          <input
+            type="radio"
+            name="answer"
+            value={index}
+            onChange={handleAnswerSelection}
+            checked={selectedAnswer === index}
+          />
+          <span>{option}</span>
+        </label>
+      ))}
+      <span className="selection"></span>
+    </div>
+    </div>
+    <div className="nxtsbmt">
+    {quesCount < questionnaire.length - 1 ? (
+      <button className="finalbtn" onClick={nextQuestion}>Next</button>
+    ) : (
+      <button className="finalbtn" onClick={handleSubmit}>Submit</button>
+    )}
+    </div>
+  </>
+)}
+
         </>
       ) : (
         <div>
-          <h3>
-            Wohoo!, you did it! Congrats on completing the quiz and taking a big step towards improving your mental health. By clicking the "Solution" button, you'll be taken to a treasure trove of solutions tailored to your specific needs. Get ready to embark on a journey towards better mental wellness - good luck! 🚀.
-          </h3>          
-          <h2>Results : </h2>
-          <p>You scored {score}/27. Severity level: {getSeverity()}</p>
-          <button className="btn" onClick={() => window.location.href = '/questionnaire'}>Give Test Again</button>
-          <button className="btn" onClick={() => window.location.href = '/solution5'}>See Solutions</button> <br></br> 
+          <h5>
+              Great Response!! See Results and Solutions below:
+          </h5>          
+          <h2>Score: {score}/27.</h2><br></br>
+          <h2> Severity level: {getSeverity()}</h2>
+          <br></br>
+          <div className="btnblock">
+              <button className="finalbtn" onClick={() => window.location.href = '/questionnaire'}>Give Test Again</button>
+              <button className="finalbtn" onClick={() => window.location.href = '/solution5'}>See Solutions</button> <br></br> 
+          </div>
         </div>
       )}
+      </div>
+
+      <footer className="foot">
+      Created by:&nbsp;&nbsp;
+      <a href="https://www.linkedin.com/in/akash-k-p" className="custom-link">Akash K P</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="https://www.linkedin.com/in/sppratham108" className="custom-link">S P Pratham</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="https://www.linkedin.com/in/ggurusainath" className="custom-link">G Gurusainath</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <button className="lgBtn" onClick={() => navigate('/logout')}>
+        <div className="sign">
+          <svg viewBox="0 0 512 512">
+            <path
+              d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"
+            />
+          </svg>
+        </div>
+        <div className="text">Logout</div>
+      </button>
+    </footer>
     </div>
   );
 };

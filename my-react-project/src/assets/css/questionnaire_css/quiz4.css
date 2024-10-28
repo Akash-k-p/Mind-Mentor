@@ -1,368 +1,220 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@300;400&display=swap');
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Sofia Sans', sans-serif;
-    font-weight: 300;
-}
 
-html{
-    font-size: 62.5%;
-
-}
-#mainq{
-    font-size:2rem;
-    font-weight:450;
-}
-#greet{
-    background-color:rgb(231, 231, 142);
-    font-size:2rem;
-    font-weight:100;
-    text-shadow: 2px 1px black;
-}
-#note{
-    font-size:2rem;
-    font-weight:100;
-}
-.main-div{
-    width:100vw;
-    min-height: 100vh;
-    display: grid;
-    place-items: center;
-    background-color: rgb(149, 195, 231);
-}
-.inner-div{
-    width: 40vw;
-    background-color: #fff;
-    padding:3rem 8rem;
+.quiz4 .maindiv{
+    margin: 1rem;
+    background-color: #69b3edc0;
+    box-shadow: 1rem 1rem 4rem 0rem rgb(0, 0, 0);
     border-radius: 1rem;
-    box-shadow: 0 1rem 1rem -0.7rem rgba(0, 0, 0, 0.4);
+    padding: 3%;
 }
 
-.inner-div h2{
-    font-size:2.5rem;
-    font-weight:400;
-    margin:1rem 0 4rem 0;
-}
-
-.inner-div li{
-    font-size:2rem;
-    margin-top:1.5rem;
-    list-style:none
-}
-
-input{
-    cursor: pointer;
-    color:lightblue;
-}
-#next, .btn{
-    padding: 1rem 2rem;
-    outline:none;
-    font-size:2rem;
-    font-size:400;
-    display: block;
-    margin:auto;
-    border: none;
-    text-transform: uppercase;
-    color:#fff;
-    background-color: #238af0;
-    margin-top:30px;
-
-} */
-
-/* .solArea #solutions{
-padding: 1rem 2rem;
-    outline:none;
-    font-size:2rem;
-    font-size:400;
-    display: block;
-    margin:auto;
-    border: none;
-    text-transform: uppercase;
-    color:#fff;
-    background-color: #238af0;
-    margin-top:30px;
-} */
-/* 
-#solutions{
-padding: 1rem 2rem;
-    outline:none;
-    font-size:2rem;
-    font-size:400;
-    display: block;
-    margin:auto;
-    border: none;
-    text-transform: uppercase;
-    color:#fff;
-    background-color: #238af0;
-    margin-top:30px;
-}
-
-/* #next:hover{
-    background-color: #3015f6;
-} */
-/* 
-#submit, .btn{
-    padding: 1rem 2rem;
-    outline:none;
-    font-size:2rem;
-    font-size:400;
-    display: block;
-    margin:auto;
-    border: none;
-    text-transform: uppercase;
-    color:#fff;
-    background-color: #19e612;
-    margin-top:30px;
-
-}
-
-#showScore{
-    background-color: #dfe6e9;
-    margin-top: 1.5rem;
-    padding:1rem 1rem;
-    box-shadow: 0 1rem 1rem -0.7rem rgba(0, 0, 0, 0.4);
-
-}
-
-#showScore h3{
-    font-size: 2rem;
+.quiz4 footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     text-align: center;
 }
-
-#showProblem{
-    background-color: #dfe6e9;
-    margin-top: 2rem;
-    padding:2rem 2rem;
-    box-shadow: 0 1rem 1rem -0.7rem rgba(0, 0, 0, 0.4);
-
-}
-
-#showProblem h4{
-    font-size: 2rem;
-    text-align: center;
-}
-
-
-#showScore .btn{
-    margin-top: 2rem;
-    background-color: #55efc4;
-    color:#056abc
-
-}
-
-#showScore .btn:hover{
-    margin-top: 2rem;
-    background-color: #32ac89;
-    color: #fff;
-    
-}
-
-.scoreArea{
-    display:none;
-}
-.problemArea{
-    display: none;
-}
-.mainqArea{
+.quiz4 .foot{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: white;
     display: flex;
-} */ 
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-image: transparent;
+      backdrop-filter: blur(10px);
+      font-size: medium;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+      border-top: 2px solid black;
+  }
+   .quiz4 .custom-link {
+    color: lightgreen; /* Set the desired link color here */
+    text-decoration: none; /* Removes the underline */
+  }
+  
+  /* Change link color on hover */
+   .quiz4 .custom-link:hover {
+    color: yellow; /* Color when hovering over the link */
+  }
 
-
-/*  */
-@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@300;400&display=swap');
-.quiz4 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Sofia Sans', sans-serif;
-    font-weight: 300;
-}
-
-.quiz4 html{
-    font-size: 62.5%;
-}
-.quiz4 #mainq{
-    font-size:2rem;
-    font-weight:450;
-}
-.quiz4 #greet{
-    background-color:rgb(231, 231, 142);
-    font-size:2rem;
-    font-weight:100;
-    text-shadow: 2px 1px black;
-    text-align: center;
-}
-.quiz4 #note{
-    font-size:2rem;
-    font-weight:100;
-    text-align: center;
-}
-.quiz4 .main-div{
-    width:100vw;
-    min-height: 100vh;
-    display: grid;
-    place-items: center;
-    background-image: url(../../images/quiz/222.jpeg);
-}
-.quiz4 .inner-div{
-    width: 40vw;
-    background-color: #3472b98a;
-    padding:3rem 8rem;
-    border-radius: 1rem;
-    box-shadow: 0 1.5rem 1.5rem -0.7rem rgba(0, 0, 0, 0.4);
-}
-
-.quiz4 .inner-div h2{
-    font-size:2.5rem;
-    font-weight:400;
-    margin:1rem 0 2rem 0;
-}
-
-.quiz4 .inner-div li{
-    font-size:2rem;
-    margin-top:1.5rem;
-    list-style:none
-}
-
-.quiz4 input{
-    cursor: pointer;
-    color:lightblue;
-}
-.quiz4 #next, .quiz4 .btn{
-    padding: 1rem 2rem;
-    outline:none;
-    border-radius: 1rem;
-    font-size:2rem;
-    font-size:400;
-    display: block;
-    margin:auto;
-    border: none;
-    text-transform: uppercase;
-    color:#fff;
-    background-color: #0c3756;
-    margin-top:30px;
-    box-shadow: 0.7rem 1rem 1rem -0.7rem rgb(0, 0, 0);
-}
-
-.quiz4 #next, .quiz4 .btn:hover{
-    cursor: pointer;
-}
-
-.quiz4 #submit, .quiz4 .btn{
-    padding: 1rem 2rem;
-    outline:none;
-    border-radius: 1rem;
-    font-size:2rem;
-    font-size:400;
-    display: block;
-    margin:auto;
-    border: none;
-    text-transform: uppercase;
-    color:#fff;
-    background-color: #0c3756;
-    margin-top:30px;
-    box-shadow: 0.7rem 1rem 1rem -0.7rem rgb(0, 0, 0);
-}
-
-.quiz4 #submit, .quiz4 .btn:hover{
-    cursor: pointer;
-}
-
-.quiz4 #solutions{
-    padding: 1rem 2rem;
-    outline:none;
-    font-size:2rem;
-    font-size:400;
-    display: block;
-    margin:auto;
-    border: none;
-    text-transform: uppercase;
-    color:#fff;
-    background-color: #238af0;
-    margin-top:30px;
-}
-
-.quiz4 #showScore{
-    background-color: #dfe6e9;
-    margin-top: 1.5rem;
-    padding:1rem 1rem;
-    box-shadow: 0 1rem 1rem -0.7rem rgba(0, 0, 0, 0.4);
-}
-
-.quiz4 #showScore h3{
-    font-size: 2rem;
-    text-align: center;
-}
-
-.quiz4 #showProblem{
-    background-color: #dfe6e9;
-    margin-top: 2rem;
-    padding:2rem 2rem;
-    box-shadow: 0 1rem 1rem -0.7rem rgba(0, 0, 0, 0.4);
-}
-
-.quiz4 #showProblem h4{
-    font-size: 2rem;
-    text-align: center;
-}
-
-.quiz4 #showScore .btn{
-    margin-top: 2rem;
-    background-color: #55efc4;
-    color:#056abc
-}
-
-.quiz4 #showScore .btn:hover{
-    margin-top: 2rem;
-    background-color: #32ac89;
-    color: #fff;
-}
-.quiz4 .scoreArea{
-    display:none;
-}
-.quiz4 .problemArea{
-    display: none;
-}
-.quiz4 .mainqArea{
+  .quiz4 .lgBtn {
     display: flex;
-}
-
-.quiz4 .jumbotron{
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-.quiz4 .display-4{
-    gap: 20px;
-    display: inline-flex;
-    align-items: flex-end;
-}
-.quiz4 .display-4 .logout-btn{
-    background-color: grey;
-    font-size: 30px;
-    align-items: flex-end;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 3px 6px;
-}
-.quiz4 hr{
-    margin-bottom: 0;
-}
-.quiz4 .navbar-container{
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-.quiz4 .navbar-elements{
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    font-size: 1.5rem;
-}
-
-.quiz4 .container {
-    display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: rgb(255, 65, 65);
+    margin: 10px;
 }
+
+/* plus sign */
+.quiz4 .sign {
+    width: 100%;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quiz4 .sign svg {
+    width: 17px;
+}
+
+.quiz4 .sign svg path {
+    fill: white;
+}
+
+/* text */
+.quiz4 .text {
+    position: absolute;
+    right: 0%;
+    width: 0%;
+    opacity: 0;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition-duration: .3s;
+}
+
+/* hover effect on button width */
+.quiz4 .lgBtn:hover {
+    width: 125px;
+    border-radius: 40px;
+    transition-duration: .3s;
+}
+
+.quiz4 .lgBtn:hover .sign {
+    width: 30%;
+    transition-duration: .3s;
+    padding-left: 20px;
+}
+
+/* hover effect button's text */
+.quiz4 .lgBtn:hover .text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: .3s;
+    padding-right: 10px;
+}
+
+/* button click effect*/
+.quiz4 .lgBtn:active {
+    transform: translate(2px ,2px);
+}
+
+.quiz4 .finalbtn{
+    border: 2px solid white;
+    background-color: #034d5c;
+    border: 2px solid white;
+    box-shadow: 2px 2px 10px rgb(0 0 0 / 90%);
+    padding: 1rem 2rem;
+    outline: none;
+    font-size: 200;
+    display: block;
+    margin: 0px;
+    text-transform: uppercase;
+    color: #fff;
+    border-radius: 0.5rem;
+    transition: 0.5s smooth;
+}
+
+.quiz4 .finalbtn:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.quiz4 .btnblock{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+
+
+/* From Uiverse.io by Yaya12085 */ 
+.radio-input input {
+    display: none;
+  }
+  
+  .radio-input {
+    --container_width: 300px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: 9999px;
+    background-color: #fff;
+    color: #000000;
+    width: var(--container_width);
+    overflow: hidden;
+    border: 1px solid rgba(53, 52, 52, 0.226);
+  }
+  
+  .radio-input label {
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    font-weight: 600;
+    letter-spacing: -1px;
+    font-size: 14px;
+  }
+  
+  .selection {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: calc(var(--container_width) / 4);
+    z-index: 0;
+    left: 0;
+    top: 0;
+    transition: .15s ease;
+  }
+  
+  .radio-input label:has(input:checked) {
+    color: #fff;
+  }
+  
+  .radio-input label:has(input:checked) ~ .selection {
+    background-color: rgb(11 117 223);
+    display: inline-block;
+  }
+  
+  .radio-input label:nth-child(1):has(input:checked) ~ .selection {
+    transform: translateX(calc(var(--container_width) * 0/4));
+  }
+  
+  .radio-input label:nth-child(2):has(input:checked) ~ .selection {
+    transform: translateX(calc(var(--container_width) * 1/4));
+  }
+  
+  .radio-input label:nth-child(3):has(input:checked) ~ .selection {
+    transform: translateX(calc(var(--container_width) * 2/4));
+  }
+  
+  .radio-input label:nth-child(4):has(input:checked) ~ .selection {
+    transform: translateX(calc(var(--container_width) * 3/4));
+  }
+
+  .quiz4 .valuebtn{
+    display: flex;
+    padding: 15px;
+    justify-content: center;
+  }
+
+  .quiz4 .nxtsbmt{
+    display: flex;
+    justify-content: center;
+  }

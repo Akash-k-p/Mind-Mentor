@@ -12,6 +12,7 @@ import { ReactSession } from 'react-client-session';  // Import ReactSession for
 import '../assets/css/dashboard.css';  // Adjust the path to your custom CSS file
 import { useNavigate } from 'react-router-dom';
 
+
 function DashBoard() {  // Define the component
   const navigate = useNavigate();
 
@@ -21,12 +22,17 @@ function DashBoard() {  // Define the component
     async function fetchDataAndRenderHeatmap() {
       console.log('Fetching data and rendering heatmap...');
       const response = await fetch(SERVER_URL + "/api/entries");
+      console.log("reps",response)
       const diaryEntries = await response.json();
       console.log(diaryEntries);
 
       const formattedData = diaryEntries.map(entry => {
         const entryDate = new Date(entry.time_stamp);
+
+        // Calculate polarity based on mood_id (1 maps to 0.1, 10 maps to 1.0)
         let polarityValue = entry.mood_id * 0.1;
+
+        // Adjust polarity if the label is positive
         if (entry.label && entry.label.toLowerCase() === 'positive') {
           polarityValue += 1;
         }
@@ -37,14 +43,14 @@ function DashBoard() {  // Define the component
             'mood_id': entry.mood_id,
             'label': entry.label,
             'date': entryDate,
-            'value': polarityValue
+            'value': polarityValue // Polarity based on mood_id and label
           }],
-          total: polarityValue
+          total: polarityValue // Use total for the heatmap color scale
         };
       });
 
       const div_id = 'calendar';
-      const color = '#1d39db';
+      const color = '#45f542';
       const overview = 'year';
 
       const print = function (val) {

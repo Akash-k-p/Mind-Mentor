@@ -6,6 +6,14 @@ html {
   overflow: auto;
 }
 
+.dashboard .features{
+  display: flex;
+  gap: 20px;
+}
+.dashboard .col{
+  flex: 1;
+}
+
 .dashboard .video-container {
   position: relative;
   height: 100%;
@@ -75,6 +83,7 @@ body {
 }
 
 .dashboard .heading {
+  padding: 25px;
   display: flex;
   justify-content: center;
   align-items: center;

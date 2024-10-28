@@ -13,9 +13,6 @@
     width: 100%;
   }
 
-  .newdiary .heading h1{
-    font-size: 2rem;
-  }
 .newdiary #background-video {
     position: fixed;
     top: 0;
@@ -26,6 +23,7 @@
     z-index: -1;
   }
 .newdiary .heading{
+  padding: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -270,15 +268,15 @@
 }
 
 .newdiary h1 {
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
-.newdiary span {
+/* .newdiary span {
     margin-top: 20px;
     margin-bottom: 10px;
     font-size: 18px;
     color: #333;
-}
+} */
 
 .newdiary .recbutton {
     display: flex;

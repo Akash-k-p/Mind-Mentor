@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react';  // Import React and useEffect for data fetching
+import React, { useEffect } from 'react';  // Import React and useEffect for data fetching
 
 import { Link } from 'react-router-dom';  // Import Link for routing
 import chatBotImg from '../assets/images/mhcicon.png';  // Import the chatbot image
@@ -14,32 +14,17 @@ import { useNavigate } from 'react-router-dom';
 
 function DashBoard() {  // Define the component
   const navigate = useNavigate();
-  // const userName = ReactSession.get("name");
-  const [userName, setUserName] = useState('');
-  ReactSession.setStoreType("sessionStorage");
-
 
   // useEffect to handle fetching data and initializing the calendar heatmap
   useEffect(() => {
-    const user_id = ReactSession.get("user_id");
     console.log("user_id at dashboard: ", ReactSession.get("user_id"));
-    console.log("username at dashboard:", ReactSession.get("name"));
-    const userName = ReactSession.get("name");
-    const name = ReactSession.get("name");
-    if (name) {
-      setUserName(name);  // Set the username state
-    }
-
     async function fetchDataAndRenderHeatmap() {
       console.log('Fetching data and rendering heatmap...');
-      const response = await fetch(SERVER_URL + "/api/diary");
+      const response = await fetch(SERVER_URL + "/api/entries");
       const diaryEntries = await response.json();
       console.log(diaryEntries);
-      
-      const filteredEntries = diaryEntries.filter(entry => entry.user_id === user_id);
-      console.log("filtered entries :",filteredEntries);
 
-      const formattedData = filteredEntries.map(entry => {
+      const formattedData = diaryEntries.map(entry => {
         const entryDate = new Date(entry.time_stamp);
         let polarityValue = entry.mood_id * 0.1;
         if (entry.label && entry.label.toLowerCase() === 'positive') {
@@ -59,7 +44,7 @@ function DashBoard() {  // Define the component
       });
 
       const div_id = 'calendar';
-      const color = '#34eb40';
+      const color = '#1d39db';
       const overview = 'year';
 
       const print = function (val) {
@@ -71,7 +56,6 @@ function DashBoard() {  // Define the component
         calendarHeatmap.init(formattedData, div_id, color, overview, print);
       }
       catch (e) {
-        console.log("Error rendering heatmap: in catch block now");
         console.log(e);
       }
     }
@@ -119,13 +103,12 @@ function DashBoard() {  // Define the component
           <p className="lead">Your journey to a better mental state</p>
           <hr />
         </div> */}
-        <center>
-          <h1>
-            Mind Mentor <span role="img" aria-label="Memo">💚</span>
-          </h1>
-          <p>Your journey to a better mental state</p>
-        </center>
-        <span id="user-name">Hai {userName}</span>
+           <center>
+        <h1>
+          Mind Mentor <span role="img" aria-label="Memo">💚</span>
+        </h1>
+        <p>Your journey to a better mental state</p>
+      </center>
       </div>
 
       {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -137,13 +120,13 @@ function DashBoard() {  // Define the component
           </div>
         </div>
       </nav> */}
-      <nav className="ui">
-        <center>
-          <button onClick={() => navigate('/dashboard')}>Home</button>
-          <button onClick={() => navigate('/newdiary')}>New Diary</button>
-          <button onClick={() => navigate('/viewdiary')}>View Diary</button>
-        </center>
-      </nav>
+       <nav className="ui">
+      <center>
+      <button onClick={() => navigate('/dashboard')}>Home</button>
+      <button onClick={() => navigate('/newdiary')}>New Diary</button>
+      <button onClick={() => navigate('/viewdiary')}>View Diary</button>
+      </center>
+    </nav>
 
 
       <div id="calendar">
@@ -200,36 +183,39 @@ function DashBoard() {  // Define the component
           <button type="submit" className="msger-send-btn">Send</button>
         </form>
       </div>
+      
+      <div className="features">
 
-      <div id="questionnaire">
+      </div>
+      <div id="questionnaire" className='col'>
         <Link id="questionnaire_btn" to="/questionnaire"
           className="btn btn-outline-primary btn-lg btn-block">Take a Questionnaire</Link>
       </div>
 
-      <div id="questionnaire" className="recommendations">
+      <div id="questionnaire" className="col">
         <Link id="questionnaire_btn" to="/recommendations"
           className="btn btn-outline-primary btn-lg btn-block">Recommended Activities</Link>
       </div>
 
-      <div style={{ height: '10rem' }}></div>
+  
 
 
       <footer className="foot">
-        Created by:&nbsp;&nbsp;
-        <a href="https://www.linkedin.com/in/akash-k-p" className="custom-link">Akash K P</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="https://www.linkedin.com/in/sppratham108" className="custom-link">S P Pratham</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="https://www.linkedin.com/in/ggurusainath" className="custom-link">G Gurusainath</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <button className="lgBtn" onClick={() => navigate('/logout')}>
-          <div className="sign">
-            <svg viewBox="0 0 512 512">
-              <path
-                d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"
-              />
-            </svg>
-          </div>
-          <div className="text">Logout</div>
-        </button>
-      </footer>
+      Created by:&nbsp;&nbsp;
+      <a href="https://www.linkedin.com/in/akash-k-p" className="custom-link">Akash K P</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="https://www.linkedin.com/in/sppratham108" className="custom-link">S P Pratham</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="https://www.linkedin.com/in/ggurusainath" className="custom-link">G Gurusainath</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <button className="lgBtn" onClick={() => navigate('/logout')}>
+        <div className="sign">
+          <svg viewBox="0 0 512 512">
+            <path
+              d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"
+            />
+          </svg>
+        </div>
+        <div className="text">Logout</div>
+      </button>
+    </footer>
 
     </div>
   );

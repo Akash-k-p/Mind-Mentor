@@ -1,97 +1,228 @@
-.solution3 body {
-    margin: 0;
-    padding: 0%;
-    justify-content: center;
-    align-items: center;
+
+.solution3 .video-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
 }
 
-.solution3 .solution_page {
-    /* background-image: url("./../extra/dep_sol.jpg"); */
-    background-repeat: no-repeat;
-    margin: 0px;
+.solution3 #background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* From Uiverse.io by SujitAdroja */
+.solution3 .btn {
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid white;
+    padding: 10px 20px;
+    font-size: 17px;
+    cursor: pointer;
+    font-weight: bold;
+    background: transparent;
+    position: relative;
+    transition: all 1s;
     overflow: hidden;
 }
 
-.solution3 .solution_box {
+.solution3 .btn:hover {
+    color:skyblue;
+    border: 2px solid skyblue;
+}
+
+.solution3 .btn::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 0%;
+    top: 0;
+    left: -40px;
+    transform: skewX(45deg);
+    background-color: blue;
+    z-index: -1;
+    transition: all 0.4s;
+}
+
+.solution3 .btn:hover::before {
+    width: 160%;
+}
+
+/* From Uiverse.io by cssbuttons-io */
+.solution3 .ui button {
+    --color: #560bad;
+    font-family: inherit;
     display: inline-block;
-    padding: 6rem;
-    border-radius: 3rem;
-    margin: 10rem;
-    background-color: #87CEEB;
-    height: fit-content;
-    box-shadow: 0.7rem 1rem 1rem -0.7rem rgb(0, 0, 0);
-}
-
-.solution3 .solution_box h1 {
-    position: relative;
+    width: 8em;
+    height: 2.6em;
+    line-height: 2.5em;
     margin: 20px;
-    padding: 0;
-    font-size: 48px;
-    z-index: 2;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.solution3 .solution_box li {
-    font-size: 20px;
-}
-
-.solution3 .solution_box p {
     position: relative;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    z-index: 2;
+    cursor: pointer;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color 0.5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: var(--color);
+}
+
+.solution3 .ui button:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+.solution3 .ui button:hover {
+    color: #fff;
+}
+
+.solution3 .ui button:before {
+    top: 100%;
+    left: 100%;
+    transition: all 0.7s;
+}
+
+.solution3 .ui button:hover:before {
+    top: -30px;
+    left: -30px;
+}
+
+.solution3 .ui button:active:before {
+    background: #3a0ca3;
+    transition: background 0s;
+}
+
+.solution3 .heading {
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
+    background-image: transparent;
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid black;
+}
+.solution3 .foot{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    display: flex;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-image: transparent;
+      backdrop-filter: blur(10px);
+      font-size: medium;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+      border-top: 2px solid black;
+  }
+   .solution3 .custom-link {
+    color: lightgreen; /* Set the desired link color here */
+    text-decoration: none; /* Removes the underline */
+  }
+  
+  /* Change link color on hover */
+   .solution3 .custom-link:hover {
+    color: yellow; /* Color when hovering over the link */
+  }
+
+  .solution3 .lgBtn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: rgb(255, 65, 65);
+    margin: 10px;
+}
+
+/* plus sign */
+.solution3 .sign {
+    width: 100%;
+    transition-duration: .3s;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.solution3 .solution_box a {
-    text-decoration-line: none;
-    color: rgb(91, 29, 153);
+.solution3 .sign svg {
+    width: 17px;
 }
 
-.solution3 .jumbotron {
-    margin-bottom: 0;
-    padding-bottom: 0;
+.solution3 .sign svg path {
+    fill: white;
 }
 
-.solution3 .display-4 {
-    gap: 20px;
-    display: inline-flex;
-    align-items: flex-end;
+/* text */
+.solution3 .text {
+    position: absolute;
+    right: 0%;
+    width: 0%;
+    opacity: 0;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition-duration: .3s;
 }
 
-.solution3 .display-4 .logout-btn {
-    background-color: grey;
-    font-size: 30px;
-    align-items: flex-end;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 3px 6px;
+/* hover effect on button width */
+.solution3 .lgBtn:hover {
+    width: 125px;
+    border-radius: 40px;
+    transition-duration: .3s;
 }
 
-.solution3 hr {
-    margin-bottom: 0;
+.solution3 .lgBtn:hover .sign {
+    width: 30%;
+    transition-duration: .3s;
+    padding-left: 20px;
 }
 
-.solution3 .navbar-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+/* hover effect button's text */
+.solution3 .lgBtn:hover .text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: .3s;
+    padding-right: 10px;
 }
 
-.solution3 .navbar-elements {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
+/* button click effect*/
+.solution3 .lgBtn:active {
+    transform: translate(2px ,2px);
+}
+
+.solution3 .solution_box{
     font-size: 1.5rem;
-}
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 15px;
 
-.solution3 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background-color: #69b3edc0;
+    box-shadow: 1rem 1rem 4rem 0rem rgb(0, 0, 0);
+    border-radius: 1rem;
+    padding: 3%;
+    overflow: auto;
 }

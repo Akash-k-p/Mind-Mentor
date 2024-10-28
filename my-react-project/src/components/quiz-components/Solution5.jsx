@@ -1,36 +1,35 @@
+
+
 import React from 'react';
 import '../../assets/css/questionnaire_css/solution5.css';
-import { Link } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 const Solution5 = () => {
-    return (
-        <div className="solution5">
-            <div className="jumbotron text-center"></div>
-            <div className="container">
-                <h1 className="display-4">
-                    Mental Health Tracker <span role="img" aria-label="Memo">💚</span>
-                    <div className="logout-btn"><a href="/logout">Logout</a></div>
-                </h1>
-                <p className="lead">Your journey to a better mental state</p>
-                <hr />
-            </div>
+  const navigate = useNavigate();
+  return (
+    <div className="solution5 video-container">
+      <video autoPlay muted loop id="background-video">
+        <source src="./videp.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div className="heading">
+        <center><h1>
+          Mind Mentor <span role="img" aria-label="Memo">💚</span>
+        </h1>
+          <p >Your journey to a better mental state</p>
+        </center>
+      </div>
 
-             {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container-fluid">
-          <div className="navbar-nav mx-auto navbar-container">
-            <Link className="nav-link navbar-elements" to="/dashboard">Home</Link>
-            <Link className="nav-link navbar-elements" to="/newdiary">New Diary</Link>
-            <Link className="nav-link navbar-elements" to="/viewdiary">View Diaries</Link>
-          </div>
-        </div>
+      <nav className="ui">
+        <center>
+          <button onClick={() => navigate('/dashboard')}>Home</button>
+          <button onClick={() => navigate('/newdiary')}>New Diary</button>
+          <button onClick={() => navigate('/viewdiary')}>View Diary</button>
+        </center>
       </nav>
 
-            <div className="solution_page">
-                <div className="solution_box">
-                    <h1 className="lol">Somatic Symptom</h1>
-
-                    <p>Hey there! Are you feeling overwhelmed by physical symptoms that seem to have no explanation? Are you constantly visiting the doctor but getting no answers? If so, you might be struggling with somatic symptoms. But don't worry, you're not alone and there's help available.</p>
+      <div className="solution_box">
+          <h1 className="lol">Somatic Symptoms</h1>
+          <p>Hey there! Are you feeling overwhelmed by physical symptoms that seem to have no explanation? Are you constantly visiting the doctor but getting no answers? If so, you might be struggling with somatic symptoms. But don't worry, you're not alone and there's help available.</p>
                     <br />
                     <p>Somatic symptoms refer to physical symptoms that can't be explained by a medical condition. They can be overwhelming and interfere with your daily life. But the good news is, there's a way to manage them and feel better. Just like anger, anxiety, depression, and sleep disorders, there are different levels of somatic symptoms, and it's important to know where you stand so you can take the right steps to feel better. Let's take a look at the different levels:</p>
                     <br />
@@ -61,9 +60,26 @@ const Solution5 = () => {
                     <br />
                     <p>So there you have it, a quick rundown on somatic symptoms and the different levels of severity. Remember, you're not alone and there's help available. Don't hesitate to reach out if you need it. Stay strong and take care of yourself!</p>
                 </div>
-            </div>
-        </div>
-    );
-}
+
+      <footer className="foot">
+        Created by:&nbsp;&nbsp;
+        <a href="https://www.linkedin.com/in/akash-k-p" className="custom-link">Akash K P</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="https://www.linkedin.com/in/sppratham108" className="custom-link">S P Pratham</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="https://www.linkedin.com/in/ggurusainath" className="custom-link">G Gurusainath</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button className="lgBtn" onClick={() => navigate('/logout')}>
+          <div className="sign">
+            <svg viewBox="0 0 512 512">
+              <path
+                d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"
+              />
+            </svg>
+          </div>
+          <div className="text">Logout</div>
+        </button>
+      </footer>
+    </div>
+  );
+};
 
 export default Solution5;
+

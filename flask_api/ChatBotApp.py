@@ -74,17 +74,9 @@ Language.factory("language_detector", func=get_lang_detector)
 nlp.add_pipe('language_detector', last=True)
 
 
-base_dir = os.path.dirname(os.path.abspath(__file__))
-intents_path = os.path.join(base_dir, 'intents.json')
-texts_path = os.path.join(base_dir, 'texts.pkl')
-labels_path = os.path.join(base_dir, 'labels.pkl')
-
-
-intents = json.loads(open(intents_path).read())
-with open(texts_path, 'rb') as texts_file:
-    words = pickle.load(texts_file)
-with open(labels_path, 'rb') as labels_file:
-    classes = pickle.load(labels_file)
+intents = json.loads(open('./intents.json').read())
+words = pickle.load(open('texts.pkl','rb'))
+classes = pickle.load(open('labels.pkl','rb'))
 def clean_up_sentence(sentence):
     sentence_words = nltk.word_tokenize(sentence)
     sentence_words = [lemmatizer.lemmatize(word.lower()) for word in sentence_words]

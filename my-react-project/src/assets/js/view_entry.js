@@ -12,6 +12,7 @@ export async function renderDiaryEntry() {
     });
   
     const entries = await response.json();
+    entries.reverse();
     let userId;
   
     // async function fetchUserData() {
@@ -44,6 +45,8 @@ export async function renderDiaryEntry() {
         const entryMood = document.createElement('h3');
         const entryTitle = document.createElement('p');
         const entryDescription = document.createElement('p');
+        // entryDescription.style.whiteSpace = 'pre-wrap';
+        // entryDescription.style.textAlign = 'justify'; 
         const entryAudio = document.createElement('audio');
         const deleteButton = document.createElement('button');
         const moodColorBox = document.createElement('div');
@@ -67,6 +70,8 @@ export async function renderDiaryEntry() {
         entryTitle.textContent = entry.title;
         entryDate.textContent = entry.date_created;
         entryDescription.textContent = entry.description;
+
+        console.log(entry.description);
         
         if (entry.audio_path) {
             entryAudio.src = `./${entry.audio_path}`;

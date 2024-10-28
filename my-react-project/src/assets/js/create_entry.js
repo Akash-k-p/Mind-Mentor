@@ -122,6 +122,7 @@ function create_entries() {
       const resData = await TranscriptionResponse.json();
       console.error(resData);
       console.log("error in transcribe api.js");
+          formData.append("description", description);
       document.querySelector("#transcribed-text").textContent = "Error in transcribing";
     }
 

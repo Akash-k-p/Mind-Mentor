@@ -144,13 +144,15 @@ const NewDiary = () => {
     };
 
     const handleSubmit = async (event) => {
+
+        console.log(description);
         event.preventDefault();
         setLoading(true);
 
         const formData = new FormData();
         formData.append('title', title);
         formData.append('mood_id', mood);
-        formData.append('description', description);
+        // formData.append('description', description);
         if (audioBlob) formData.append('audio', audioBlob);
 
         // Call the transcription and analysis APIs
@@ -161,10 +163,26 @@ const NewDiary = () => {
 
         if (transcriptionResponse.ok) {
             const resData = await transcriptionResponse.json();
+            
+        // const tdescription = description+resData.transcription;
+        // const tdescription = `${description}\n\nTranscription of the audio: ${resData.transcription}`;
+
+        // formData.append('description', tdescription);
+
+        let tdescription;
+        if (resData.transcription == "Looks like no audio file is present!!") {
+            formData.append('description', description);
+            
+          } else {
+            tdescription = `${description}\n\nTranscription of the audio: ${resData.transcription}`;
+            formData.append('description', tdescription);
+          }
             setTranscribedText(`Transcription: ${resData.transcription}`);
         } else {
             setTranscribedText('Error in transcribing');
+             formData.append('description', description);
         }
+
 
         if (description) {
             const analyzeResponse = await fetch('http://localhost:5000/analyze', {

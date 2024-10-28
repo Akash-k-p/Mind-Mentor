@@ -697,7 +697,7 @@ body {
 
 .dashboard .left-msg .msg-bubble {
   border-bottom-left-radius: 0;
-  color:#39d353;
+  color: black;
 }
 
 .dashboard .right-msg {

@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, redirect, render_template
+from flask import Flask, request, jsonify, redirect, render_template,make_response
 from flask_restful import Resource, Api
 from transformers import pipeline
 from flask_cors import CORS  # Import the CORS module
@@ -222,30 +222,40 @@ class Predict(Resource) :
         data = request.json.get('thought')
 
         if not data or len(data.split()) < 3:
-           return jsonify({"error": "Please enter at least 3 words."}), 400
+            return jsonify({"error": "Please enter at least 3 words."}), 400
 
-          # FROM VALIDATIONS
+        # Validations
         error = None  
         if data.strip() == '':
             error = 'Textbox is empty!'
         elif len(re.split(',| ', data)) < 3:
-            error = 'Please enter atleast 3 words!'
+            error = 'Please enter at least 3 words!'
         elif min(set([len(word) for word in re.split(',| ', data)])) == 1:
             error = "Please don't enter single characters"
-        else:
-            pass 
-        
-        if error != None:
-            return jsonify({"error": error}), 400
-        
+            
+        if error:
+            print("error :",error)
+            print("type of error: ",type(error))
+            return make_response(jsonify({"error":error}),400)
+
+        # Prepare input and get prediction
         data = prepare_input(data)
-        pred = np.argmax(MODEL.predict(data), axis=-1)[0]
+        pred = int(np.argmax(MODEL.predict(data), axis=-1)[0])  # cast to int
+
+        # Process and return response
         display_msg = beautify_output_msg(pred)
         songs = recommend_song(pred)
 
-    # You can add further input validation here...
-        pred  = int(pred) #cast to int from numpy.int64
-        return jsonify({"pred":pred, "songs": songs,"display_msg":display_msg})
+        # Check types before returning
+        print("Type of pred:", type(pred))
+        print("Type of songs:", type(songs))
+        print("Type of display_msg:", type(display_msg))
+
+        return jsonify({
+            "pred": pred,
+            "songs": songs,
+            "display_msg": display_msg
+        })
     
     def get(self) :
         return jsonify({"message":"Hello World"})

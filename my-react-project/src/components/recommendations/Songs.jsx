@@ -165,6 +165,7 @@ const Songs = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    console.log("button clicked .")
     e.preventDefault();
     if (!thought || thought.length > 30) {
       setError('Thought must be within 30 words' + thought);
@@ -196,7 +197,8 @@ const Songs = () => {
       setIsPrediction(true); // Switch to prediction view
 
     } catch (err) {
-      setError('Failed to fetch from the server. Please try again.');
+      console.log(err)
+      setError(`Failed to fetch from the server. Please try again. description :${err.msg}`);
     }
 
     // Add logic to handle form submission, e.g., send `thought` to an API

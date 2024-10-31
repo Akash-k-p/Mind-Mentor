@@ -38,7 +38,7 @@ html {
 }
 
 .dashboard .chart-container{
-  background: transparent;
+  background: #ffffff52;
   backdrop-filter: blur(20px);
   padding: 7px;
 }

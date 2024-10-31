@@ -7,16 +7,16 @@ import SERVER_URL from '../express_url';
 import initializeChatbot from '../assets/js/bot.js';
 import { ReactSession } from 'react-client-session';
 import '../assets/css/dashboard.css';
+import ReactApexChart from 'react-apexcharts';
 
 function DashBoard() {
   const navigate = useNavigate();
-  const [chartData, setChartData] = useState([]);
-  const [averagePv, setAveragePv] = useState(null);
+  const [chartData, setChartData] = useState(null);
 
   useEffect(() => {
     console.log("user_id at dashboard: ", ReactSession.get("user_id"));
     const cleanupChatbot = initializeChatbot();
-  
+
     function updateTime() {
       const now = new Date();
       const hours = now.getHours();
@@ -27,49 +27,109 @@ function DashBoard() {
         clockElement.textContent = timeString;
       }
     }
-  
+
     updateTime();
     const intervalId = setInterval(updateTime, 1000);
+
+    // async function fetchChartData() {
+    //   const response = await fetch(SERVER_URL + "/api/entries");
+    //   const diaryEntries = await response.json();
   
+    //   const formattedData = diaryEntries.map(entry => {
+    //     const entryDate = new Date(entry.time_stamp).toLocaleTimeString();
+    //     let polarityValue = entry.mood_id * 0.1;
+        
+    //     if (entry.label && entry.label.toLowerCase() === 'positive') {
+    //       polarityValue += 1;
+    //     }
+    //     return { name: entryDate, pv: polarityValue, title:entry.title};
+    //   });
+  
+    //   const cumulativeAverages = formattedData.map((entry, index) => {
+    //     const sum = formattedData.slice(0, index + 1).reduce((total, current) => total + current.pv, 0);
+    //     return { name: entry.name, avgPv: sum / (index + 1) };
+    //   });
+    
+    //   console.log("Cumulative Averages:", cumulativeAverages);
+      
+    //   const combinedData = formattedData.map((entry, index) => ({
+    //     ...entry,
+    //     avgPv: cumulativeAverages[index].avgPv,
+    //   }));
+    
+    //   console.log("Combined Data:", combinedData);
+      
+    //   setChartData(combinedData);
+    // }
+  
+    // fetchChartData();
+
     async function fetchChartData() {
       const response = await fetch(SERVER_URL + "/api/entries");
       const diaryEntries = await response.json();
-  
+
+      // Ensure data is sorted by timestamp to avoid "scribbling" effect
+      diaryEntries.sort((a, b) => new Date(a.time_stamp) - new Date(b.time_stamp));
+
+      // Format data for the chart
       const formattedData = diaryEntries.map(entry => {
-        const entryDate = new Date(entry.time_stamp).toLocaleTimeString();
+        const entryDate = new Date(entry.time_stamp).toISOString(); // ISO for ApexCharts compatibility
         let polarityValue = entry.mood_id * 0.1;
         
         if (entry.label && entry.label.toLowerCase() === 'positive') {
           polarityValue += 1;
         }
-        return { name: entryDate, pv: polarityValue, title:entry.title};
+        return { date: entryDate, pv: polarityValue, title: entry.title };
       });
-  
+
+      // Calculate cumulative averages for a smoother graph
       const cumulativeAverages = formattedData.map((entry, index) => {
         const sum = formattedData.slice(0, index + 1).reduce((total, current) => total + current.pv, 0);
-        return { name: entry.name, avgPv: sum / (index + 1) };
+        return { date: entry.date, avgPv: sum / (index + 1) };
       });
-    
-      console.log("Cumulative Averages:", cumulativeAverages);
-      
-      const combinedData = formattedData.map((entry, index) => ({
-        ...entry,
-        avgPv: cumulativeAverages[index].avgPv,
-      }));
-    
-      console.log("Combined Data:", combinedData);
-      
-      setChartData(combinedData);
+
+      // Set series data for ApexCharts
+      const seriesData = formattedData.map(entry => ({ x: entry.date, y: entry.pv }));
+      const avgSeriesData = cumulativeAverages.map(entry => ({ x: entry.date, y: entry.avgPv }));
+
+      setChartData({
+        series: [
+          { name: 'Polarity Value', data: seriesData },
+          { name: 'Average Polarity', data: avgSeriesData },
+        ],
+        options: {
+          chart: { fontFamily: 'Open Sans',height: 300, type: 'area', animations: { enabled: true, easing: 'easeinout' } },
+          dataLabels: { enabled: false },
+          stroke: { curve: 'smooth', width: 1.5, colors:['#3440eb','#0b9919'] },
+          xaxis: { type: 'datetime', title: { text: 'Time' } },
+          tooltip: {
+            x: { format: 'dd/MM/yy HH:mm' },
+            shared: true,
+            intersect: false
+          },
+          yaxis: {
+            title: { text: 'Polarity Value' },
+            // min: Math.min(...seriesData.map((point) => point.y)) , // for dynamic y values according to data
+            // max: Math.max(...seriesData.map((point) => point.y)) ,
+            min: 0,
+            max: 2,
+            tickAmount: 4,  // This will divide the y-axis into 4 equal ticks
+            labels: {
+              formatter: (value) => value.toFixed(2),  // Format y-axis values to 2 decimal places
+            },
+          },
+        },
+      });
     }
-  
+
     fetchChartData();
-  
+
     return () => {
       clearInterval(intervalId);
       if (cleanupChatbot) cleanupChatbot();
     };
   }, []);
-  
+
 
   return (
 
@@ -95,7 +155,7 @@ function DashBoard() {
     </nav>
 
     <div className="chart-container">
-        <ResponsiveContainer width="100%" height={350}>
+        {/* <ResponsiveContainer width="100%" height={350}>
       <LineChart
         data={chartData}
         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
@@ -135,12 +195,22 @@ function DashBoard() {
         <Line type="monotone" dataKey="pv" stroke="#f55bd1" strokeWidth={2.5} activeDot={{ r: 7 }} />
         <Line type="monotone" dataKey="avgPv" stroke="#ffcc00" strokeWidth={2} />
         <Area type="monotone" dataKey="pv" stroke="#8884d8" fill="url(#colorPv)" />
-        {/* {averagePv !== null && (
-          <ReferenceLine y={averagePv} label="Avg" stroke="white" strokeDasharray="3 3" />
-        )} */}
       </LineChart>
-    </ResponsiveContainer>
+    </ResponsiveContainer> */}
 
+            {/* ApexChart Area */}
+            <div className="chart-container">
+              {chartData ? (
+                <ReactApexChart
+                  options={chartData.options}
+                  series={chartData.series}
+                  type="area"
+                  height={300}
+                />
+              ) : (
+                <p>Loading chart data...</p>
+              )}
+            </div>
       </div>
      
 
@@ -201,6 +271,8 @@ function DashBoard() {
           className="btn">Take a Questionnaire</Link>
         <Link id="questionnaire_btn" to="/recommendations"
           className="btn">Recommended Activities</Link>
+        <Link id="questionnaire_btn" 
+          className='btn' to="/contact">Call a doctor</Link>
       </div>
 
       <footer className="foot">
@@ -225,3 +297,8 @@ function DashBoard() {
 }
 
 export default DashBoard; 
+
+
+// run 'npm install apexcharts react-apexcharts' to use apex charts
+// run 'npm install recharts' if you want to use recharts.
+// recharts graph is commented.

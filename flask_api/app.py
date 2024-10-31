@@ -209,7 +209,6 @@ class SpeechToText(Resource):
 class ChatBot(Resource):
 
     def get(self) :
-    
         return get_bot_response(request.args.get('msg'))
         # print("keys are")
         # for key in request.args.keys():

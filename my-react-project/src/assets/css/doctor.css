@@ -1,0 +1,249 @@
+/* src/Doctor.css */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  .doctor video-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .doctor #background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  .doctor .heading{
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
+    background-image: transparent;
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid black;
+  }
+  
+  .doctor body {
+    overflow: auto;
+  }
+  
+  .doctor body::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+  }
+  
+  .doctor body {
+    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+    scrollbar-width: none;  /* For Firefox */
+  }
+  
+ .doctor .foot{
+    color: white;
+    display: flex;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-image: transparent;
+      backdrop-filter: blur(10px);
+      font-size: medium;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+      border-top: 2px solid black;
+  }
+
+  .doctor footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+   .doctor .custom-link {
+    color: lightgreen; /* Set the desired link color here */
+    text-decoration: none; /* Removes the underline */
+  }
+  
+  /* Change link color on hover */
+   .doctor .custom-link:hover {
+    color: yellow; /* Color when hovering over the link */
+  }
+  
+
+/* From Uiverse.io by vinodjangid07 */
+.doctor .lgBtn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: rgb(255, 65, 65);
+    margin: 10px;
+}
+
+/* plus sign */
+.doctor .sign {
+    width: 100%;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.doctor .sign svg {
+    width: 17px;
+}
+
+.doctor .sign svg path {
+    fill: white;
+}
+
+/* text */
+.doctor .text {
+    position: absolute;
+    right: 0%;
+    width: 0%;
+    opacity: 0;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition-duration: .3s;
+}
+
+/* hover effect on button width */
+.doctor .lgBtn:hover {
+    width: 125px;
+    border-radius: 40px;
+    transition-duration: .3s;
+}
+
+.doctor .lgBtn:hover .sign {
+    width: 30%;
+    transition-duration: .3s;
+    padding-left: 20px;
+}
+
+/* hover effect button's text */
+.doctor .lgBtn:hover .text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: .3s;
+    padding-right: 10px;
+}
+
+/* button click effect*/
+.doctor .lgBtn:active {
+    transform: translate(2px ,2px);
+}
+  
+.doctor .ui {
+    /* From Uiverse.io by cssbuttons-io */
+}
+  
+.doctor .ui button {
+    --color: #560bad;
+    font-family: inherit;
+    display: inline-block;
+    width: 8em;
+    height: 2.6em;
+    line-height: 2.5em;
+    margin: 20px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color 0.5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: var(--color);
+}
+  
+.doctor button:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+}
+  
+.doctor button:hover {
+    color: #fff;
+}
+  
+.doctor button:before {
+    top: 100%;
+    left: 100%;
+    transition: all 0.7s;
+}
+  
+.doctor button:hover:before {
+    top: -30px;
+    left: -30px;
+}
+  
+.doctor button:active:before {
+    background: #3a0ca3;
+    transition: background 0s;
+}
+
+.doctor-card {
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    margin: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    background: transparent;
+    backdrop-filter: blur(25px);
+    transition: all 0.1s;
+}
+
+.doctor .doctor-card:hover{
+    transform: scale(1.05);
+    font-size: large;
+}
+
+.doctor-image {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+
+.doctor-columns {
+    flex: 1 1 0;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 50px;
+}
+
+.contact-page {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+}

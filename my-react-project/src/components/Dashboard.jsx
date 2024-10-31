@@ -104,6 +104,22 @@ function DashBoard() {
           xaxis: { type: 'datetime', title: { text: 'Time' } },
           tooltip: {
             x: { format: 'dd/MM/yy HH:mm' },
+            // y: {
+            //   formatter: function(val, { seriesIndex, dataPointIndex }) {
+            //     const title = (chartData && chartData[seriesIndex] && chartData[seriesIndex].data[dataPointIndex]) ? 
+            //                    chartData[seriesIndex].data[dataPointIndex].title : "N/A";
+            //     const avgPolarity = (avgSeriesData && avgSeriesData[dataPointIndex]) ? 
+            //                         avgSeriesData[dataPointIndex].y : "N/A";
+            //     return `Polarity: ${val} <br/> Title: ${title} <br/> Average Polarity: ${avgPolarity}`;
+            //   }},
+            custom: function({ series, seriesIndex, dataPointIndex, w }) {
+              const { title } = formattedData[dataPointIndex]; // Access the title using dataPointIndex
+              return `<div style="padding: 10px;">
+                        <strong>${title}</strong><br>
+                        Polarity: ${series[seriesIndex][dataPointIndex]}<br>
+                        Average Polarity: ${avgSeriesData[dataPointIndex].y}
+                      </div>`;
+            },
             shared: true,
             intersect: false
           },

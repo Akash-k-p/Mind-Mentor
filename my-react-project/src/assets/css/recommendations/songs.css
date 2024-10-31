@@ -376,3 +376,15 @@ body, html {
 .songs .hitbtn:hover::before {
     width: 160%;
 }
+
+.songs .start-again-div{
+    display: flex;
+    justify-content: center;
+
+}
+
+.songs .prediction-result{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+}

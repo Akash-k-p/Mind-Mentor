@@ -1,79 +1,22 @@
-import React, { useEffect } from 'react';  // Import React and useEffect for data fetching
 
-import { Link } from 'react-router-dom';  // Import Link for routing
-import chatBotImg from '../assets/images/mhcicon.png';  // Import the chatbot image
-// import moment from 'moment';
-// import * as d3 from 'd3';
-import calendarHeatmap from '../assets/js/calender-heatmap.min.js';  // Import the calendar heatmap library
-import '../assets/css/calender-heatmap.min.css';  // Import the calendar heatmap CSS file
+import React, { useEffect,useState} from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,Area, ResponsiveContainer,ReferenceLine } from 'recharts';
+import chatBotImg from '../assets/images/mhcicon.png';
 import SERVER_URL from '../express_url';
-import initializeChatbot from '../assets/js/bot.js';  // Import the chatbot script
-import { ReactSession } from 'react-client-session';  // Import ReactSession for session management
-import '../assets/css/dashboard.css';  // Adjust the path to your custom CSS file
-import { useNavigate } from 'react-router-dom';
+import initializeChatbot from '../assets/js/bot.js';
+import { ReactSession } from 'react-client-session';
+import '../assets/css/dashboard.css';
 
-
-function DashBoard() {  // Define the component
+function DashBoard() {
   const navigate = useNavigate();
+  const [chartData, setChartData] = useState([]);
+  const [averagePv, setAveragePv] = useState(null);
 
-  // useEffect to handle fetching data and initializing the calendar heatmap
   useEffect(() => {
     console.log("user_id at dashboard: ", ReactSession.get("user_id"));
-    async function fetchDataAndRenderHeatmap() {
-      console.log('Fetching data and rendering heatmap...');
-      const response = await fetch(SERVER_URL + "/api/entries");
-      console.log("reps",response)
-      const diaryEntries = await response.json();
-      console.log(diaryEntries);
-
-      const formattedData = diaryEntries.map(entry => {
-        const entryDate = new Date(entry.time_stamp);
-
-        // Calculate polarity based on mood_id (1 maps to 0.1, 10 maps to 1.0)
-        let polarityValue = entry.mood_id * 0.1;
-
-        // Adjust polarity if the label is positive
-        if (entry.label && entry.label.toLowerCase() === 'positive') {
-          polarityValue += 1;
-        }
-
-        return {
-          date: entryDate,
-          details: [{
-            'mood_id': entry.mood_id,
-            'label': entry.label,
-            'date': entryDate,
-            'value': polarityValue // Polarity based on mood_id and label
-          }],
-          total: polarityValue // Use total for the heatmap color scale
-        };
-      });
-
-      const div_id = 'calendar';
-      const color = '#45f542';
-      const overview = 'year';
-
-      const print = function (val) {
-        console.log(val);
-      };
-
-      // Assuming calendarHeatmap is available globally
-      try {
-        calendarHeatmap.init(formattedData, div_id, color, overview, print);
-      }
-      catch (e) {
-        console.log(e);
-      }
-    }
-
-    fetchDataAndRenderHeatmap();
-  }, []);  // Empty dependency array to ensure this runs once on mount
-
-
-  // useEffect to initialize the chatbot
-  useEffect(() => {
-    const cleanupChatbot = initializeChatbot();  // Call the imported function
-
+    const cleanupChatbot = initializeChatbot();
+  
     function updateTime() {
       const now = new Date();
       const hours = now.getHours();
@@ -84,14 +27,49 @@ function DashBoard() {  // Define the component
         clockElement.textContent = timeString;
       }
     }
-
-    updateTime();  // Call once to initialize the time
-    const intervalId = setInterval(updateTime, 1000);  // Update the time every secon
-
+  
+    updateTime();
+    const intervalId = setInterval(updateTime, 1000);
+  
+    async function fetchChartData() {
+      const response = await fetch(SERVER_URL + "/api/entries");
+      const diaryEntries = await response.json();
+  
+      const formattedData = diaryEntries.map(entry => {
+        const entryDate = new Date(entry.time_stamp).toLocaleTimeString();
+        let polarityValue = entry.mood_id * 0.1;
+        
+        if (entry.label && entry.label.toLowerCase() === 'positive') {
+          polarityValue += 1;
+        }
+        return { name: entryDate, pv: polarityValue, title:entry.title};
+      });
+  
+      const cumulativeAverages = formattedData.map((entry, index) => {
+        const sum = formattedData.slice(0, index + 1).reduce((total, current) => total + current.pv, 0);
+        return { name: entry.name, avgPv: sum / (index + 1) };
+      });
+    
+      console.log("Cumulative Averages:", cumulativeAverages);
+      
+      const combinedData = formattedData.map((entry, index) => ({
+        ...entry,
+        avgPv: cumulativeAverages[index].avgPv,
+      }));
+    
+      console.log("Combined Data:", combinedData);
+      
+      setChartData(combinedData);
+    }
+  
+    fetchChartData();
+  
     return () => {
-      if (cleanupChatbot) cleanupChatbot();  // Clean up if a cleanup function is returned
+      clearInterval(intervalId);
+      if (cleanupChatbot) cleanupChatbot();
     };
-  }, []);  // Empty dependency array to run once on mount
+  }, []);
+  
 
   return (
 
@@ -101,14 +79,6 @@ function DashBoard() {  // Define the component
         Your browser does not support the video tag.
       </video>
       <div className="heading">
-        {/* <div className="container">
-          <h1 className="display-4">
-            Mental Health Tracker <span role="img" aria-label="Memo">💚</span>
-            <div className="logout-btn"><a href="/logout">Logout</a></div>
-          </h1>
-          <p className="lead">Your journey to a better mental state</p>
-          <hr />
-        </div> */}
            <center>
         <h1>
           Mind Mentor <span role="img" aria-label="Memo">💚</span>
@@ -116,16 +86,6 @@ function DashBoard() {  // Define the component
         <p>Your journey to a better mental state</p>
       </center>
       </div>
-
-      {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container-fluid">
-          <div className="navbar-nav mx-auto navbar-container">
-            <Link className="nav-link active navbar-elements" aria-current="page" to="/dashboard">Home</Link>
-            <Link className="nav-link navbar-elements" to="/newdiary">New Diary</Link>
-            <Link className="nav-link navbar-elements" to="/viewdiary">View Diaries</Link>
-          </div>
-        </div>
-      </nav> */}
        <nav className="ui">
       <center>
       <button onClick={() => navigate('/dashboard')}>Home</button>
@@ -134,12 +94,55 @@ function DashBoard() {  // Define the component
       </center>
     </nav>
 
+    <div className="chart-container">
+        <ResponsiveContainer width="100%" height={350}>
+      <LineChart
+        data={chartData}
+        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+      >
+        <defs>
+          <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
+            <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+          </linearGradient>
+        </defs>
 
-      <div id="calendar">
-        <br />
-        {/* Calendar heatmap will be rendered in this div */}
-        <br />
+        <CartesianGrid strokeDasharray="3 3" contentStyle={{ backgroundColor: '#ffffff', color: '#ffffff' }}/>
+        <XAxis
+          dataKey="name"
+          tick={{ fill: '#ffffff', fontSize: 14 }}
+        />
+        <YAxis
+          tick={{ fill: '#ffffff', fontSize: 14 }}
+        />
+        <Tooltip
+          content={({ payload }) => {
+            if (payload && payload.length) {
+              const { name, pv, title, avgPv } = payload[0].payload;
+              return (
+                <div style={{ backgroundColor: "#333", padding:"15px", color:"#ffffff", borderRadius:"3px", lineHeight:"6px"}}>
+                  <p>{`Time: ${name}`}</p>
+                  <p>{`Polarity: ${pv}`}</p>
+                  <p>{`Title: ${title}`}</p>
+                  <p>{`Average Polarity: ${avgPv.toFixed(2)}`}</p>
+                </div>
+              );
+            }
+            return null;
+          }}
+        />
+        <Legend wrapperStyle={{ color: '#555' }} />
+        <Line type="monotone" dataKey="pv" stroke="#f55bd1" strokeWidth={2.5} activeDot={{ r: 7 }} />
+        <Line type="monotone" dataKey="avgPv" stroke="#ffcc00" strokeWidth={2} />
+        <Area type="monotone" dataKey="pv" stroke="#8884d8" fill="url(#colorPv)" />
+        {/* {averagePv !== null && (
+          <ReferenceLine y={averagePv} label="Avg" stroke="white" strokeDasharray="3 3" />
+        )} */}
+      </LineChart>
+    </ResponsiveContainer>
+
       </div>
+     
 
       {/* Chatbot Component */}
       <div id="chatbot" className="main-card collapsed">
@@ -193,18 +196,12 @@ function DashBoard() {  // Define the component
       <div className="features">
 
       </div>
-      <div id="questionnaire" className='col'>
+      <div className='col'>
         <Link id="questionnaire_btn" to="/questionnaire"
-          className="btn btn-outline-primary btn-lg btn-block">Take a Questionnaire</Link>
-      </div>
-
-      <div id="questionnaire" className="col">
+          className="btn">Take a Questionnaire</Link>
         <Link id="questionnaire_btn" to="/recommendations"
-          className="btn btn-outline-primary btn-lg btn-block">Recommended Activities</Link>
+          className="btn">Recommended Activities</Link>
       </div>
-
-  
-
 
       <footer className="foot">
       Created by:&nbsp;&nbsp;
@@ -227,4 +224,4 @@ function DashBoard() {  // Define the component
   );
 }
 
-export default DashBoard;  // Export the component so it can be used in other files
+export default DashBoard; 

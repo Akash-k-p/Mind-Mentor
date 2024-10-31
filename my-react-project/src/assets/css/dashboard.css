@@ -10,9 +10,7 @@ html {
   display: flex;
   gap: 20px;
 }
-.dashboard .col{
-  flex: 1;
-}
+
 
 .dashboard .video-container {
   position: relative;
@@ -37,6 +35,12 @@ html {
   text-align: center;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.dashboard .chart-container{
+  background: transparent;
+  backdrop-filter: blur(20px);
+  padding: 7px;
 }
 
 /* Hide scrollbar for all browsers */
@@ -380,8 +384,11 @@ body {
   /* Hover effect */
 }
 
-.dashboard #questionnaire {
+.dashboard .col{
   padding-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1%;
 }
 
 /* chatbot styles */

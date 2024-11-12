@@ -287,8 +287,6 @@ function DashBoard() {
           className="btn">Take a Questionnaire</Link>
         <Link id="questionnaire_btn" to="/recommendations"
           className="btn">Recommended Activities</Link>
-        <Link id="questionnaire_btn" 
-          className='btn' to="/contact">Call a doctor</Link>
       </div>
 
       <footer className="foot">
